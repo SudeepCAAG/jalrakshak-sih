@@ -117,15 +117,7 @@ export const CAPEmergencyBroadcastBanner: React.FC<CAPEmergencyBroadcastBannerPr
 
   return (
     <div className="relative rounded-2xl bg-rose-900 text-white p-3.5 sm:p-4 shadow-md border border-rose-700 mb-4 sm:mb-5 select-none">
-      <button
-        onClick={() => setIsDismissed(true)}
-        className="absolute top-2.5 right-2.5 p-1.5 rounded-lg bg-rose-800 hover:bg-rose-700 text-rose-200 transition z-20"
-        title="Dismiss Alert"
-      >
-        <X className="w-4 h-4" />
-      </button>
-
-      <div className="relative z-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-3.5 pr-7 lg:pr-0">
+      <div className="relative z-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-3.5">
         <div className="flex items-start sm:items-center gap-2.5 sm:gap-3 min-w-0">
           <div className="p-2 rounded-xl bg-rose-800 text-white shrink-0 mt-0.5 sm:mt-0">
             <ShieldAlert className="w-5 h-5 text-rose-200" />
@@ -175,6 +167,14 @@ export const CAPEmergencyBroadcastBanner: React.FC<CAPEmergencyBroadcastBannerPr
           >
             <PhoneCall className="w-4 h-4 shrink-0" />
             <span className="whitespace-nowrap">{text.sosBtn}</span>
+          </button>
+
+          <button
+            onClick={() => setIsDismissed(true)}
+            className="w-full sm:w-auto p-2 rounded-xl bg-rose-800/80 hover:bg-rose-700 text-rose-200 transition shrink-0 flex items-center justify-center border border-rose-700/60"
+            title="Dismiss Alert"
+          >
+            <X className="w-4 h-4" />
           </button>
         </div>
       </div>
