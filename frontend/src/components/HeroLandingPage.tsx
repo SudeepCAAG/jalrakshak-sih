@@ -140,6 +140,25 @@ export const HeroLandingPage: React.FC<HeroLandingPageProps> = ({
               <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
                 {t.heroDescription}
               </p>
+
+              {/* Dual Hero Action Buttons (Inspired by Reference Layout) */}
+              <div className="flex flex-col sm:flex-row items-stretch gap-3 pt-1">
+                <button
+                  onClick={() => onNavigatePage('safe-nav')}
+                  className="flex-1 py-3 px-5 rounded-2xl bg-gradient-to-r from-amber-500 via-amber-500 to-yellow-500 hover:from-amber-600 hover:to-yellow-600 text-white font-bold text-xs sm:text-sm shadow-[0_6px_20px_rgba(245,158,11,0.35)] transition-all active:scale-98 flex items-center justify-center gap-2 border border-white/30"
+                >
+                  <Navigation className="w-4 h-4 text-white" />
+                  <span className="uppercase tracking-wide font-extrabold">{t.planSafeRoute}</span>
+                </button>
+
+                <button
+                  onClick={() => onNavigatePage('gis-nowcast')}
+                  className="flex-1 py-3 px-5 rounded-2xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs sm:text-sm shadow-md transition-all active:scale-98 flex items-center justify-center gap-2 border border-slate-700"
+                >
+                  <Layers className="w-4 h-4 text-cyan-400" />
+                  <span className="uppercase tracking-wide font-extrabold">{t.checkStreetStatus}</span>
+                </button>
+              </div>
             </div>
 
             {/* Interactive Street Status & Route Planning Cockpit Card */}
