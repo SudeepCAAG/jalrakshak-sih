@@ -21,9 +21,7 @@ import {
   Languages,
   Menu,
   X,
-  PhoneCall,
-  ShieldCheck,
-  Check
+  PhoneCall
 } from 'lucide-react';
 import { SystemOverview } from '@/types';
 import { Language, translations } from '@/utils/translations';
@@ -87,8 +85,8 @@ export const NationalNavbar: React.FC<NationalNavbarProps> = ({
 
   const languagesList: { code: Language; label: string }[] = [
     { code: 'en', label: 'English' },
-    { code: 'bn', label: '?????' },
-    { code: 'hi', label: '?????' }
+    { code: 'bn', label: 'বাংলা' },
+    { code: 'hi', label: 'हिंदी' }
   ];
 
   const handleMobileNavClick = (pageId: any) => {
@@ -100,7 +98,7 @@ export const NationalNavbar: React.FC<NationalNavbarProps> = ({
     <header className="sticky top-0 z-40 w-full transition-all duration-300">
       {/* Glassmorphic Top Navbar Container */}
       <div className="bg-white/85 backdrop-blur-xl backdrop-saturate-150 border-b border-slate-200/90 shadow-[0_4px_24px_rgba(0,0,0,0.05)] select-none">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-2.5 flex items-center justify-between gap-3">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 py-2.5 flex items-center justify-between gap-2 sm:gap-3">
           
           {/* Brand Logo & Shield */}
           <div 
@@ -109,12 +107,12 @@ export const NationalNavbar: React.FC<NationalNavbarProps> = ({
           >
             <JalRakshakLogo 
               size="md"
-              badgeText={currentLang === 'bn' ? '???????' : currentLang === 'hi' ? '?? ?????' : 'Flood Shield'}
+              badgeText={currentLang === 'bn' ? 'জলরক্ষক' : currentLang === 'hi' ? 'जल रक्षक' : 'Flood Shield'}
               subtitle={t.appSub}
             />
           </div>
 
-          {/* Desktop Navigation Dock (Visible on Tablets and Desktops) */}
+          {/* Desktop Navigation Dock */}
           <nav className="hidden lg:flex items-center gap-1 bg-white/70 backdrop-blur-md p-1 rounded-2xl border border-slate-200 shadow-xs">
             {navLinks.map((tab) => {
               const Icon = tab.icon;
@@ -161,14 +159,14 @@ export const NationalNavbar: React.FC<NationalNavbarProps> = ({
             )}
           </nav>
 
-          {/* Right Controls (Desktop & Mobile Unified) */}
-          <div className="flex items-center gap-2">
+          {/* Right Controls */}
+          <div className="flex items-center gap-1.5 sm:gap-2">
             {/* Desktop Language Selector */}
             <div className="hidden sm:block relative">
               <button
                 onClick={() => setIsLangDropdownOpen(!isLangDropdownOpen)}
                 className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/70 hover:bg-white/95 backdrop-blur-md border border-slate-200 shadow-xs text-stone-800 text-xs font-bold transition duration-200"
-                title="Change Language / ???? ???????? / ???? ?????"
+                title="Change Language / ভাষা পরিবর্তন / भाषा बदलें"
               >
                 <Languages className="w-3.5 h-3.5 text-amber-600" />
                 <span className="uppercase text-[11px] font-black">{currentLang}</span>
@@ -178,7 +176,7 @@ export const NationalNavbar: React.FC<NationalNavbarProps> = ({
               {isLangDropdownOpen && (
                 <div className="absolute right-0 mt-2 w-36 bg-white/95 backdrop-blur-2xl rounded-2xl border border-slate-200 shadow-xl py-1.5 z-50 animate-in fade-in zoom-in-95 duration-150">
                   <div className="px-3 py-1 text-[10px] font-black uppercase tracking-wider text-stone-400 border-b border-stone-100">
-                    Language / ????
+                    Language / ভাষা
                   </div>
                   {languagesList.map((langItem) => (
                     <button
@@ -285,7 +283,7 @@ export const NationalNavbar: React.FC<NationalNavbarProps> = ({
               </button>
             )}
 
-            {/* Mobile Hamburger Menu Toggle Button (?) */}
+            {/* Mobile Hamburger Menu Toggle Button (☰) */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="lg:hidden p-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 border border-slate-200 transition active:scale-95 shadow-xs"
@@ -297,16 +295,19 @@ export const NationalNavbar: React.FC<NationalNavbarProps> = ({
         </div>
       </div>
 
-      {/* Slide-Out Mobile Navigation Drawer (Inspired by Photography Reference Site) */}
+      {/* Slide-Out Mobile Navigation Drawer */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden fixed inset-0 z-50 bg-slate-950/60 backdrop-blur-md animate-in fade-in duration-200">
+        <div 
+          className="lg:hidden fixed inset-0 z-50 bg-slate-950/60 backdrop-blur-md animate-in fade-in duration-200"
+          onClick={() => setIsMobileMenuOpen(false)}
+        >
           <div 
             className="fixed inset-y-0 right-0 w-full max-w-xs sm:max-w-sm bg-white shadow-2xl p-5 flex flex-col justify-between overflow-y-auto animate-in slide-in-from-right duration-300 border-l border-slate-200"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="space-y-6">
+            <div className="space-y-5">
               {/* Drawer Header */}
-              <div className="flex items-center justify-between pb-4 border-b border-slate-100">
+              <div className="flex items-center justify-between pb-3 border-b border-slate-100">
                 <JalRakshakLogo 
                   size="sm"
                   badgeText="SIH 2026"
@@ -322,7 +323,7 @@ export const NationalNavbar: React.FC<NationalNavbarProps> = ({
               {/* Language Switcher Pills */}
               <div className="space-y-1.5">
                 <div className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
-                  Select Language / ????
+                  Select Language / ভাষা / भाषा
                 </div>
                 <div className="grid grid-cols-3 gap-1.5 p-1 rounded-xl bg-slate-100 border border-slate-200/80">
                   {languagesList.map((langItem) => (
@@ -344,7 +345,7 @@ export const NationalNavbar: React.FC<NationalNavbarProps> = ({
               {/* City Selection */}
               <div className="space-y-1.5">
                 <div className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
-                  Select Metro City / ?????
+                  Select Metro City / অঞ্চল
                 </div>
                 <div className="grid grid-cols-2 gap-1.5">
                   {CITIES_LIST.map((c) => {
@@ -419,13 +420,13 @@ export const NationalNavbar: React.FC<NationalNavbarProps> = ({
             </div>
 
             {/* Drawer Footer Actions */}
-            <div className="space-y-2 pt-4 border-t border-slate-100 mt-6">
+            <div className="space-y-2 pt-4 border-t border-slate-100 mt-4">
               <a
                 href="tel:112"
                 className="w-full py-2.5 rounded-xl bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs flex items-center justify-center gap-2 transition shadow-sm"
               >
                 <PhoneCall className="w-4 h-4" />
-                <span>Call Emergency 112 (?????? ?????????)</span>
+                <span>Call Emergency 112 (জাতীয় হেল্পলাইন)</span>
               </a>
 
               {isAuthorized ? (
