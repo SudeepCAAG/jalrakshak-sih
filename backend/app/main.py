@@ -160,19 +160,30 @@ async def ask_gemini_ai(req: AIChatRequest):
     
     # 3. Process zones telemetry
     zones = state.get("zones", [])
-    high_risk_zones = [
-        {
-            "name": z["name"],
-            "water_depth_cm": z["water_depth_cm"],
-            "citizen_level": z["citizen_water_level"],
-            "risk_level": z["risk_level"],
-            "passability": f"Walk:{'Yes' if z['can_walk'] else 'No'}, Bike:{'Yes' if z['can_bike'] else 'No'}, Car:{'Yes' if z['can_car'] else 'No'}, SUV/Bus:{'Yes' if z['can_bus'] else 'No'}"
-        }
-        for z in zones if z.get("risk_level") in ["HIGH", "CRITICAL"] or z.get("water_depth_cm", 0) >= 25
-    ]
-    safe_zones = [z["name"] for z in zones if z.get("risk_level") == "LOW" or z.get("water_depth_cm", 0) < 15]
+    high_risk_zones = []
+    for z in zones:
+        z_name = z.get("zone_name") or z.get("name") or "Zone"
+        w_depth = z.get("water_depth_cm", 0.0)
+        c_level = z.get("citizen_water_level", "NORMAL")
+        r_level = z.get("risk_level", "LOW")
+        p_info = z.get("passability", {})
+        if isinstance(p_info, dict):
+            p_text = f"Walk:{'Yes' if p_info.get('walking', True) else 'No'}, Bike:{'Yes' if p_info.get('two_wheeler', True) else 'No'}, Car:{'Yes' if p_info.get('four_wheeler', True) else 'No'}, Bus:{'Yes' if p_info.get('emergency_bus', True) else 'No'}"
+        else:
+            p_text = "Passable"
+        
+        if r_level in ["HIGH", "CRITICAL"] or w_depth >= 25:
+            high_risk_zones.append({
+                "name": z_name,
+                "water_depth_cm": w_depth,
+                "citizen_level": c_level,
+                "risk_level": r_level,
+                "passability": p_text
+            })
+
+    safe_zones = [z.get("zone_name") or z.get("name") or "Zone" for z in zones if z.get("risk_level") == "LOW" or z.get("water_depth_cm", 0) < 15]
     all_zones_summary = [
-        {"name": z["name"], "water_depth_cm": z["water_depth_cm"], "status": z["citizen_water_level"]}
+        {"name": z.get("zone_name") or z.get("name") or "Zone", "water_depth_cm": z.get("water_depth_cm", 0.0), "status": z.get("citizen_water_level", "NORMAL")}
         for z in zones
     ]
     

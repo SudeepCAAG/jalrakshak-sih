@@ -122,22 +122,37 @@ export const AIChatAssistantModal: React.FC<AIChatAssistantModalProps> = ({
         time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) 
       }]);
     } catch (err) {
-      let fallback = (
-        currentLang === 'bn' 
-          ? 'সার্ভার ব্যস্ত। জরুরি সুরক্ষার জন্য মনে রাখুন: কখনোই হাঁটু সমান জলে গাড়ি নামাবেন না। জরুরি রেসকিউর জন্য সরাসরি ১১২ অথবা NDRF নম্বরে কল করুন।'
-          : currentLang === 'hi'
-          ? 'सर्वर व्यस्त है। कृपया जलमग्न अंडरपास में वाहन न ले जाएं। आपातकालीन बचाव के लिए 112 या NDRF पर कॉल करें।'
-          : 'Server busy. Turn around, do not drown: Never drive through flooded underpasses. For emergency rescue, dial 112 or NDRF hotline.'
-      );
+      const lower = userText.toLowerCase();
+      let fallback = '';
+      
+      const cityTitle = currentCity.charAt(0).toUpperCase() + currentCity.slice(1);
 
-      if (userText.toLowerCase().includes('help') || userText.toLowerCase().includes('sos')) {
-        fallback = (
-          currentLang === 'bn'
-            ? 'জরুরি সাহায্য: অবিলম্বে National Emergency 112 অথবা Disaster Management 1070 ডায়াল করুন।'
-            : currentLang === 'hi'
-            ? 'आपातकालीन सहायता: तुरंत राष्ट्रीय हेल्पलाइन 112 या आपदा प्रबंधन 1070 डायल करें।'
-            : 'Immediate Assistance: Dial National Emergency 112 or Disaster Helpline 1070 immediately.'
-        );
+      if (currentLang === 'bn') {
+        if (lower.includes('সাবধানতা') || lower.includes('guideline') || lower.includes('safety') || lower.includes('নিয়ম') || lower.includes('করব')) {
+          fallback = `🛡️ **বন্যা ও অতিবৃষ্টির অপরিহার্য জীবনরক্ষাকারী সাবধানতা (${cityTitle}):**\n\n1. 🚫 **Turn Around, Don't Drown:** কখনোই হাঁটু সমান জলে গাড়ি বা বাইক নামাবেন না। মাত্র ১৫-১৮ ইঞ্চি জলের স্রোতে গাড়ি ভেসে যেতে পারে।\n2. ⚡ **বিদ্যুৎস্পৃষ্ট থেকে সতর্কতা:** রাস্তায় ছিঁড়ে পড়া তার, ল্যাম্পপোস্ট ও ট্রান্সফরমার থেকে কমপক্ষে ১৫ ফুট দূরে থাকুন।\n3. 💧 **বিশুদ্ধ পানীয় জল:** জল ফুটিয়ে বা ক্লোরিন ট্যাবলেট দিয়ে শোধন করে পান করুন।\n4. 🎒 **জরুরি কিট:** টর্চলাইট, পাওয়ারব্যাঙ্ক, শুকনো খাবার ও ওআরএস (ORS) সাথে রাখুন।\n5. 📞 **জরুরি হেল্পলাইন:** যেকোনো বিপদে অবিলম্বে জাতীয় জরুরি নম্বর **112** অথবা দুর্যোগ ব্যবস্থাপনা **1070** ডায়াল করুন।`;
+        } else if (lower.includes('রাস্তা') || lower.includes('road') || lower.includes('flood') || lower.includes('জলমগ্ন')) {
+          fallback = `🌊 **${cityTitle} মেট্রোর গুরুত্বপূর্ণ জলমগ্ন এলাকা ও নিরাপদ পথ:**\n\n⚠️ **সতর্কতা অঞ্চল:** নীচু আন্ডারপাস ও রেলওয়ে ব্রিজ সংলগ্ন রাস্তায় ভারী জল জমার সম্ভাবনা থাকে।\n\n✅ **নিরাপদ বিকল্প পথ:** উঁচু ফ্লাইওভার ও প্রধান বাইপাস করিডোর ব্যবহার করুন। লাইভ নেভিগেশনের জন্য অ্যাপের **'Safe Routes'** ট্যাব দেখুন।\n\n📞 **জরুরি কন্ট্রোল রুম:** \`112\` / \`1070\``;
+        } else if (lower.includes('গাড়ি') || lower.includes('গাড়ি') || lower.includes('bike') || lower.includes('drive') || lower.includes('বাইক')) {
+          fallback = `🚗 **যানবাহন চালানোর সেফটি নির্দেশিকা (${cityTitle}):**\n\n• 🛵 **বাইক / স্কুটার:** ২০ সেমি বেশি জলে চালাবেন না; স্লিপ করার ও ইঞ্জিন বন্ধ হওয়ার ঝুঁকি থাকে।\n• 🚗 **হ্যাচব্যাক / সেডান:** ৩০+ সেমি জলে নামাবেন না; সাইলেন্সারে জল ঢুকলে ইঞ্জিন বিকল হতে পারে।\n• 🚙 **বড় SUV:** গতি নিয়ন্ত্রণে রেখে উঁচু লেন দিয়ে চলাচল করুন।\n\nজরুরি টোয়িং বা সহায়তার জন্য ডায়াল করুন: **112**`;
+        } else {
+          fallback = `🚨 **জরুরি কন্ট্রোল রুম ও উদ্ধার নম্বর (${cityTitle}):**\n\n• **জাতীয় জরুরি সেবা:** \`112\` (পুলিশ, দমকল ও অ্যাম্বুলেন্স)\n• **NDRF হেল্পলাইন:** \`+91-9711077372\`\n• **রাজ্য দুর্যোগ সেল:** \`1070\`\n\nযেকোনো দুর্যোগে সতর্ক থাকুন এবং নিরাপদ উঁচু স্থানে অবস্থান করুন।`;
+        }
+      } else if (currentLang === 'hi') {
+        if (lower.includes('सावधानी') || lower.includes('guideline') || lower.includes('safety') || lower.includes('नियम')) {
+          fallback = `🛡️ **बाढ़ और भारी बारिश के दौरान जीवन रक्षक सावधानियां (${cityTitle}):**\n\n1. 🚫 **Turn Around, Don't Drown:** जलमग्न अंडरपास या सड़कों पर वाहन न चलाएं।\n2. ⚡ **विद्युत सुरक्षा:** बिजली के खंभों, ट्रांसफार्मर और गिरे हुए तारों से कम से कम 15 फीट दूर रहें।\n3. 💧 **पेयजल सुरक्षा:** उबला हुआ पानी पिएं और ओआरएस साथ रखें।\n4. 📞 **आपातकालीन सहायता:** राष्ट्रीय आपातकालीन नंबर **112** या राज्य आपदा प्रबंधन **1070** पर संपर्क करें।`;
+        } else {
+          fallback = `🚨 **आपातकालीन हेल्पलाइन एवं सुरक्षा स्थिति (${cityTitle}):**\n\n• **राष्ट्रीय आपातकालीन सेवा:** \`112\`\n• **NDRF कंट्रोल रूम:** \`+91-9711077372\`\n• **आपदा प्रबंधन:** \`1070\`\n\nकृपया सुरक्षित वैकल्पिक ऊंचे मार्गों का उपयोग करें।`;
+        }
+      } else {
+        if (lower.includes('guideline') || lower.includes('safety') || lower.includes('precaution') || lower.includes('rule') || lower.includes('what are')) {
+          fallback = `🛡️ **Essential Urban Flood Safety Protocols (${cityTitle}):**\n\n1. 🚫 **Turn Around, Don't Drown:** Never drive or walk through flooded underpasses or moving street water (12-18 inches can sweep away vehicles).\n2. ⚡ **Electrical Safety:** Stay at least 15 feet away from downed power lines, submerged transformers, and metallic lampposts.\n3. 💧 **Safe Drinking Water:** Boil water before use or use purification tablets to prevent waterborne diseases.\n4. 🎒 **Emergency Kit Ready:** Keep power banks, dry rations, first-aid kit, and essential medicines handy.\n5. 📞 **Immediate Assistance:** For rescue or emergencies, dial National Emergency **112** or NDRF Helpline **+91-9711077372**.`;
+        } else if (lower.includes('road') || lower.includes('flood') || lower.includes('street') || lower.includes('waterlog')) {
+          fallback = `🌊 **Live Waterlogging Advisory for ${cityTitle}:**\n\n⚠️ **High Risk:** Low-lying sunken underpasses and bowl depressions are at risk of deep inundation.\n\n✅ **Safe Corridors:** Use arterial elevated flyovers and bypass highways.\n\n🧭 Check the interactive map and **Safe Routes** tab for real-time bypass navigation. Emergency Helpline: \`112\``;
+        } else if (lower.includes('drive') || lower.includes('car') || lower.includes('bike') || lower.includes('vehicle')) {
+          fallback = `🚗 **Vehicle Driving Safety Advisory (${cityTitle}):**\n\n• 🛵 **Two-Wheelers:** Avoid water above 15 cm to prevent loss of balance and stalling.\n• 🚗 **Hatchbacks & Sedans:** Do not drive through water above wheel-hub level (>25 cm) to avoid engine seizure.\n• 🚙 **High Clearance SUVs:** Proceed at low constant speed; avoid sunken railway underpasses.\n\nFor breakdown assistance, dial **112** or Traffic Helpline **1073**.`;
+        } else {
+          fallback = `🚨 **Emergency Flood Helpline Contacts (${cityTitle}):**\n\n• **National Emergency Number:** \`112\` (Police, Fire, Ambulance)\n• **NDRF 24x7 Control Room:** \`+91-9711077372\`\n• **Disaster Management Helpline:** \`1070\`\n• **Traffic Police Helpline:** \`1073\`\n\nFor safe navigation routing, please explore the **'Safe Routes'** tab on the dashboard.`;
+        }
       }
 
       setMessages((prev) => [...prev, { 
