@@ -119,36 +119,36 @@ export const HeroLandingPage: React.FC<HeroLandingPageProps> = ({
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
           
           {/* LEFT COLUMN: Clean Typography & Search / Safe Route Cockpit */}
-          <div className="lg:col-span-6 flex flex-col justify-between space-y-6">
-            <div className="space-y-4">
+          <div className="lg:col-span-6 flex flex-col justify-between space-y-4 sm:space-y-6">
+            <div className="space-y-3 sm:space-y-4">
               {/* Mission Badge */}
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-100 text-slate-800 border border-slate-200 shadow-xs text-xs font-semibold">
-                <span className="w-2 h-2 rounded-full bg-cyan-600"></span>
-                <span className="text-slate-600 font-mono text-[11px] uppercase tracking-wider">MoES &amp; NDMA INITIATIVE</span>
+              <div className="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-full bg-slate-100 text-slate-800 border border-slate-200 shadow-xs text-[10px] sm:text-xs font-semibold">
+                <span className="w-1.5 sm:w-2 h-1.5 sm:h-2 rounded-full bg-cyan-600"></span>
+                <span className="text-slate-600 font-mono text-[10px] sm:text-[11px] uppercase tracking-wider">MoES &amp; NDMA INITIATIVE</span>
                 <span className="text-slate-300">|</span>
-                <span className="text-amber-800 font-bold">{t.tagline}</span>
+                <span className="text-amber-800 font-bold truncate max-w-[150px] sm:max-w-none">{t.tagline}</span>
               </div>
 
               {/* Master Headline */}
-              <h1 className="text-3xl sm:text-4xl lg:text-[42px] font-black text-slate-950 tracking-tight leading-[1.14]">
+              <h1 className="text-2xl sm:text-3xl lg:text-[42px] font-black text-slate-950 tracking-tight leading-tight sm:leading-[1.14]">
                 {t.heroHeadline1}{' '}
                 <span className="text-blue-700">
                   {t.heroHeadlineHighlight}
                 </span>
               </h1>
 
-              <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
                 {t.heroDescription}
               </p>
             </div>
 
             {/* Interactive Street Status & Route Planning Cockpit Card */}
-            <div className="bg-white rounded-3xl border border-slate-200/90 shadow-md p-5 space-y-4">
+            <div className="bg-white rounded-2xl sm:rounded-3xl border border-slate-200/90 shadow-md p-3.5 sm:p-5 space-y-3 sm:space-y-4">
               {/* Dual Tab Switcher */}
-              <div className="flex bg-slate-100 p-1 rounded-2xl text-xs font-semibold">
+              <div className="flex bg-slate-100 p-1 rounded-xl sm:rounded-2xl text-xs font-semibold">
                 <button
                   onClick={() => setHeroSearchTab('status')}
-                  className={`flex-1 py-2 rounded-xl flex items-center justify-center gap-2 transition ${
+                  className={`flex-1 py-1.5 sm:py-2 rounded-lg sm:rounded-xl flex items-center justify-center gap-1.5 sm:gap-2 transition text-[11px] sm:text-xs ${
                     heroSearchTab === 'status'
                       ? 'bg-white text-slate-900 shadow-sm font-bold border border-slate-200/60'
                       : 'text-slate-500 hover:text-slate-800'
@@ -159,7 +159,7 @@ export const HeroLandingPage: React.FC<HeroLandingPageProps> = ({
                 </button>
                 <button
                   onClick={() => setHeroSearchTab('route')}
-                  className={`flex-1 py-2 rounded-xl flex items-center justify-center gap-2 transition ${
+                  className={`flex-1 py-1.5 sm:py-2 rounded-lg sm:rounded-xl flex items-center justify-center gap-1.5 sm:gap-2 transition text-[11px] sm:text-xs ${
                     heroSearchTab === 'route'
                       ? 'bg-white text-slate-900 shadow-sm font-bold border border-slate-200/60'
                       : 'text-slate-500 hover:text-slate-800'
@@ -171,20 +171,20 @@ export const HeroLandingPage: React.FC<HeroLandingPageProps> = ({
               </div>
 
               {heroSearchTab === 'status' && (
-                <div className="space-y-3.5">
+                <div className="space-y-3">
                   <div className="relative">
-                    <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                    <Search className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
                     <input
                       type="text"
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
                       placeholder={t.searchPlaceholder}
-                      className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-cyan-500/30 focus:border-cyan-600 text-xs font-medium text-slate-900 bg-slate-50/60 placeholder:text-slate-400 transition"
+                      className="w-full pl-9 pr-3 py-2 sm:py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-cyan-500/30 focus:border-cyan-600 text-xs font-medium text-slate-900 bg-slate-50/60 placeholder:text-slate-400 transition"
                     />
                   </div>
 
                   {selectedSearchedZone && (
-                    <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200/90 space-y-3">
+                    <div className="p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-slate-50 border border-slate-200/90 space-y-2.5 sm:space-y-3">
                       <div className="flex items-start justify-between gap-2">
                         <div>
                           <div className="text-xs font-bold text-slate-900 flex items-center gap-1.5">
@@ -196,7 +196,7 @@ export const HeroLandingPage: React.FC<HeroLandingPageProps> = ({
                           </div>
                         </div>
                         <div className="text-right shrink-0">
-                          <span className={`text-[10px] font-mono font-bold px-2.5 py-1 rounded-lg inline-block ${
+                          <span className={`text-[10px] font-mono font-bold px-2 py-0.5 rounded-md inline-block ${
                             selectedSearchedZone.water_depth_cm > 50 ? 'bg-rose-600 text-white' :
                             selectedSearchedZone.water_depth_cm > 25 ? 'bg-amber-500 text-white' :
                             'bg-emerald-600 text-white'
@@ -207,44 +207,44 @@ export const HeroLandingPage: React.FC<HeroLandingPageProps> = ({
                       </div>
 
                       {/* Vehicle Passability Matrix with SVG Icons */}
-                      <div className="grid grid-cols-4 gap-1.5 pt-1">
-                        <div className={`p-1.5 rounded-lg border text-center text-[10px] ${
+                      <div className="grid grid-cols-4 gap-1 sm:gap-1.5 pt-1">
+                        <div className={`p-1 sm:p-1.5 rounded-lg border text-center text-[9px] sm:text-[10px] ${
                           selectedSearchedZone.water_depth_cm < 15 
                             ? 'bg-emerald-50 border-emerald-200 text-emerald-800 font-semibold' 
                             : 'bg-rose-50 border-rose-200 text-rose-700'
                         }`}>
                           <div className="flex items-center justify-center gap-1">
                             <Footprints className="w-3 h-3" />
-                            <span>Walk</span>
+                            <span className="hidden xs:inline">Walk</span>
                           </div>
-                          <div className="text-[9px] font-bold">{selectedSearchedZone.water_depth_cm < 15 ? 'Safe' : 'Unsafe'}</div>
+                          <div className="text-[8px] sm:text-[9px] font-bold">{selectedSearchedZone.water_depth_cm < 15 ? 'Safe' : 'Unsafe'}</div>
                         </div>
 
-                        <div className={`p-1.5 rounded-lg border text-center text-[10px] ${
+                        <div className={`p-1 sm:p-1.5 rounded-lg border text-center text-[9px] sm:text-[10px] ${
                           selectedSearchedZone.water_depth_cm < 20 
                             ? 'bg-emerald-50 border-emerald-200 text-emerald-800 font-semibold' 
                             : 'bg-rose-50 border-rose-200 text-rose-700'
                         }`}>
                           <div className="flex items-center justify-center gap-1">
                             <Bike className="w-3 h-3" />
-                            <span>Bike</span>
+                            <span className="hidden xs:inline">Bike</span>
                           </div>
-                          <div className="text-[9px] font-bold">{selectedSearchedZone.water_depth_cm < 20 ? 'Passable' : 'Stall Risk'}</div>
+                          <div className="text-[8px] sm:text-[9px] font-bold">{selectedSearchedZone.water_depth_cm < 20 ? 'Pass' : 'Stall'}</div>
                         </div>
 
-                        <div className={`p-1.5 rounded-lg border text-center text-[10px] ${
+                        <div className={`p-1 sm:p-1.5 rounded-lg border text-center text-[9px] sm:text-[10px] ${
                           selectedSearchedZone.water_depth_cm < 30 
                             ? 'bg-emerald-50 border-emerald-200 text-emerald-800 font-semibold' 
                             : 'bg-rose-50 border-rose-200 text-rose-700'
                         }`}>
                           <div className="flex items-center justify-center gap-1">
                             <Car className="w-3 h-3" />
-                            <span>Sedan</span>
+                            <span className="hidden xs:inline">Sedan</span>
                           </div>
-                          <div className="text-[9px] font-bold">{selectedSearchedZone.water_depth_cm < 30 ? 'Slow' : 'No Entry'}</div>
+                          <div className="text-[8px] sm:text-[9px] font-bold">{selectedSearchedZone.water_depth_cm < 30 ? 'Slow' : 'No'}</div>
                         </div>
 
-                        <div className={`p-1.5 rounded-lg border text-center text-[10px] ${
+                        <div className={`p-1 sm:p-1.5 rounded-lg border text-center text-[9px] sm:text-[10px] ${
                           selectedSearchedZone.water_depth_cm < 60 
                             ? 'bg-emerald-50 border-emerald-200 text-emerald-800 font-semibold' 
                             : 'bg-rose-50 border-rose-200 text-rose-700'

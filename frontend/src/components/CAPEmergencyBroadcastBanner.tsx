@@ -117,65 +117,65 @@ export const CAPEmergencyBroadcastBanner: React.FC<CAPEmergencyBroadcastBannerPr
   const text = getAlertText();
 
   return (
-    <div className="relative rounded-2xl bg-rose-900 text-white p-3 sm:p-3.5 shadow-md border border-rose-700 mb-5 select-none">
-      <div className="relative z-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-3">
-        <div className="flex items-center gap-3 min-w-0">
-          <div className="p-2 rounded-xl bg-rose-800 text-white shrink-0">
-            <ShieldAlert className="w-5 h-5 text-rose-200" />
+    <div className="relative rounded-2xl bg-rose-900 text-white p-3 sm:p-3.5 shadow-md border border-rose-700 mb-4 sm:mb-5 select-none">
+      <button
+        onClick={() => setIsDismissed(true)}
+        className="absolute top-2.5 right-2.5 p-1 rounded-lg bg-rose-800/80 hover:bg-rose-700 text-rose-200 transition z-20"
+        title="Dismiss Alert"
+      >
+        <X className="w-3.5 h-3.5" />
+      </button>
+
+      <div className="relative z-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-3 pr-6 lg:pr-0">
+        <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
+          <div className="p-1.5 sm:p-2 rounded-xl bg-rose-800 text-white shrink-0">
+            <ShieldAlert className="w-4 h-4 sm:w-5 sm:h-5 text-rose-200" />
           </div>
 
           <div className="space-y-0.5 min-w-0">
-            <div className="flex items-center gap-2 flex-wrap">
-              <span className="bg-rose-700 text-white text-[10px] font-bold uppercase px-2 py-0.5 rounded-md tracking-wider">
+            <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
+              <span className="bg-rose-700 text-white text-[9px] sm:text-[10px] font-bold uppercase px-2 py-0.5 rounded-md tracking-wider">
                 {text.badge}
               </span>
-              <span className="text-[10px] text-rose-200 font-semibold uppercase tracking-wider">
-                {selectedCity.toUpperCase()} METRO &bull; NDMA PROTOCOL ACTIVE
+              <span className="text-[9px] sm:text-[10px] text-rose-200 font-semibold uppercase tracking-wider">
+                {selectedCity.toUpperCase()} &bull; NDMA PROTOCOL ACTIVE
               </span>
             </div>
 
-            <h4 className="text-xs sm:text-sm font-bold text-white tracking-tight leading-snug">
+            <h4 className="text-[11px] sm:text-sm font-bold text-white tracking-tight leading-snug">
               {text.headline}
             </h4>
           </div>
         </div>
 
-        <div className="flex items-center gap-2 flex-wrap shrink-0 w-full lg:w-auto justify-start lg:justify-end">
+        <div className="grid grid-cols-3 sm:flex items-center gap-1.5 sm:gap-2 w-full lg:w-auto pt-1 sm:pt-0">
           <button
             onClick={toggleSiren}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold transition border ${
+            className={`flex items-center justify-center gap-1 px-2 sm:px-3 py-1.5 rounded-xl text-[10px] sm:text-xs font-semibold transition border ${
               isSirenActive 
                 ? 'bg-amber-400 text-slate-950 border-amber-300 font-bold' 
                 : 'bg-rose-800 hover:bg-rose-700 text-white border-rose-700'
             }`}
             title="Simulate CAP Audio Emergency Siren"
           >
-            {isSirenActive ? <Volume2 className="w-3.5 h-3.5 text-slate-950" /> : <VolumeX className="w-3.5 h-3.5" />}
-            <span>{text.sirenLabel}</span>
+            {isSirenActive ? <Volume2 className="w-3 h-3 text-slate-950 shrink-0" /> : <VolumeX className="w-3 h-3 shrink-0" />}
+            <span className="truncate">{text.sirenLabel}</span>
           </button>
 
           <button
             onClick={onNavigateSafeNav}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white hover:bg-slate-100 text-rose-950 text-xs font-bold transition shadow-xs border border-white"
+            className="flex items-center justify-center gap-1 px-2 sm:px-3 py-1.5 rounded-xl bg-white hover:bg-slate-100 text-rose-950 text-[10px] sm:text-xs font-bold transition shadow-xs border border-white"
           >
-            <Navigation className="w-3.5 h-3.5 text-rose-700" />
-            <span>{text.safeNavBtn}</span>
+            <Navigation className="w-3 h-3 text-rose-700 shrink-0" />
+            <span className="truncate">{text.safeNavBtn}</span>
           </button>
 
           <button
             onClick={onNavigateEmergency}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-rose-700 hover:bg-rose-600 text-white text-xs font-bold transition"
+            className="flex items-center justify-center gap-1 px-2 sm:px-3 py-1.5 rounded-xl bg-rose-700 hover:bg-rose-600 text-white text-[10px] sm:text-xs font-bold transition"
           >
-            <PhoneCall className="w-3.5 h-3.5" />
-            <span>{text.sosBtn}</span>
-          </button>
-
-          <button
-            onClick={() => setIsDismissed(true)}
-            className="p-1.5 rounded-lg bg-rose-800 hover:bg-rose-700 text-rose-200 transition ml-1"
-            title="Dismiss Alert"
-          >
-            <X className="w-4 h-4" />
+            <PhoneCall className="w-3 h-3 shrink-0" />
+            <span className="truncate">{text.sosBtn}</span>
           </button>
         </div>
       </div>

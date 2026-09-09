@@ -131,7 +131,7 @@ export const JalRakshakLogo: React.FC<JalRakshakLogoProps> = ({
       {/* Brand Name & Typography */}
       {showText && (
         <div className="flex flex-col">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5 sm:gap-2">
             <span className={`${currentSize.text} font-black tracking-tight flex items-center`}>
               <span className="bg-gradient-to-r from-sky-950 via-amber-900 to-amber-950 bg-clip-text text-transparent">
                 Jal
@@ -142,14 +142,14 @@ export const JalRakshakLogo: React.FC<JalRakshakLogoProps> = ({
             </span>
 
             {badgeText && (
-              <span className="text-[10px] px-2 py-0.5 rounded-full bg-gradient-to-r from-amber-100 to-amber-200 text-amber-950 border border-amber-300 font-black shadow-2xs">
+              <span className="hidden sm:inline-flex text-[10px] px-2 py-0.5 rounded-full bg-gradient-to-r from-amber-100 to-amber-200 text-amber-950 border border-amber-300 font-black shadow-2xs">
                 {badgeText}
               </span>
             )}
           </div>
 
           {subtitle && (
-            <p className={`${currentSize.sub} text-stone-500 font-semibold tracking-wide flex items-center gap-1.5 leading-tight mt-0.5`}>
+            <p className={`hidden sm:flex ${currentSize.sub} text-stone-500 font-semibold tracking-wide items-center gap-1.5 leading-tight mt-0.5`}>
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
               <span>{subtitle}</span>
             </p>

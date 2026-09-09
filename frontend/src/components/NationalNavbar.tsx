@@ -254,37 +254,92 @@ export const NationalNavbar: React.FC<NationalNavbarProps> = ({
               )}
             </div>
 
-            {/* Refresh Button */}
+            {/* Refresh Button (Desktop only to save space) */}
             <button
               onClick={onRefresh}
               disabled={isRefreshing}
-              className="p-2 rounded-xl bg-white/70 hover:bg-white/95 backdrop-blur-md border border-white/80 text-stone-700 transition active:scale-95 disabled:opacity-50 shadow-[0_2px_8px_rgba(0,0,0,0.04)]"
+              className="hidden sm:flex p-2 rounded-xl bg-white/70 hover:bg-white/95 backdrop-blur-md border border-white/80 text-stone-700 transition active:scale-95 disabled:opacity-50 shadow-[0_2px_8px_rgba(0,0,0,0.04)]"
               title="Refresh live telemetry"
             >
               <RefreshCw className={`w-3.5 h-3.5 text-stone-600 ${isRefreshing ? 'animate-spin' : ''}`} />
             </button>
 
-            {/* Authority Access Button (Dark Glass Accent) */}
+            {/* Official / MoES Login Button */}
             {isAuthorized ? (
               <button
                 onClick={onLogoutAuth}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-stone-100/90 hover:bg-stone-200/90 backdrop-blur-md border border-white/80 text-stone-700 text-xs font-bold transition shadow-xs"
-                title="Lock official console"
+                className="flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-700 text-white text-[11px] sm:text-xs font-bold transition shadow-sm border border-emerald-500/50"
+                title="Authority Active"
               >
-                <Lock className="w-3.5 h-3.5 text-stone-500" />
-                <span className="hidden sm:inline">Logout</span>
+                <Lock className="w-3.5 h-3.5 text-emerald-200" />
+                <span className="hidden sm:inline">Authorized</span>
               </button>
             ) : (
               <button
                 onClick={onOpenAuthModal}
-                className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-stone-900 to-stone-800 hover:from-stone-950 hover:to-stone-900 text-white text-xs font-bold transition shadow-[0_4px_14px_rgba(0,0,0,0.25)] border border-stone-700/50"
+                className="flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-stone-900 to-stone-800 hover:from-stone-950 hover:to-stone-900 text-white text-[11px] sm:text-xs font-bold transition shadow-[0_4px_14px_rgba(0,0,0,0.25)] border border-stone-700/50"
               >
                 <Lock className="w-3.5 h-3.5 text-amber-400" />
-                <span className="hidden sm:inline">{t.loginBtn}</span>
+                <span className="hidden sm:inline">Official Login</span>
               </button>
             )}
           </div>
         </div>
+      </div>
+
+      {/* Floating Mobile Bottom Navigation Dock (Visible on Mobile Only) */}
+      <div className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-2xl border-t border-slate-200/90 shadow-[0_-8px_24px_rgba(0,0,0,0.08)] px-2 py-1.5 flex items-center justify-around pb-[max(0.5rem,env(safe-area-inset-bottom))]">
+        <button
+          onClick={() => onSelectPage('home')}
+          className={`flex flex-col items-center gap-0.5 py-1 px-2 rounded-xl transition ${
+            activePage === 'home' ? 'text-amber-600 font-bold' : 'text-slate-500 font-medium'
+          }`}
+        >
+          <Home className={`w-5 h-5 ${activePage === 'home' ? 'text-amber-600 stroke-[2.5]' : 'text-slate-400'}`} />
+          <span className="text-[10px]">{t.navHome || 'Home'}</span>
+        </button>
+
+        <button
+          onClick={() => onSelectPage('gis-nowcast')}
+          className={`flex flex-col items-center gap-0.5 py-1 px-2 rounded-xl transition relative ${
+            activePage === 'gis-nowcast' ? 'text-amber-600 font-bold' : 'text-slate-500 font-medium'
+          }`}
+        >
+          <div className="relative">
+            <Layers className={`w-5 h-5 ${activePage === 'gis-nowcast' ? 'text-amber-600 stroke-[2.5]' : 'text-slate-400'}`} />
+            <span className="absolute -top-1 -right-2 w-2 h-2 rounded-full bg-rose-500 animate-pulse"></span>
+          </div>
+          <span className="text-[10px]">{t.navGis || 'GIS Map'}</span>
+        </button>
+
+        {/* Center Prominent AI Assistant Button */}
+        <button
+          onClick={onOpenAIChat}
+          className="flex flex-col items-center gap-0.5 -mt-4 py-1 px-3 rounded-2xl bg-gradient-to-tr from-amber-500 to-yellow-500 text-white shadow-[0_6px_20px_rgba(245,158,11,0.45)] border-2 border-white active:scale-95 transition"
+        >
+          <Bot className="w-5 h-5 text-white animate-pulse" />
+          <span className="text-[10px] font-black tracking-tight">{t.aiBtn || 'AI Chat'}</span>
+        </button>
+
+        <button
+          onClick={() => onSelectPage('safe-nav')}
+          className={`flex flex-col items-center gap-0.5 py-1 px-2 rounded-xl transition ${
+            activePage === 'safe-nav' ? 'text-amber-600 font-bold' : 'text-slate-500 font-medium'
+          }`}
+        >
+          <Navigation className={`w-5 h-5 ${activePage === 'safe-nav' ? 'text-amber-600 stroke-[2.5]' : 'text-slate-400'}`} />
+          <span className="text-[10px]">{t.navSafeNav || 'Routes'}</span>
+        </button>
+
+        <button
+          onClick={() => onSelectPage('emergency')}
+          className={`flex flex-col items-center gap-0.5 py-1 px-2 rounded-xl transition ${
+            activePage === 'emergency' ? 'text-rose-600 font-bold' : 'text-slate-500 font-medium'
+          }`}
+        >
+          <AlertOctagon className={`w-5 h-5 ${activePage === 'emergency' ? 'text-rose-600 stroke-[2.5]' : 'text-rose-400'}`} />
+          <span className="text-[10px] text-rose-600">{t.navEmergency || 'SOS 112'}</span>
+        </button>
       </div>
     </header>
   );
