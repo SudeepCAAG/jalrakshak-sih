@@ -143,18 +143,67 @@ def run_simulation(req: SimulationRequest):
 
 @app.post("/api/ai/ask")
 async def ask_gemini_ai(req: AIChatRequest):
-    c_meta = settings.CITIES.get(req.city.lower(), settings.CITIES["kolkata"])
+    city_key = req.city.lower() if req.city else "kolkata"
+    c_meta = settings.CITIES.get(city_key, settings.CITIES["kolkata"])
+    
+    # 1. Fetch live hydrodynamic system state
+    state = hydro_engine.compute_system_state(city=city_key)
+    
+    # 2. Fetch live sensor / radar weather
+    weather = openweather_svc.get_live_weather(c_meta["lat"], c_meta["lon"])
+    if not weather:
+        weather = enhanced_weather.get_comprehensive_weather(lat=c_meta["lat"], lon=c_meta["lon"])
+    
+    rainfall_rate = weather.get("rainfall_rate_mm_hr", 35.0)
+    weather_cond = weather.get("weather_condition", "Heavy Monsoon Rain")
+    temp_c = weather.get("current_atmosphere", {}).get("temp_c", 28.0)
+    
+    # 3. Process zones telemetry
+    zones = state.get("zones", [])
+    high_risk_zones = [
+        {
+            "name": z["name"],
+            "water_depth_cm": z["water_depth_cm"],
+            "citizen_level": z["citizen_water_level"],
+            "risk_level": z["risk_level"],
+            "passability": f"Walk:{'Yes' if z['can_walk'] else 'No'}, Bike:{'Yes' if z['can_bike'] else 'No'}, Car:{'Yes' if z['can_car'] else 'No'}, SUV/Bus:{'Yes' if z['can_bus'] else 'No'}"
+        }
+        for z in zones if z.get("risk_level") in ["HIGH", "CRITICAL"] or z.get("water_depth_cm", 0) >= 25
+    ]
+    safe_zones = [z["name"] for z in zones if z.get("risk_level") == "LOW" or z.get("water_depth_cm", 0) < 15]
+    all_zones_summary = [
+        {"name": z["name"], "water_depth_cm": z["water_depth_cm"], "status": z["citizen_water_level"]}
+        for z in zones
+    ]
+    
+    # 4. Extract verified citizen reports
+    city_reports = [r for r in CITIZEN_REPORTS if r["city"].lower() == city_key]
+    
     context = {
-        "city": c_meta["name"],
+        "city_id": city_key,
+        "city_name": c_meta["name"],
         "state": c_meta["state"],
         "helpline": c_meta["helpline"],
+        "radar_station": c_meta.get("radar_station", "IMD Doppler Radar"),
+        "rainfall_rate_mm_hr": rainfall_rate,
+        "weather_condition": weather_cond,
+        "temperature_c": temp_c,
+        "high_risk_zones": high_risk_zones,
+        "safe_corridors": safe_zones,
+        "all_zones": all_zones_summary,
+        "active_alerts": [a.get("headline", "") for a in state.get("alerts", [])],
+        "citizen_reports": [
+            {"location": r["location_name"], "depth_cm": r["water_depth_cm"], "severity": r["severity"], "description": r["description"]}
+            for r in city_reports[:3]
+        ],
         "user_coordinates": {"lat": req.lat, "lon": req.lon} if req.lat else "Not provided"
     }
+    
     answer = gemini_service.ask_assistant(req.message, context, lang=req.lang or "en")
     return {
         "reply": answer,
-        "provider": "Google Gemini (Flash)",
-        "city": req.city,
+        "provider": "JalRakshak AI (Gemini + Live Telemetry)",
+        "city": city_key,
         "lang": req.lang or "en"
     }
 
