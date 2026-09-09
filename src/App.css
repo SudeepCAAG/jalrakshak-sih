@@ -1,0 +1,45 @@
+                                        /* HEADER SECTION STYLING */
+#header-1{
+  border-bottom: 1px solid blue;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#header-2{
+  background-color: #16a34a;
+  padding: 4px 12px;
+  border-radius: 15px;
+  font-size: 14px;
+  font-weight: bold;
+}
+                                          /* MAP SECTION STYLING */
+.floodmap-1{
+  flex: 2;
+  height: 420px;
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1pc solid #334155;
+  background-color: #1e293b;
+}
+                                            /* NOWCAST SECTION STYLING */
+.ns-container{
+  flex: 1;
+  background-color: #1e293b;
+  padding:20px;
+  border-radius:8px;
+  border:1px solid #334155;
+}
+.cm-container{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+.cm{
+  background-color: #0f172a;
+  padding: 12px;
+  border-radius: 6px;
+}
