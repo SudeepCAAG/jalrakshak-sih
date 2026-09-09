@@ -376,8 +376,8 @@ export default function Dashboard() {
         onSelectCity={handleCityChange}
       />
 
-      {/* Feature 1: Floating Citizen Flood Report Trigger Button (Bottom Left) */}
-      <div className="fixed bottom-5 left-5 z-40">
+      {/* Feature 1: Floating Citizen Flood Report Trigger Button (Desktop Only) */}
+      <div className="hidden md:block fixed bottom-5 left-5 z-40">
         <button
           onClick={() => setIsReportModalOpen(true)}
           className="bg-slate-900 hover:bg-slate-800 text-white font-semibold px-3.5 py-2 rounded-full shadow-lg border border-slate-700 hover:shadow-xl transition flex items-center gap-2 text-xs"
@@ -390,8 +390,8 @@ export default function Dashboard() {
         </button>
       </div>
 
-      {/* JalRakshak AI Assistant Floating Trigger Button (Bottom Right) */}
-      <div className="fixed bottom-5 right-5 z-40">
+      {/* JalRakshak AI Assistant Floating Trigger Button (Desktop Only) */}
+      <div className="hidden md:block fixed bottom-5 right-5 z-40">
         <button
           onClick={() => setIsAIChatOpen(true)}
           className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-3.5 py-2 rounded-full shadow-lg border border-blue-500 hover:shadow-xl transition flex items-center gap-2 text-xs"
