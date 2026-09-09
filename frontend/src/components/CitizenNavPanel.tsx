@@ -18,6 +18,7 @@ import {
   RefreshCw
 } from 'lucide-react';
 import { Zone } from '@/types';
+import { API_BASE_URL } from '@/utils/apiConfig';
 
 interface CitizenNavPanelProps {
   selectedCity: string;
@@ -52,7 +53,7 @@ export const CitizenNavPanel: React.FC<CitizenNavPanelProps> = ({
     if (!startZone || !destZone) return;
     setLoading(true);
     try {
-      const res = await axios.post('http://127.0.0.1:8000/api/safe-route', {
+      const res = await axios.post(`${API_BASE_URL}/api/safe-route`, {
         city: selectedCity,
         start_zone_id: startZone,
         dest_zone_id: destZone,

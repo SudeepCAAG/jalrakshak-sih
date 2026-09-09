@@ -18,6 +18,7 @@ import {
 } from 'lucide-react';
 import axios from 'axios';
 import { Language } from '@/utils/translations';
+import { API_BASE_URL } from '@/utils/apiConfig';
 
 interface CitizenReportModalProps {
   isOpen: boolean;
@@ -99,7 +100,7 @@ export const CitizenReportModal: React.FC<CitizenReportModalProps> = ({
     };
 
     try {
-      const res = await axios.post('http://127.0.0.1:8000/api/reports/submit', payload);
+      const res = await axios.post(`${API_BASE_URL}/api/reports/submit`, payload);
       const rep = res.data?.report || payload;
       setSubmittedReportId(rep.report_id || 'REP-VERIFIED-902');
       setIsSuccess(true);

@@ -18,6 +18,7 @@ import {
   AlertTriangle
 } from 'lucide-react';
 import { SystemOverview } from '@/types';
+import { API_BASE_URL } from '@/utils/apiConfig';
 
 interface SensorFusionViewProps {
   overview: SystemOverview | null;
@@ -32,8 +33,8 @@ export const SensorFusionView: React.FC<SensorFusionViewProps> = ({ overview }) 
     setLoading(true);
     try {
       const [sourcesRes, weatherRes] = await Promise.allSettled([
-        axios.get('http://127.0.0.1:8000/api/data-sources'),
-        axios.get('http://127.0.0.1:8000/api/weather/comprehensive')
+        axios.get(`${API_BASE_URL}/api/data-sources`),
+        axios.get(`${API_BASE_URL}/api/weather/comprehensive`)
       ]);
       if (sourcesRes.status === 'fulfilled') setDataSources(sourcesRes.value.data);
       if (weatherRes.status === 'fulfilled') setWeatherComp(weatherRes.value.data);

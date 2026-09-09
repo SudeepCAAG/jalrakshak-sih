@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { X, Navigation, ShieldCheck, AlertTriangle, ArrowRight, Truck, Car, Bike, CheckCircle2, Siren } from 'lucide-react';
 import axios from 'axios';
 import { Zone, SafeRouteResult } from '@/types';
+import { API_BASE_URL } from '@/utils/apiConfig';
 
 interface SafeRouteModalProps {
   isOpen: boolean;
@@ -29,7 +30,7 @@ export const SafeRouteModal: React.FC<SafeRouteModalProps> = ({
   const handleCalculateRoute = async () => {
     setLoading(true);
     try {
-      const res = await axios.post('http://127.0.0.1:8000/api/safe-route', {
+      const res = await axios.post(`${API_BASE_URL}/api/safe-route`, {
         start_zone_id: startZone,
         dest_zone_id: destZone,
         vehicle_type: vehicleType,

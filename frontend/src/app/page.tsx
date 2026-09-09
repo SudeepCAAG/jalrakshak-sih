@@ -22,7 +22,8 @@ import { SystemInfoModal } from '@/components/SystemInfoModal';
 import { NationalFooter } from '@/components/NationalFooter';
 
 import { Zone, SystemOverview, NowcastForecastItem, ActiveAlertItem } from '@/types';
-import { Language } from '@/utils/translations';
+import { translations, Language } from '@/utils/translations';
+import { API_BASE_URL } from '@/utils/apiConfig';
 
 // Reliable initial zones catalog for all 6 Indian Metros
 const DEFAULT_ZONES_BY_CITY: Record<string, Zone[]> = {
@@ -217,11 +218,11 @@ export default function Dashboard() {
     setIsRefreshing(true);
     try {
       const [overviewRes, zonesRes, forecastRes, alertsRes, reportsRes] = await Promise.allSettled([
-        axios.get('http://127.0.0.1:8000/api/overview?city=' + city + '&rain_multiplier=' + rainMult + '&blockage_pct=' + blockPct),
-        axios.get('http://127.0.0.1:8000/api/zones?city=' + city + '&rain_multiplier=' + rainMult + '&blockage_pct=' + blockPct),
-        axios.get('http://127.0.0.1:8000/api/forecast?city=' + city + '&rain_multiplier=' + rainMult),
-        axios.get('http://127.0.0.1:8000/api/alerts?city=' + city + '&rain_multiplier=' + rainMult + '&blockage_pct=' + blockPct),
-        axios.get('http://127.0.0.1:8000/api/reports/list?city=' + city),
+        axios.get(`${API_BASE_URL}/api/overview?city=${city}&rain_multiplier=${rainMult}&blockage_pct=${blockPct}`),
+        axios.get(`${API_BASE_URL}/api/zones?city=${city}&rain_multiplier=${rainMult}&blockage_pct=${blockPct}`),
+        axios.get(`${API_BASE_URL}/api/forecast?city=${city}&rain_multiplier=${rainMult}`),
+        axios.get(`${API_BASE_URL}/api/alerts?city=${city}&rain_multiplier=${rainMult}&blockage_pct=${blockPct}`),
+        axios.get(`${API_BASE_URL}/api/reports/list?city=${city}`),
       ]);
 
       if (overviewRes.status === 'fulfilled') setOverview(overviewRes.value.data);

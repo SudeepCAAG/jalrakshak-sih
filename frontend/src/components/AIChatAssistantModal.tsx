@@ -18,6 +18,7 @@ import {
 } from 'lucide-react';
 import axios from 'axios';
 import { Language } from '@/utils/translations';
+import { API_BASE_URL } from '@/utils/apiConfig';
 
 interface Message {
   sender: 'user' | 'ai';
@@ -101,7 +102,7 @@ export const AIChatAssistantModal: React.FC<AIChatAssistantModalProps> = ({
     setLoading(true);
 
     try {
-      const res = await axios.post('http://127.0.0.1:8000/api/ai/ask', {
+      const res = await axios.post(`${API_BASE_URL}/api/ai/ask`, {
         message: userText,
         city: currentCity,
         lat: userCoords?.lat || null,
