@@ -376,31 +376,7 @@ export default function Dashboard() {
         onSelectCity={handleCityChange}
       />
 
-      {/* Feature 1: Floating Citizen Flood Report Trigger Button (Desktop Only) */}
-      <div className="hidden md:block fixed bottom-5 left-5 z-40">
-        <button
-          onClick={() => setIsReportModalOpen(true)}
-          className="bg-slate-900 hover:bg-slate-800 text-white font-semibold px-3.5 py-2 rounded-full shadow-lg border border-slate-700 hover:shadow-xl transition flex items-center gap-2 text-xs"
-          title="Report Flooded Street"
-        >
-          <Camera className="w-3.5 h-3.5 text-cyan-400" />
-          <span>
-            {currentLang === 'bn' ? 'ফ্লাড রিপোর্ট' : currentLang === 'hi' ? 'बाढ़ रिपोर्ट' : 'Report Flood'}
-          </span>
-        </button>
-      </div>
 
-      {/* JalRakshak AI Assistant Floating Trigger Button (Desktop Only) */}
-      <div className="hidden md:block fixed bottom-5 right-5 z-40">
-        <button
-          onClick={() => setIsAIChatOpen(true)}
-          className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-3.5 py-2 rounded-full shadow-lg border border-blue-500 hover:shadow-xl transition flex items-center gap-2 text-xs"
-          title="Open JalRakshak AI Assistant"
-        >
-          <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
-          <span>JalRakshak AI</span>
-        </button>
-      </div>
 
       {/* Citizen Flood Report Modal */}
       <CitizenReportModal

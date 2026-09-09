@@ -7,8 +7,7 @@ import {
   X, 
   Navigation, 
   PhoneCall, 
-  ShieldAlert, 
-  Flame
+  ShieldAlert
 } from 'lucide-react';
 import { Language } from '@/utils/translations';
 
@@ -86,22 +85,22 @@ export const CAPEmergencyBroadcastBanner: React.FC<CAPEmergencyBroadcastBannerPr
   const getAlertText = () => {
     if (currentLang === 'bn') {
       return {
-        badge: 'CAP জরুরি সরকারি সতর্কবার্তা',
-        headline: 'লাল সতর্কতা: আমহার্স্ট ও কলেজ স্ট্রিটে জল স্তর ৬০ সেমি ছাড়িয়েছে',
-        desc: 'ভারী বৃষ্টির ফলে নিম্নভূমিতে জল দ্রুত বাড়ছে। সমস্ত ছোট যানবাহন আন্ডারপাস এড়িয়ে চলুন।',
-        safeNavBtn: 'নিরাপদ রুট',
-        sosBtn: '১১২ SOS কল',
-        sirenLabel: isSirenActive ? 'সাইরেন বন্ধ' : 'সাইরেন টেস্ট'
+        badge: 'CAP ????? ?????? ???????????',
+        headline: '??? ???????: ????????? ? ???? ???????? ?? ???? ?? ???? ????????',
+        desc: '???? ??????? ??? ??????????? ?? ????? ?????? ????? ??? ??????? ????????? ????? ?????',
+        safeNavBtn: '?????? ???',
+        sosBtn: '??? SOS ??',
+        sirenLabel: isSirenActive ? '?????? ????' : '?????? ?????'
       };
     }
     if (currentLang === 'hi') {
       return {
-        badge: 'CAP आपातकालीन सरकारी चेतावनी',
-        headline: 'रेड अलर्ट: मुख्य अंडरपास में जलस्तर 60 सेमी से अधिक दर्ज',
-        desc: 'अंडरपास और निचले इलाकों में जलभराव तेजी से बढ़ रहा है।',
-        safeNavBtn: 'सुरक्षित मार्ग',
-        sosBtn: '112 SOS कॉल',
-        sirenLabel: isSirenActive ? 'साइरैन बंद' : 'साइरैन टेस्ट'
+        badge: 'CAP ????????? ?????? ???????',
+        headline: '??? ?????: ????? ??????? ??? ?????? 60 ???? ?? ???? ????',
+        desc: '??????? ?? ????? ?????? ??? ?????? ???? ?? ??? ??? ???',
+        safeNavBtn: '???????? ?????',
+        sosBtn: '112 SOS ???',
+        sirenLabel: isSirenActive ? '?????? ???' : '?????? ?????'
       };
     }
     return {
@@ -148,33 +147,33 @@ export const CAPEmergencyBroadcastBanner: React.FC<CAPEmergencyBroadcastBannerPr
           </div>
         </div>
 
-        <div className="flex items-center gap-2 w-full lg:w-auto pt-1 sm:pt-0 flex-wrap sm:flex-nowrap">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 w-full lg:w-auto pt-2 lg:pt-0">
           <button
             onClick={toggleSiren}
-            className={`flex-1 sm:flex-initial flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold transition border shadow-xs ${
+            className={`w-full sm:w-auto flex items-center justify-center gap-2 px-3.5 py-2 rounded-xl text-xs font-bold transition border shadow-xs ${
               isSirenActive 
                 ? 'bg-amber-400 text-slate-950 border-amber-300' 
                 : 'bg-rose-800 hover:bg-rose-700 text-white border-rose-700'
             }`}
             title="Simulate CAP Audio Emergency Siren"
           >
-            {isSirenActive ? <Volume2 className="w-3.5 h-3.5 text-slate-950 shrink-0" /> : <VolumeX className="w-3.5 h-3.5 shrink-0" />}
+            {isSirenActive ? <Volume2 className="w-4 h-4 text-slate-950 shrink-0" /> : <VolumeX className="w-4 h-4 shrink-0" />}
             <span className="whitespace-nowrap">{text.sirenLabel}</span>
           </button>
 
           <button
             onClick={onNavigateSafeNav}
-            className="flex-1 sm:flex-initial flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-white hover:bg-slate-100 text-rose-950 text-xs font-bold transition shadow-xs border border-white"
+            className="w-full sm:w-auto flex items-center justify-center gap-2 px-3.5 py-2 rounded-xl bg-white hover:bg-slate-100 text-rose-950 text-xs font-bold transition shadow-xs border border-white"
           >
-            <Navigation className="w-3.5 h-3.5 text-rose-700 shrink-0" />
+            <Navigation className="w-4 h-4 text-rose-700 shrink-0" />
             <span className="whitespace-nowrap">{text.safeNavBtn}</span>
           </button>
 
           <button
             onClick={onNavigateEmergency}
-            className="flex-1 sm:flex-initial flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-rose-700 hover:bg-rose-600 text-white text-xs font-bold transition shadow-xs"
+            className="w-full sm:w-auto flex items-center justify-center gap-2 px-3.5 py-2 rounded-xl bg-rose-700 hover:bg-rose-600 text-white text-xs font-bold transition shadow-xs"
           >
-            <PhoneCall className="w-3.5 h-3.5 shrink-0" />
+            <PhoneCall className="w-4 h-4 shrink-0" />
             <span className="whitespace-nowrap">{text.sosBtn}</span>
           </button>
         </div>
