@@ -114,7 +114,7 @@ export const NationalNavbar: React.FC<NationalNavbarProps> = ({
       </div>
       {/* Modern Clean White Navbar Container with Subtle Tricolor Top Accent */}
       <div className={`bg-white/95 backdrop-blur-xl border-b border-slate-200 select-none transition-all duration-200 ${isScrolled ? 'py-1.5 sm:py-2' : 'py-2 sm:py-2.5'}`}>
-        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-2 sm:gap-4">
+        <div className="w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-12 flex items-center justify-between gap-2 sm:gap-4">
           
           {/* Left: Brand Logo & Shield */}
           <div 
@@ -129,7 +129,7 @@ export const NationalNavbar: React.FC<NationalNavbarProps> = ({
           </div>
 
           {/* Center: Desktop Navigation Dock (Single-Line Crisp Pills) */}
-          <nav className="hidden lg:flex items-center gap-1 bg-slate-100/90 backdrop-blur-md p-1 rounded-full border border-slate-200/90 shadow-2xs shrink-0">
+          <nav className="hidden lg:flex items-center gap-0.5 xl:gap-1 bg-slate-100/90 backdrop-blur-md p-1 rounded-full border border-slate-200/90 shadow-2xs shrink-0">
             {navLinks.map((tab) => {
               const Icon = tab.icon;
               const isActive = activePage === tab.id;
@@ -137,7 +137,7 @@ export const NationalNavbar: React.FC<NationalNavbarProps> = ({
                 <button
                   key={tab.id}
                   onClick={() => onSelectPage(tab.id as any)}
-                  className={`relative flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all duration-150 ${
+                  className={`relative flex items-center gap-1.5 px-2.5 xl:px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all duration-150 ${
                     isActive
                       ? (tab.isEmergency 
                           ? 'bg-rose-600 text-white shadow-xs' 
@@ -162,7 +162,7 @@ export const NationalNavbar: React.FC<NationalNavbarProps> = ({
             {isAuthorized && (
               <button
                 onClick={() => onSelectPage('moes-console')}
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all ${
+                className={`flex items-center gap-1.5 px-2.5 xl:px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all ${
                   activePage === 'moes-console'
                     ? 'bg-emerald-600 text-white shadow-xs'
                     : 'bg-emerald-50 text-emerald-800 hover:bg-emerald-100 border border-emerald-200'
@@ -175,7 +175,7 @@ export const NationalNavbar: React.FC<NationalNavbarProps> = ({
           </nav>
 
           {/* Right Controls Group */}
-          <div className="flex items-center gap-2 sm:gap-2.5 shrink-0">
+          <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
             
             {/* Desktop Language Selector */}
             <div className="hidden sm:block relative shrink-0">
@@ -219,7 +219,7 @@ export const NationalNavbar: React.FC<NationalNavbarProps> = ({
             <div className="hidden sm:block relative shrink-0">
               <button
                 onClick={() => setIsCityDropdownOpen(!isCityDropdownOpen)}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white hover:bg-slate-50 backdrop-blur-md border border-slate-200/90 shadow-2xs text-slate-700 hover:text-slate-900 text-xs font-semibold transition duration-150"
+                className="flex items-center gap-1.5 px-2.5 xl:px-3 py-1.5 rounded-full bg-white hover:bg-slate-50 backdrop-blur-md border border-slate-200/90 shadow-2xs text-slate-700 hover:text-slate-900 text-xs font-semibold transition duration-150"
               >
                 <CityIcon className="w-3.5 h-3.5 text-[#0B1E59]" />
                 <span className="font-semibold text-slate-800 hidden xl:inline">{currentCityObj.name}</span>
@@ -268,7 +268,7 @@ export const NationalNavbar: React.FC<NationalNavbarProps> = ({
             {/* Modern AI Assistant Pill Button */}
             <button
               onClick={onOpenAIChat}
-              className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-red-600 hover:bg-red-700 text-white text-xs font-semibold shadow-xs active:scale-95 transition-all shrink-0"
+              className="flex items-center gap-1.5 px-3 xl:px-3.5 py-1.5 rounded-full bg-red-600 hover:bg-red-700 text-white text-xs font-semibold shadow-xs active:scale-95 transition-all shrink-0"
               title="Ask JalRakshak AI"
             >
               <Sparkles className="w-3.5 h-3.5 text-white" />
