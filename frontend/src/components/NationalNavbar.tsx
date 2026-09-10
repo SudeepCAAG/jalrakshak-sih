@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   ChevronDown, 
   Navigation, 
@@ -70,6 +70,16 @@ export const NationalNavbar: React.FC<NationalNavbarProps> = ({
   const [isCityDropdownOpen, setIsCityDropdownOpen] = useState(false);
   const [isLangDropdownOpen, setIsLangDropdownOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 8);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const t = translations[currentLang] || translations.en;
   const currentCityObj = CITIES_LIST.find((c) => c.id === selectedCity) || CITIES_LIST[0];
@@ -95,7 +105,7 @@ export const NationalNavbar: React.FC<NationalNavbarProps> = ({
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full transition-all duration-300">
+    <header className={`sticky top-0 z-50 w-full transition-all duration-200 ${isScrolled ? 'shadow-md' : ''}`}>
       {/* Indian Tricolor Top Stripe with thin subtle bottom border */}
       <div className="flex w-full h-[4px] border-b border-slate-300/80 bg-white">
         <div className="flex-1 bg-[#FF9933]" />
@@ -103,7 +113,7 @@ export const NationalNavbar: React.FC<NationalNavbarProps> = ({
         <div className="flex-1 bg-[#138808]" />
       </div>
       {/* Modern Clean White Navbar Container with Subtle Tricolor Top Accent */}
-      <div className="bg-white/95 backdrop-blur-xl border-b border-slate-200 shadow-xs select-none">
+      <div className={`bg-white/95 backdrop-blur-xl border-b border-slate-200 select-none transition-all duration-200 ${isScrolled ? 'py-2' : 'py-2.5'}`}>
         <div className="max-w-7xl mx-auto px-3 sm:px-6 py-2.5 flex items-center justify-between gap-2 sm:gap-4">
           
           {/* Left: Brand Logo & Shield */}
