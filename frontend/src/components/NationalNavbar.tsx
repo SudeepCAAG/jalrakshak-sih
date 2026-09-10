@@ -95,15 +95,15 @@ export const NationalNavbar: React.FC<NationalNavbarProps> = ({
   };
 
   return (
-    <header className="sticky top-0 z-40 w-full transition-all duration-300">
-      {/* Indian Tricolor Top Stripe */}
-      <div className="flex w-full h-1">
+    <header className="sticky top-0 z-50 w-full transition-all duration-300">
+      {/* Indian Tricolor Top Stripe with thin subtle bottom border */}
+      <div className="flex w-full h-[4px] border-b border-slate-300/80 bg-white">
         <div className="flex-1 bg-[#FF9933]" />
         <div className="flex-1 bg-white" />
         <div className="flex-1 bg-[#138808]" />
       </div>
       {/* Modern Clean White Navbar Container with Subtle Tricolor Top Accent */}
-      <div className="bg-white/95 backdrop-blur-xl border-b border-slate-200/90 shadow-[0_2px_12px_rgba(0,0,0,0.04)] select-none">
+      <div className="bg-white/95 backdrop-blur-xl border-b border-slate-200 shadow-xs select-none">
         <div className="max-w-7xl mx-auto px-3 sm:px-6 py-2.5 flex items-center justify-between gap-2 sm:gap-4">
           
           {/* Left: Brand Logo & Shield */}
