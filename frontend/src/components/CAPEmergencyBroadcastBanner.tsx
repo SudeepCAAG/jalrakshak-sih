@@ -116,65 +116,69 @@ export const CAPEmergencyBroadcastBanner: React.FC<CAPEmergencyBroadcastBannerPr
   const text = getAlertText();
 
   return (
-    <div className="relative rounded-2xl bg-rose-900 text-white p-3.5 sm:p-4 shadow-md border border-rose-700 mb-4 sm:mb-5 select-none">
-      <div className="relative z-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-3.5">
+    <div className="relative rounded-2xl bg-gradient-to-r from-rose-950 via-slate-900 to-rose-950 text-white p-3 sm:p-4 shadow-sm border border-rose-600/50 mb-4 sm:mb-5 select-none animate-in fade-in duration-200">
+      <div className="relative z-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-3 sm:gap-4">
         <div className="flex items-start sm:items-center gap-2.5 sm:gap-3 min-w-0">
-          <div className="p-2 rounded-xl bg-rose-800 text-white shrink-0 mt-0.5 sm:mt-0">
-            <ShieldAlert className="w-5 h-5 text-rose-200" />
+          <div className="relative p-2 rounded-xl bg-rose-900/80 border border-rose-500/40 text-white shrink-0 mt-0.5 sm:mt-0 shadow-xs">
+            <span className="absolute -top-1 -right-1 flex h-2.5 w-2.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-rose-500"></span>
+            </span>
+            <ShieldAlert className="w-4 h-4 sm:w-5 sm:h-5 text-rose-300" />
           </div>
 
-          <div className="space-y-1 min-w-0">
+          <div className="space-y-0.5 min-w-0">
             <div className="flex items-center gap-2 flex-wrap">
-              <span className="bg-rose-700 text-white text-[10px] font-bold uppercase px-2 py-0.5 rounded-md tracking-wider">
+              <span className="bg-rose-600 text-white text-[9px] sm:text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full tracking-wider shadow-2xs">
                 {text.badge}
               </span>
-              <span className="text-[10px] text-rose-200 font-semibold uppercase tracking-wider">
+              <span className="text-[10px] text-rose-300/90 font-mono font-semibold uppercase tracking-wider">
                 {selectedCity.toUpperCase()} • NDMA ACTIVE
               </span>
             </div>
 
-            <h4 className="text-xs sm:text-sm font-bold text-white tracking-tight leading-snug">
+            <h4 className="text-xs sm:text-[13px] font-bold text-white tracking-tight leading-snug">
               {text.headline}
             </h4>
           </div>
         </div>
 
-        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 w-full lg:w-auto pt-2 lg:pt-0">
+        <div className="flex flex-wrap sm:flex-nowrap items-center gap-2 w-full lg:w-auto pt-1 lg:pt-0">
           <button
             onClick={toggleSiren}
-            className={`w-full sm:w-auto flex items-center justify-center gap-2 px-3.5 py-2 rounded-xl text-xs font-bold transition border shadow-xs ${
+            className={`flex-1 sm:flex-none flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold transition border shadow-2xs whitespace-nowrap ${
               isSirenActive 
-                ? 'bg-amber-400 text-slate-950 border-amber-300' 
-                : 'bg-rose-800 hover:bg-rose-700 text-white border-rose-700'
+                ? 'bg-amber-400 text-slate-950 border-amber-300 font-bold' 
+                : 'bg-rose-900/60 hover:bg-rose-800/80 text-rose-200 border-rose-700/60'
             }`}
             title="Simulate CAP Audio Emergency Siren"
           >
-            {isSirenActive ? <Volume2 className="w-4 h-4 text-slate-950 shrink-0" /> : <VolumeX className="w-4 h-4 shrink-0" />}
-            <span className="whitespace-nowrap">{text.sirenLabel}</span>
+            {isSirenActive ? <Volume2 className="w-3.5 h-3.5 text-slate-950 shrink-0" /> : <VolumeX className="w-3.5 h-3.5 shrink-0" />}
+            <span>{text.sirenLabel}</span>
           </button>
 
           <button
             onClick={onNavigateSafeNav}
-            className="w-full sm:w-auto flex items-center justify-center gap-2 px-3.5 py-2 rounded-xl bg-white hover:bg-slate-100 text-rose-950 text-xs font-bold transition shadow-xs border border-white"
+            className="flex-1 sm:flex-none flex items-center justify-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white hover:bg-slate-100 text-slate-900 text-xs font-bold transition shadow-2xs whitespace-nowrap border border-white/80"
           >
-            <Navigation className="w-4 h-4 text-rose-700 shrink-0" />
-            <span className="whitespace-nowrap">{text.safeNavBtn}</span>
+            <Navigation className="w-3.5 h-3.5 text-blue-600 shrink-0" />
+            <span>{text.safeNavBtn}</span>
           </button>
 
           <button
             onClick={onNavigateEmergency}
-            className="w-full sm:w-auto flex items-center justify-center gap-2 px-3.5 py-2 rounded-xl bg-rose-700 hover:bg-rose-600 text-white text-xs font-bold transition shadow-xs"
+            className="flex-1 sm:flex-none flex items-center justify-center gap-1.5 px-3.5 py-1.5 rounded-full bg-rose-600 hover:bg-rose-700 text-white text-xs font-bold transition shadow-xs whitespace-nowrap"
           >
-            <PhoneCall className="w-4 h-4 shrink-0" />
-            <span className="whitespace-nowrap">{text.sosBtn}</span>
+            <PhoneCall className="w-3.5 h-3.5 shrink-0" />
+            <span>{text.sosBtn}</span>
           </button>
 
           <button
             onClick={() => setIsDismissed(true)}
-            className="w-full sm:w-auto p-2 rounded-xl bg-rose-800/80 hover:bg-rose-700 text-rose-200 transition shrink-0 flex items-center justify-center border border-rose-700/60"
+            className="p-1.5 rounded-full bg-white/10 hover:bg-white/20 text-rose-300 hover:text-white transition shrink-0 flex items-center justify-center"
             title="Dismiss Alert"
           >
-            <X className="w-4 h-4" />
+            <X className="w-3.5 h-3.5" />
           </button>
         </div>
       </div>

@@ -87,27 +87,30 @@ export const HeroLandingPage: React.FC<HeroLandingPageProps> = ({
       {/* 1. TOP SEAMLESS TELEMETRY WIRE (CLEAN LIGHT DESIGN) */}
       <div className="overflow-hidden rounded-2xl bg-white border border-slate-200/90 text-slate-700 shadow-xs py-2 px-4">
         <div className="flex items-center gap-3">
-          <div className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-cyan-50 border border-cyan-200 text-cyan-800 text-[10px] font-mono font-bold tracking-wider shrink-0 uppercase">
-            <span className="w-1.5 h-1.5 rounded-full bg-cyan-600"></span>
+          <div className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-blue-50 border border-blue-200 text-blue-800 text-[10px] font-mono font-bold tracking-wider shrink-0 uppercase">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-600"></span>
+            </span>
             LIVE TELEMETRY
           </div>
           <div className="overflow-hidden whitespace-nowrap flex-1">
             <div className="animate-ticker text-xs font-medium text-slate-600">
-              <span className="mr-8 flex items-center gap-2">
-                <Radio className="w-3.5 h-3.5 text-cyan-600" />
-                <strong className="text-slate-900">IMD Doppler DWR {currentCityMeta.name}:</strong> 15-min volume scan active • Precip rate ~{overview?.current_weather?.rainfall_rate_mm_hr || 38.5} mm/h
+              <span className="mr-8 inline-flex items-center gap-2">
+                <Radio className="w-3.5 h-3.5 text-blue-600 shrink-0" />
+                <strong className="text-slate-900 font-semibold">IMD Doppler DWR {currentCityMeta.name}:</strong> 15-min volume scan active • Precip rate ~{overview?.current_weather?.rainfall_rate_mm_hr || 38.5} mm/h
               </span>
-              <span className="mr-8 flex items-center gap-2">
-                <Waves className="w-3.5 h-3.5 text-emerald-600" />
-                <strong className="text-slate-900">Municipal Drainage:</strong> Dewatering Sump Pumps running at 100% capacity
+              <span className="mr-8 inline-flex items-center gap-2">
+                <Waves className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                <strong className="text-slate-900 font-semibold">Municipal Drainage:</strong> Dewatering Sump Pumps running at 100% capacity
               </span>
-              <span className="mr-8 flex items-center gap-2">
-                <AlertTriangle className="w-3.5 h-3.5 text-amber-600" />
-                <strong className="text-slate-900">High Risk Hotspots:</strong> {zones.filter(z => z.risk_level === 'HIGH').length} underpasses flagged for severe bowl accumulation
+              <span className="mr-8 inline-flex items-center gap-2">
+                <AlertTriangle className="w-3.5 h-3.5 text-amber-600 shrink-0" />
+                <strong className="text-slate-900 font-semibold">High Risk Hotspots:</strong> {zones.filter(z => z.risk_level === 'HIGH').length} underpasses flagged for severe bowl accumulation
               </span>
-              <span className="mr-8 flex items-center gap-2">
-                <Bot className="w-3.5 h-3.5 text-blue-600" />
-                <strong className="text-slate-900">AI Safe Navigation:</strong> Elevated road bypass engine active with 0–3h lookahead
+              <span className="mr-8 inline-flex items-center gap-2">
+                <Bot className="w-3.5 h-3.5 text-indigo-600 shrink-0" />
+                <strong className="text-slate-900 font-semibold">AI Safe Navigation:</strong> Elevated road bypass engine active with 0–3h lookahead
               </span>
             </div>
           </div>
@@ -122,17 +125,20 @@ export const HeroLandingPage: React.FC<HeroLandingPageProps> = ({
           <div className="lg:col-span-6 flex flex-col justify-between space-y-4 sm:space-y-6">
             <div className="space-y-3 sm:space-y-4">
               {/* Mission Badge */}
-              <div className="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-full bg-slate-100 text-slate-800 border border-slate-200 shadow-xs text-[10px] sm:text-xs font-semibold">
-                <span className="w-1.5 sm:w-2 h-1.5 sm:h-2 rounded-full bg-cyan-600"></span>
-                <span className="text-slate-600 font-mono text-[10px] sm:text-[11px] uppercase tracking-wider">MoES &amp; NDMA INITIATIVE</span>
-                <span className="text-slate-300">|</span>
-                <span className="text-amber-800 font-bold truncate max-w-[150px] sm:max-w-none">{t.tagline}</span>
+              <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 py-1 sm:py-1.5 rounded-full bg-slate-100 text-slate-800 border border-slate-200/90 shadow-2xs text-[10px] sm:text-xs font-semibold">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                </span>
+                <span className="text-slate-600 font-mono text-[10px] sm:text-[11px] uppercase tracking-wider font-bold">MoES &amp; NDMA INITIATIVE</span>
+                <span className="text-slate-300">•</span>
+                <span className="text-blue-900 font-bold truncate max-w-[150px] sm:max-w-none">{t.tagline}</span>
               </div>
 
               {/* Master Headline */}
               <h1 className="text-2xl sm:text-3xl lg:text-[42px] font-black text-slate-950 tracking-tight leading-tight sm:leading-[1.14]">
                 {t.heroHeadline1}{' '}
-                <span className="text-blue-700">
+                <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-cyan-600 bg-clip-text text-transparent">
                   {t.heroHeadlineHighlight}
                 </span>
               </h1>
@@ -141,11 +147,11 @@ export const HeroLandingPage: React.FC<HeroLandingPageProps> = ({
                 {t.heroDescription}
               </p>
 
-              {/* Dual Hero Action Buttons (Inspired by Reference Layout) */}
+              {/* Dual Hero Action Buttons (Modern Cohesive Palette) */}
               <div className="flex flex-col sm:flex-row items-stretch gap-3 pt-1">
                 <button
                   onClick={() => onNavigatePage('safe-nav')}
-                  className="flex-1 py-3 px-5 rounded-2xl bg-gradient-to-r from-amber-500 via-amber-500 to-yellow-500 hover:from-amber-600 hover:to-yellow-600 text-white font-bold text-xs sm:text-sm shadow-[0_6px_20px_rgba(245,158,11,0.35)] transition-all active:scale-98 flex items-center justify-center gap-2 border border-white/30"
+                  className="flex-1 py-3 px-5 rounded-full bg-gradient-to-r from-blue-600 via-indigo-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white font-bold text-xs sm:text-sm shadow-md shadow-blue-500/25 transition-all active:scale-98 flex items-center justify-center gap-2 border border-white/20"
                 >
                   <Navigation className="w-4 h-4 text-white" />
                   <span className="uppercase tracking-wide font-extrabold">{t.planSafeRoute}</span>
@@ -153,7 +159,7 @@ export const HeroLandingPage: React.FC<HeroLandingPageProps> = ({
 
                 <button
                   onClick={() => onNavigatePage('gis-nowcast')}
-                  className="flex-1 py-3 px-5 rounded-2xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs sm:text-sm shadow-md transition-all active:scale-98 flex items-center justify-center gap-2 border border-slate-700"
+                  className="flex-1 py-3 px-5 rounded-full bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs sm:text-sm shadow-xs transition-all active:scale-98 flex items-center justify-center gap-2 border border-slate-700"
                 >
                   <Layers className="w-4 h-4 text-cyan-400" />
                   <span className="uppercase tracking-wide font-extrabold">{t.checkStreetStatus}</span>
