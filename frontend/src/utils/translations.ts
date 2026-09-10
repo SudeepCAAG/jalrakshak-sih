@@ -51,7 +51,7 @@ export const translations: Record<Language, Translations> = {
     navHome: "Home",
     navGis: "GIS Nowcast",
     navSafeNav: "Safe Routes",
-    navEmergency: "Emergency Contacts",
+    navEmergency: "Emergency SOS",
     navBulletins: "Bulletins",
     navMoES: "MoES Portal",
     aiBtn: "AI Assistant",
