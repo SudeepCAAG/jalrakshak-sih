@@ -7,7 +7,6 @@ import {
   Layers, 
   FileText, 
   Home, 
-  RefreshCw, 
   Lock, 
   Unlock, 
   Waves, 
@@ -16,12 +15,13 @@ import {
   Train, 
   Compass, 
   Building2, 
-  Bot, 
+  Sparkles, 
   AlertOctagon,
   Languages,
   Menu,
   X,
-  PhoneCall
+  PhoneCall,
+  ShieldCheck
 } from 'lucide-react';
 import { SystemOverview } from '@/types';
 import { Language, translations } from '@/utils/translations';
@@ -96,11 +96,11 @@ export const NationalNavbar: React.FC<NationalNavbarProps> = ({
 
   return (
     <header className="sticky top-0 z-40 w-full transition-all duration-300">
-      {/* Glassmorphic Top Navbar Container */}
-      <div className="bg-white/85 backdrop-blur-xl backdrop-saturate-150 border-b border-slate-200/90 shadow-[0_4px_24px_rgba(0,0,0,0.05)] select-none">
-        <div className="max-w-7xl mx-auto px-3 sm:px-6 py-2.5 flex items-center justify-between gap-2 sm:gap-3">
+      {/* Modern Minimalist Glass Navbar Container */}
+      <div className="bg-white/90 backdrop-blur-xl backdrop-saturate-150 border-b border-slate-200/80 shadow-[0_2px_16px_rgba(0,0,0,0.04)] select-none">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 py-2.5 flex items-center justify-between gap-2 sm:gap-4">
           
-          {/* Brand Logo & Shield */}
+          {/* Left: Brand Logo & Shield */}
           <div 
             onClick={() => onSelectPage('home')}
             className="cursor-pointer shrink-0"
@@ -112,8 +112,8 @@ export const NationalNavbar: React.FC<NationalNavbarProps> = ({
             />
           </div>
 
-          {/* Desktop Navigation Dock */}
-          <nav className="hidden lg:flex items-center gap-1 bg-white/70 backdrop-blur-md p-1 rounded-2xl border border-slate-200 shadow-xs">
+          {/* Center: Desktop Navigation Dock (Single-Line Crisp Pills) */}
+          <nav className="hidden lg:flex items-center gap-1 bg-slate-100/90 backdrop-blur-md p-1 rounded-full border border-slate-200/90 shadow-2xs">
             {navLinks.map((tab) => {
               const Icon = tab.icon;
               const isActive = activePage === tab.id;
@@ -121,25 +121,24 @@ export const NationalNavbar: React.FC<NationalNavbarProps> = ({
                 <button
                   key={tab.id}
                   onClick={() => onSelectPage(tab.id as any)}
-                  className={`relative flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all duration-200 ${
+                  className={`relative flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all duration-150 ${
                     isActive
                       ? (tab.isEmergency 
-                          ? 'bg-gradient-to-r from-rose-600 to-rose-700 text-white shadow-[0_4px_12px_rgba(225,29,72,0.35)]' 
-                          : 'bg-gradient-to-r from-amber-500 to-amber-600 text-white shadow-[0_4px_14px_rgba(245,158,11,0.35)]')
+                          ? 'bg-rose-600 text-white shadow-xs' 
+                          : 'bg-slate-900 text-white shadow-xs')
                       : (tab.isEmergency 
                           ? 'text-rose-600 hover:bg-rose-50/80' 
-                          : 'text-stone-600 hover:text-stone-900 hover:bg-white/80')
+                          : 'text-slate-600 hover:text-slate-900 hover:bg-white/80')
                   }`}
                 >
-                  <Icon className={`w-3.5 h-3.5 ${isActive ? 'text-white' : tab.isEmergency ? 'text-rose-600' : 'text-stone-500'}`} />
-                  <span>{tab.label}</span>
                   {tab.isLive && (
-                    <span className={`text-[9px] px-1.5 py-0.2 rounded-full font-black uppercase tracking-tighter shadow-2xs ${
-                      isActive ? 'bg-white/20 text-white' : 'bg-amber-100/90 text-amber-800 border border-amber-300/60'
-                    }`}>
-                      Live
+                    <span className="relative flex h-2 w-2 mr-0.5">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
                     </span>
                   )}
+                  <Icon className={`w-3.5 h-3.5 ${isActive ? 'text-white' : tab.isEmergency ? 'text-rose-600' : 'text-slate-500'}`} />
+                  <span>{tab.label}</span>
                 </button>
               );
             })}
@@ -147,35 +146,36 @@ export const NationalNavbar: React.FC<NationalNavbarProps> = ({
             {isAuthorized && (
               <button
                 onClick={() => onSelectPage('moes-console')}
-                className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all ${
+                className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all ${
                   activePage === 'moes-console'
-                    ? 'bg-gradient-to-r from-amber-600 to-yellow-600 text-white shadow-[0_4px_12px_rgba(217,119,6,0.35)]'
-                    : 'bg-amber-50/90 text-amber-900 border border-amber-200 hover:bg-amber-100'
+                    ? 'bg-emerald-600 text-white shadow-xs'
+                    : 'bg-emerald-50 text-emerald-800 hover:bg-emerald-100 border border-emerald-200'
                 }`}
               >
-                <Unlock className="w-3.5 h-3.5 text-amber-700" />
+                <Unlock className="w-3.5 h-3.5 text-emerald-700" />
                 <span>{t.navMoES}</span>
               </button>
             )}
           </nav>
 
-          {/* Right Controls */}
+          {/* Right Controls Group */}
           <div className="flex items-center gap-1.5 sm:gap-2">
+            
             {/* Desktop Language Selector */}
             <div className="hidden sm:block relative">
               <button
                 onClick={() => setIsLangDropdownOpen(!isLangDropdownOpen)}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/70 hover:bg-white/95 backdrop-blur-md border border-slate-200 shadow-xs text-stone-800 text-xs font-bold transition duration-200"
-                title="Change Language / ভাষা পরিবর্তন / भाषा बदलें"
+                className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-full bg-white/80 hover:bg-white backdrop-blur-md border border-slate-200/90 shadow-2xs text-slate-700 hover:text-slate-900 text-xs font-semibold transition duration-150"
+                title="Change Language / ভাষা / भाषा"
               >
-                <Languages className="w-3.5 h-3.5 text-amber-600" />
-                <span className="uppercase text-[11px] font-black">{currentLang}</span>
-                <ChevronDown className={`w-3 h-3 text-stone-400 transition-transform duration-200 ${isLangDropdownOpen ? 'rotate-180' : ''}`} />
+                <Languages className="w-3.5 h-3.5 text-slate-500" />
+                <span className="uppercase text-[11px] font-bold">{currentLang}</span>
+                <ChevronDown className={`w-3 h-3 text-slate-400 transition-transform duration-150 ${isLangDropdownOpen ? 'rotate-180' : ''}`} />
               </button>
 
               {isLangDropdownOpen && (
                 <div className="absolute right-0 mt-2 w-36 bg-white/95 backdrop-blur-2xl rounded-2xl border border-slate-200 shadow-xl py-1.5 z-50 animate-in fade-in zoom-in-95 duration-150">
-                  <div className="px-3 py-1 text-[10px] font-black uppercase tracking-wider text-stone-400 border-b border-stone-100">
+                  <div className="px-3 py-1 text-[10px] font-black uppercase tracking-wider text-slate-400 border-b border-slate-100">
                     Language / ভাষা
                   </div>
                   {languagesList.map((langItem) => (
@@ -186,12 +186,12 @@ export const NationalNavbar: React.FC<NationalNavbarProps> = ({
                         setIsLangDropdownOpen(false);
                       }}
                       className={`w-full flex items-center justify-between px-3 py-2 text-left text-xs transition ${
-                        currentLang === langItem.code ? 'bg-amber-50 font-bold text-amber-900' : 'text-stone-700 hover:bg-stone-50'
+                        currentLang === langItem.code ? 'bg-blue-50 font-bold text-blue-900' : 'text-slate-700 hover:bg-slate-50'
                       }`}
                     >
                       <span>{langItem.label}</span>
                       {currentLang === langItem.code && (
-                        <span className="w-2 h-2 rounded-full bg-amber-500 shadow-xs"></span>
+                        <span className="w-1.5 h-1.5 rounded-full bg-blue-600 shadow-xs"></span>
                       )}
                     </button>
                   ))}
@@ -203,27 +203,22 @@ export const NationalNavbar: React.FC<NationalNavbarProps> = ({
             <div className="hidden sm:block relative">
               <button
                 onClick={() => setIsCityDropdownOpen(!isCityDropdownOpen)}
-                className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white/70 hover:bg-white/95 backdrop-blur-md border border-slate-200 shadow-xs text-stone-800 text-xs font-bold transition duration-200"
+                className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/80 hover:bg-white backdrop-blur-md border border-slate-200/90 shadow-2xs text-slate-700 hover:text-slate-900 text-xs font-semibold transition duration-150"
               >
-                <div className="p-1 rounded-lg bg-amber-100/80 text-amber-700 shadow-2xs">
-                  <CityIcon className="w-3.5 h-3.5" />
-                </div>
-                <div className="text-left">
-                  <div className="leading-tight flex items-center gap-1">
-                    <span>{currentCityObj.name}</span>
-                    <ChevronDown className={`w-3 h-3 text-stone-400 transition-transform duration-200 ${isCityDropdownOpen ? 'rotate-180' : ''}`} />
-                  </div>
-                </div>
+                <CityIcon className="w-3.5 h-3.5 text-blue-600" />
+                <span className="font-semibold">{currentCityObj.name}</span>
+                <ChevronDown className={`w-3 h-3 text-slate-400 transition-transform duration-150 ${isCityDropdownOpen ? 'rotate-180' : ''}`} />
               </button>
 
               {isCityDropdownOpen && (
                 <div className="absolute right-0 mt-2 w-64 bg-white/95 backdrop-blur-2xl rounded-2xl border border-slate-200 shadow-2xl py-2 z-50 animate-in fade-in zoom-in-95 duration-150">
-                  <div className="px-3 py-1.5 text-[10px] font-black uppercase text-stone-400 tracking-wider border-b border-stone-100">
+                  <div className="px-3 py-1.5 text-[10px] font-black uppercase text-slate-400 tracking-wider border-b border-slate-100">
                     Select Indian Metro Region
                   </div>
                   <div className="py-1 max-h-72 overflow-y-auto">
                     {CITIES_LIST.map((c) => {
                       const Icon = c.icon;
+                      const isSelected = selectedCity === c.id;
                       return (
                         <button
                           key={c.id}
@@ -231,19 +226,19 @@ export const NationalNavbar: React.FC<NationalNavbarProps> = ({
                             onSelectCity(c.id);
                             setIsCityDropdownOpen(false);
                           }}
-                          className={`w-full flex items-center gap-2.5 px-3 py-2 text-left text-xs transition hover:bg-amber-50/90 ${
-                            selectedCity === c.id ? 'bg-amber-100/70 font-bold text-amber-900' : 'text-stone-700'
+                          className={`w-full flex items-center gap-2.5 px-3 py-2 text-left text-xs transition hover:bg-blue-50/80 ${
+                            isSelected ? 'bg-blue-50 font-bold text-blue-900' : 'text-slate-700'
                           }`}
                         >
-                          <div className="p-1.5 rounded-lg bg-stone-100 text-stone-700">
+                          <div className={`p-1.5 rounded-lg ${isSelected ? 'bg-blue-100 text-blue-700' : 'bg-slate-100 text-slate-600'}`}>
                             <Icon className="w-3.5 h-3.5" />
                           </div>
                           <div className="flex-1 min-w-0">
-                            <div className="font-semibold text-stone-900 leading-tight">{c.name}</div>
-                            <div className="text-[10px] text-stone-500 truncate">{c.landmark}</div>
+                            <div className="font-semibold text-slate-900 leading-tight">{c.name}</div>
+                            <div className="text-[10px] text-slate-500 truncate">{c.landmark}</div>
                           </div>
-                          {selectedCity === c.id && (
-                            <span className="w-2 h-2 rounded-full bg-amber-500 shadow-xs"></span>
+                          {isSelected && (
+                            <span className="w-1.5 h-1.5 rounded-full bg-blue-600 shadow-xs"></span>
                           )}
                         </button>
                       );
@@ -253,33 +248,33 @@ export const NationalNavbar: React.FC<NationalNavbarProps> = ({
               )}
             </div>
 
-            {/* Quick AI Help Button (Gold Accent) */}
+            {/* Modern AI Assistant Pill Button */}
             <button
               onClick={onOpenAIChat}
-              className="flex items-center gap-1.5 px-3 sm:px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-amber-500 via-amber-500 to-yellow-500 hover:from-amber-600 hover:to-yellow-600 text-white text-xs font-bold shadow-[0_4px_14px_rgba(245,158,11,0.35)] transition-all active:scale-95 border border-white/30"
+              className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-blue-600 via-indigo-600 to-sky-600 hover:from-blue-700 hover:to-indigo-700 text-white text-xs font-semibold shadow-xs shadow-blue-500/20 active:scale-95 transition-all border border-white/20"
               title="Ask JalRakshak AI"
             >
-              <Bot className="w-3.5 h-3.5 text-white animate-pulse" />
+              <Sparkles className="w-3.5 h-3.5 text-white" />
               <span>{t.aiBtn}</span>
             </button>
 
-            {/* Desktop Official Login */}
+            {/* Minimalist Authority Login Button */}
             {isAuthorized ? (
               <button
                 onClick={onLogoutAuth}
-                className="hidden lg:flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-emerald-600 text-white text-xs font-bold transition shadow-xs border border-emerald-500/50"
-                title="Authority Active"
+                className="hidden lg:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-50 text-emerald-800 text-xs font-semibold transition border border-emerald-200"
+                title="Authority Session Active"
               >
-                <Lock className="w-3.5 h-3.5 text-emerald-200" />
+                <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
                 <span>Authorized</span>
               </button>
             ) : (
               <button
                 onClick={onOpenAuthModal}
-                className="hidden lg:flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-stone-900 hover:bg-stone-800 text-white text-xs font-bold transition shadow-xs border border-stone-700/50"
+                className="hidden lg:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/80 hover:bg-slate-50 text-slate-700 hover:text-slate-900 text-xs font-semibold transition border border-slate-200/90 shadow-2xs"
               >
-                <Lock className="w-3.5 h-3.5 text-amber-400" />
-                <span>Official Login</span>
+                <Lock className="w-3.5 h-3.5 text-slate-500" />
+                <span>{t.loginBtn}</span>
               </button>
             )}
 
@@ -332,7 +327,7 @@ export const NationalNavbar: React.FC<NationalNavbarProps> = ({
                       onClick={() => onSelectLang(langItem.code)}
                       className={`py-1.5 rounded-lg text-xs font-bold transition flex items-center justify-center gap-1 ${
                         currentLang === langItem.code 
-                          ? 'bg-amber-500 text-white shadow-sm' 
+                          ? 'bg-blue-600 text-white shadow-sm' 
                           : 'text-slate-600 hover:text-slate-900'
                       }`}
                     >
@@ -356,11 +351,11 @@ export const NationalNavbar: React.FC<NationalNavbarProps> = ({
                         onClick={() => onSelectCity(c.id)}
                         className={`p-2 rounded-xl text-left text-xs font-semibold transition border flex items-center gap-2 ${
                           isSelected 
-                            ? 'bg-amber-50 border-amber-300 text-amber-950 font-bold' 
+                            ? 'bg-blue-50 border-blue-300 text-blue-950 font-bold' 
                             : 'bg-white border-slate-200 text-slate-700 hover:bg-slate-50'
                         }`}
                       >
-                        <span className="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+                        <span className={`w-1.5 h-1.5 rounded-full ${isSelected ? 'bg-blue-600' : 'bg-slate-300'}`}></span>
                         <span className="truncate">{c.name.replace(' Metro', '').replace(' Urban', '').replace(' Greater', '')}</span>
                       </button>
                     );
@@ -380,11 +375,11 @@ export const NationalNavbar: React.FC<NationalNavbarProps> = ({
                     <button
                       key={tab.id}
                       onClick={() => handleMobileNavClick(tab.id)}
-                      className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-bold transition ${
+                      className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-semibold transition ${
                         isActive
                           ? (tab.isEmergency
-                              ? 'bg-rose-600 text-white shadow-sm'
-                              : 'bg-amber-500 text-white shadow-sm')
+                              ? 'bg-rose-600 text-white shadow-sm font-bold'
+                              : 'bg-slate-900 text-white shadow-sm font-bold')
                           : (tab.isEmergency 
                               ? 'text-rose-600 hover:bg-rose-50' 
                               : 'text-slate-700 hover:bg-slate-100')
@@ -395,7 +390,7 @@ export const NationalNavbar: React.FC<NationalNavbarProps> = ({
                         <span>{tab.label}</span>
                       </div>
                       {tab.isLive && (
-                        <span className="text-[9px] px-2 py-0.5 rounded-full font-black uppercase tracking-wider bg-rose-500 text-white">
+                        <span className="text-[9px] px-2 py-0.5 rounded-full font-black uppercase tracking-wider bg-emerald-500 text-white">
                           Live
                         </span>
                       )}
@@ -406,13 +401,13 @@ export const NationalNavbar: React.FC<NationalNavbarProps> = ({
                 {isAuthorized && (
                   <button
                     onClick={() => handleMobileNavClick('moes-console')}
-                    className={`w-full flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl text-xs font-bold transition ${
+                    className={`w-full flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl text-xs font-semibold transition ${
                       activePage === 'moes-console'
-                        ? 'bg-amber-600 text-white'
-                        : 'bg-amber-50 text-amber-900 border border-amber-200'
+                        ? 'bg-emerald-600 text-white'
+                        : 'bg-emerald-50 text-emerald-900 border border-emerald-200'
                     }`}
                   >
-                    <Unlock className="w-4 h-4 text-amber-700" />
+                    <Unlock className="w-4 h-4 text-emerald-700" />
                     <span>{t.navMoES}</span>
                   </button>
                 )}
@@ -435,7 +430,7 @@ export const NationalNavbar: React.FC<NationalNavbarProps> = ({
                     onLogoutAuth();
                     setIsMobileMenuOpen(false);
                   }}
-                  className="w-full py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs flex items-center justify-center gap-2 transition"
+                  className="w-full py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-xs flex items-center justify-center gap-2 transition"
                 >
                   <Lock className="w-4 h-4" />
                   <span>Logout Authority Console</span>
@@ -446,10 +441,10 @@ export const NationalNavbar: React.FC<NationalNavbarProps> = ({
                     setIsMobileMenuOpen(false);
                     onOpenAuthModal();
                   }}
-                  className="w-full py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs flex items-center justify-center gap-2 transition shadow-sm"
+                  className="w-full py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-semibold text-xs flex items-center justify-center gap-2 transition shadow-sm"
                 >
-                  <Lock className="w-4 h-4 text-amber-400" />
-                  <span>Official Authority Login</span>
+                  <Lock className="w-4 h-4 text-slate-300" />
+                  <span>{t.loginBtn}</span>
                 </button>
               )}
             </div>
@@ -459,3 +454,4 @@ export const NationalNavbar: React.FC<NationalNavbarProps> = ({
     </header>
   );
 };
+
