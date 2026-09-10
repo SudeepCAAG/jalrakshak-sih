@@ -255,7 +255,7 @@ CITIZEN_REPORTS = [
         "timestamp": "12 mins ago",
         "upvotes": 28,
         "verified": True,
-        "image_url": "https://images.unsplash.com/photo-1547683905-f686c993aae5?auto=format&fit=crop&w=400&q=80"
+        "image_url": "https://images.unsplash.com/photo-1547683905-f686c993aae5?auto=format&fit=crop&w=600&q=80"
     },
     {
         "report_id": "REP-CCU-8924",
@@ -271,7 +271,23 @@ CITIZEN_REPORTS = [
         "timestamp": "24 mins ago",
         "upvotes": 42,
         "verified": True,
-        "image_url": "https://images.unsplash.com/photo-1519817650390-64a93db51149?auto=format&fit=crop&w=400&q=80"
+        "image_url": "https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+        "report_id": "REP-CCU-8927",
+        "city": "kolkata",
+        "location_name": "VIP Road Haldiram Underpass",
+        "lat": 22.6250,
+        "lon": 88.4350,
+        "water_depth_cm": 35.0,
+        "severity": "ANKLE_DEEP",
+        "passability": "SUVS_ONLY",
+        "description": "Deep water accumulation on airport-bound lane. Heavy slow-moving traffic queue.",
+        "reporter_name": "Debashis M. (Commuter)",
+        "timestamp": "38 mins ago",
+        "upvotes": 35,
+        "verified": True,
+        "image_url": "https://images.unsplash.com/photo-1534274988757-a28bf1a57c17?auto=format&fit=crop&w=600&q=80"
     }
 ]
 

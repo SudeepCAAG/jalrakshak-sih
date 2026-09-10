@@ -41,7 +41,8 @@ import {
   Car,
   Truck,
   Check,
-  X
+  X,
+  ThumbsUp
 } from 'lucide-react';
 import { SystemOverview, Zone } from '@/types';
 import { CITIES_LIST } from './NationalNavbar';
@@ -710,65 +711,105 @@ export const HeroLandingPage: React.FC<HeroLandingPageProps> = ({
       </section>
 
       {/* 6. CROWDSOURCED CITIZEN GROUND-TRUTH FLOOD FEED (CLEAN LIGHT CARD) */}
-      <section className="bg-white border border-slate-200/90 rounded-3xl p-6 sm:p-8 space-y-5 shadow-xs">
+      <section className="bg-white border border-slate-200/90 rounded-3xl p-6 sm:p-8 space-y-6 shadow-sm">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div>
             <div className="flex items-center gap-2">
               <span className="text-xs font-mono font-bold text-cyan-700 uppercase tracking-wider">
                 GROUND-TRUTH FEED
               </span>
-              <span className="bg-cyan-100 text-cyan-900 text-[10px] font-bold px-2 py-0.5 rounded-full border border-cyan-300">
+              <span className="bg-cyan-100 text-cyan-900 text-[10px] font-bold px-2.5 py-0.5 rounded-full border border-cyan-300">
                 CITIZEN TELEMETRY
               </span>
             </div>
-            <h3 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight mt-0.5">
+            <h3 className="text-xl sm:text-2xl font-black text-slate-950 tracking-tight mt-0.5">
               Live Verified Waterlogging Reports
             </h3>
           </div>
 
           <button
             onClick={onOpenReportModal}
-            className="bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white text-xs font-bold px-4 py-2.5 rounded-xl transition shadow-xs flex items-center gap-1.5 self-start sm:self-auto"
+            className="bg-slate-900 hover:bg-cyan-700 text-white text-xs font-bold px-4 py-2.5 rounded-xl transition shadow-xs hover:shadow-md flex items-center gap-2 self-start sm:self-auto group"
           >
-            <Camera className="w-3.5 h-3.5 text-white" />
+            <Camera className="w-3.5 h-3.5 text-cyan-400 group-hover:scale-110 transition-transform" />
             <span>+ Submit Live Flood Photo</span>
           </button>
         </div>
 
         {citizenReports && citizenReports.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {citizenReports.slice(0, 3).map((rep, idx) => (
-              <div key={rep.report_id || idx} className="bg-slate-50 rounded-2xl p-4 border border-slate-200 shadow-xs space-y-3">
-                <div className="relative h-36 w-full rounded-xl overflow-hidden border border-slate-200">
-                  <img src={rep.image_url} alt={rep.location_name} className="w-full h-full object-cover" />
-                  <div className="absolute top-2 left-2 bg-slate-950/80 text-white text-[10px] font-mono font-bold px-2.5 py-0.5 rounded-md flex items-center gap-1">
-                    <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span>
-                    <span>~{rep.water_depth_cm} cm</span>
+              <div 
+                key={rep.report_id || idx} 
+                className="bg-white rounded-3xl overflow-hidden border border-slate-200/90 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group"
+              >
+                {/* Photo with Overlay Badges */}
+                <div className="relative h-44 w-full overflow-hidden bg-slate-900">
+                  <img 
+                    src={rep.image_url} 
+                    alt={rep.location_name} 
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-black/30" />
+                  
+                  {/* Top Badges */}
+                  <div className="absolute top-2.5 left-2.5 flex items-center gap-1.5">
+                    <div className="bg-slate-950/80 backdrop-blur-md text-cyan-400 text-[10px] font-mono font-bold px-2.5 py-1 rounded-lg border border-cyan-500/30 flex items-center gap-1.5 shadow-xs">
+                      <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span>
+                      <span>~{rep.water_depth_cm} cm</span>
+                    </div>
                   </div>
-                  <div className="absolute bottom-2 right-2 bg-slate-950/80 text-white text-[9px] font-mono px-2 py-0.5 rounded-md">
-                    {rep.timestamp}
+
+                  <div className="absolute top-2.5 right-2.5">
+                    <span className="bg-emerald-950/80 backdrop-blur-md text-emerald-400 border border-emerald-500/40 text-[10px] font-mono font-bold px-2.5 py-1 rounded-lg flex items-center gap-1 shadow-xs">
+                      <CheckCircle2 className="w-3 h-3 text-emerald-400" />
+                      <span>Verified Citizen</span>
+                    </span>
+                  </div>
+
+                  {/* Bottom Time Overlay */}
+                  <div className="absolute bottom-2.5 right-2.5 bg-slate-950/80 backdrop-blur-md text-slate-300 text-[9px] font-mono px-2 py-0.5 rounded-md border border-slate-700/50 flex items-center gap-1">
+                    <Clock className="w-2.5 h-2.5 text-slate-400" />
+                    <span>{rep.timestamp}</span>
                   </div>
                 </div>
 
-                <div className="space-y-1">
-                  <div className="font-bold text-xs text-slate-900 truncate flex items-center gap-1.5">
-                    <MapPin className="w-3 h-3 text-cyan-600 shrink-0" />
-                    <span>{rep.location_name}</span>
+                {/* Card Body */}
+                <div className="p-4 space-y-3 flex-1 flex flex-col justify-between">
+                  <div className="space-y-1.5">
+                    <div className="font-bold text-xs sm:text-sm text-slate-900 flex items-start gap-1.5">
+                      <MapPin className="w-3.5 h-3.5 text-cyan-600 shrink-0 mt-0.5" />
+                      <span className="line-clamp-1">{rep.location_name}</span>
+                    </div>
+                    <p className="text-[11px] text-slate-600 leading-relaxed line-clamp-2">
+                      {rep.description}
+                    </p>
                   </div>
-                  <p className="text-[11px] text-slate-600 leading-snug line-clamp-2">
-                    {rep.description}
-                  </p>
-                </div>
 
-                <div className="flex items-center justify-between text-[10px] text-slate-500 pt-2 border-t border-slate-200 font-mono">
-                  <span>By: {rep.reporter_name}</span>
-                  <span className={`font-bold px-2 py-0.5 rounded ${
-                    rep.passability === 'BLOCKED' ? 'bg-rose-100 text-rose-800' :
-                    rep.passability === 'SUVS_ONLY' ? 'bg-amber-100 text-amber-800' :
-                    'bg-emerald-100 text-emerald-800'
-                  }`}>
-                    {rep.passability === 'BLOCKED' ? 'Blocked' : rep.passability === 'SUVS_ONLY' ? 'SUVs Only' : 'Passable'}
-                  </span>
+                  {/* Footer Stats & Actions */}
+                  <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-[11px]">
+                    <div className="flex items-center gap-2 font-mono text-[10px]">
+                      <span className={`font-bold px-2 py-0.5 rounded-md border ${
+                        rep.passability === 'BLOCKED' ? 'bg-rose-50 text-rose-700 border-rose-200' :
+                        rep.passability === 'SUVS_ONLY' ? 'bg-amber-50 text-amber-700 border-amber-200' :
+                        'bg-emerald-50 text-emerald-700 border-emerald-200'
+                      }`}>
+                        {rep.passability === 'BLOCKED' ? '⛔ Blocked' : rep.passability === 'SUVS_ONLY' ? '🚙 SUVs Only' : '✅ Passable'}
+                      </span>
+                      <span className="text-slate-500 flex items-center gap-1 bg-slate-50 px-2 py-0.5 rounded-md border border-slate-200">
+                        <ThumbsUp className="w-2.5 h-2.5 text-cyan-600" />
+                        <span>{rep.upvotes || 28}</span>
+                      </span>
+                    </div>
+
+                    <button
+                      onClick={() => onNavigatePage('gis-nowcast')}
+                      className="text-[11px] font-bold text-cyan-700 hover:text-cyan-800 flex items-center gap-1 group/link"
+                    >
+                      <span>Map</span>
+                      <ArrowRight className="w-3 h-3 group-hover/link:translate-x-0.5 transition-transform" />
+                    </button>
+                  </div>
                 </div>
               </div>
             ))}
@@ -780,25 +821,25 @@ export const HeroLandingPage: React.FC<HeroLandingPageProps> = ({
         )}
       </section>
 
-      {/* 7. CITIZEN EMERGENCY & SOS DIRECT ACCESS STRIP (CLEAN WARM ROSE BANNER) */}
-      <section className="bg-gradient-to-r from-rose-50 via-red-50 to-amber-50 border border-rose-200 text-slate-900 rounded-3xl p-6 sm:p-8 shadow-xs flex flex-col md:flex-row items-center justify-between gap-6">
-        <div className="space-y-1.5 text-center md:text-left">
-          <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-rose-100 text-rose-800 border border-rose-300 text-[11px] font-mono font-bold">
-            <HeartHandshake className="w-3.5 h-3.5 text-rose-600" />
-            <span>24x7 CITIZEN SAFETY ASSURANCE</span>
+      {/* 7. CITIZEN EMERGENCY & SOS DIRECT ACCESS STRIP (HIGH-VISIBILITY RESCUE BANNER) */}
+      <section className="relative overflow-hidden bg-gradient-to-r from-red-950 via-slate-900 to-slate-950 border border-red-900/60 text-white rounded-3xl p-6 sm:p-8 shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="space-y-2 text-center md:text-left z-10">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-rose-500/20 text-rose-300 border border-rose-500/40 text-[11px] font-mono font-bold shadow-xs">
+            <span className="w-2 h-2 rounded-full bg-rose-500 animate-ping" />
+            <span>24x7 CITIZEN RESCUE &amp; SOS ASSISTANCE</span>
           </div>
-          <h3 className="text-xl sm:text-2xl font-black text-slate-900">
+          <h3 className="text-xl sm:text-2xl font-black text-white tracking-tight">
             Stranded in a Flooded Street or Submerged Underpass?
           </h3>
-          <p className="text-xs sm:text-sm text-slate-600 max-w-xl">
-            Access direct one-tap dialing for National Emergency 112, NDRF Water Rescue, or share your live GPS coordinates with emergency responders.
+          <p className="text-xs sm:text-sm text-slate-300 max-w-xl leading-relaxed">
+            Access direct one-tap dialing for National Emergency 112, NDRF Water Rescue teams, or share your live GPS coordinates with emergency responders instantly.
           </p>
         </div>
 
-        <div className="flex items-center gap-3 shrink-0">
+        <div className="flex items-center gap-3 shrink-0 z-10">
           <button
             onClick={() => onNavigatePage('emergency')}
-            className="bg-rose-600 hover:bg-rose-700 text-white font-bold px-5 py-3 rounded-2xl text-xs shadow-md transition flex items-center gap-2"
+            className="bg-rose-600 hover:bg-rose-500 text-white font-black px-6 py-3.5 rounded-2xl text-xs sm:text-sm shadow-lg shadow-rose-600/30 hover:scale-105 active:scale-95 transition-all flex items-center gap-2.5"
           >
             <PhoneCall className="w-4 h-4 text-white animate-bounce" />
             <span>Open Emergency Center (112 SOS)</span>
