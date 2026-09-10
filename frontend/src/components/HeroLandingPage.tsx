@@ -118,40 +118,40 @@ export const HeroLandingPage: React.FC<HeroLandingPageProps> = ({
       </div>
 
       {/* 2. HERO COCKPIT & 3D CITY RADAR FRAME */}
-      <section className="relative pt-1 pb-2">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+      <section className="relative pt-2 pb-4">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           
-          {/* LEFT COLUMN: Clean Typography & Search / Safe Route Cockpit */}
-          <div className="lg:col-span-6 flex flex-col justify-between space-y-4 sm:space-y-6">
-            <div className="space-y-3 sm:space-y-4">
+          {/* LEFT COLUMN: Clean Typography & Unified Search / Route Cockpit */}
+          <div className="lg:col-span-6 flex flex-col justify-between space-y-6">
+            <div className="space-y-4">
               {/* Mission Badge */}
-              <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 py-1 sm:py-1.5 rounded-full bg-slate-100 text-slate-800 border border-slate-200/90 shadow-2xs text-[10px] sm:text-xs font-semibold">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-100 text-slate-800 border border-slate-200/90 shadow-2xs text-xs font-semibold">
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
                 </span>
-                <span className="text-slate-600 font-mono text-[10px] sm:text-[11px] uppercase tracking-wider font-bold">MoES &amp; NDMA INITIATIVE</span>
+                <span className="text-slate-600 font-mono text-[11px] uppercase tracking-wider font-bold">MoES &amp; NDMA INITIATIVE</span>
                 <span className="text-slate-300">•</span>
-                <span className="text-blue-900 font-bold truncate max-w-[150px] sm:max-w-none">{t.tagline}</span>
+                <span className="text-blue-900 font-bold">{t.tagline}</span>
               </div>
 
               {/* Master Headline */}
-              <h1 className="text-2xl sm:text-3xl lg:text-[42px] font-black text-slate-950 tracking-tight leading-tight sm:leading-[1.14]">
+              <h1 className="text-3xl sm:text-4xl lg:text-[44px] font-black text-slate-950 tracking-tight leading-tight sm:leading-[1.12]">
                 {t.heroHeadline1}{' '}
                 <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-cyan-600 bg-clip-text text-transparent">
                   {t.heroHeadlineHighlight}
                 </span>
               </h1>
 
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+              <p className="text-sm text-slate-600 leading-relaxed font-normal max-w-xl">
                 {t.heroDescription}
               </p>
 
-              {/* Dual Hero Action Buttons (Modern Cohesive Palette) */}
-              <div className="flex flex-col sm:flex-row items-stretch gap-3 pt-1">
+              {/* Dual Hero Action Buttons (Clean & Prominent) */}
+              <div className="flex flex-col sm:flex-row items-stretch gap-3 pt-2">
                 <button
                   onClick={() => onNavigatePage('safe-nav')}
-                  className="flex-1 py-3 px-5 rounded-full bg-gradient-to-r from-blue-600 via-indigo-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white font-bold text-xs sm:text-sm shadow-md shadow-blue-500/25 transition-all active:scale-98 flex items-center justify-center gap-2 border border-white/20"
+                  className="flex-1 py-3.5 px-6 rounded-full bg-gradient-to-r from-blue-600 via-indigo-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white font-bold text-sm shadow-md shadow-blue-500/25 transition-all active:scale-98 flex items-center justify-center gap-2 border border-white/20"
                 >
                   <Navigation className="w-4 h-4 text-white" />
                   <span className="uppercase tracking-wide font-extrabold">{t.planSafeRoute}</span>
@@ -159,178 +159,93 @@ export const HeroLandingPage: React.FC<HeroLandingPageProps> = ({
 
                 <button
                   onClick={() => onNavigatePage('gis-nowcast')}
-                  className="flex-1 py-3 px-5 rounded-full bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs sm:text-sm shadow-xs transition-all active:scale-98 flex items-center justify-center gap-2 border border-slate-700"
+                  className="flex-1 py-3.5 px-6 rounded-full bg-slate-900 hover:bg-slate-800 text-white font-bold text-sm shadow-xs transition-all active:scale-98 flex items-center justify-center gap-2 border border-slate-700"
                 >
                   <Layers className="w-4 h-4 text-cyan-400" />
                   <span className="uppercase tracking-wide font-extrabold">{t.checkStreetStatus}</span>
                 </button>
               </div>
-            </div>
 
-            {/* Interactive Street Status & Route Planning Cockpit Card */}
-            <div className="bg-white rounded-2xl sm:rounded-3xl border border-slate-200/90 shadow-md p-3.5 sm:p-5 space-y-3 sm:space-y-4">
-              {/* Dual Tab Switcher */}
-              <div className="flex bg-slate-100 p-1 rounded-xl sm:rounded-2xl text-xs font-semibold">
-                <button
-                  onClick={() => setHeroSearchTab('status')}
-                  className={`flex-1 py-1.5 sm:py-2 rounded-lg sm:rounded-xl flex items-center justify-center gap-1.5 sm:gap-2 transition text-[11px] sm:text-xs ${
-                    heroSearchTab === 'status'
-                      ? 'bg-white text-slate-900 shadow-sm font-bold border border-slate-200/60'
-                      : 'text-slate-500 hover:text-slate-800'
-                  }`}
-                >
-                  <Search className="w-3.5 h-3.5 text-cyan-600" />
-                  <span>{t.checkStreetStatus}</span>
-                </button>
-                <button
-                  onClick={() => setHeroSearchTab('route')}
-                  className={`flex-1 py-1.5 sm:py-2 rounded-lg sm:rounded-xl flex items-center justify-center gap-1.5 sm:gap-2 transition text-[11px] sm:text-xs ${
-                    heroSearchTab === 'route'
-                      ? 'bg-white text-slate-900 shadow-sm font-bold border border-slate-200/60'
-                      : 'text-slate-500 hover:text-slate-800'
-                  }`}
-                >
-                  <Navigation className="w-3.5 h-3.5 text-blue-600" />
-                  <span>{t.planSafeRoute}</span>
-                </button>
-              </div>
-
-              {heroSearchTab === 'status' && (
-                <div className="space-y-3">
-                  <div className="relative">
-                    <Search className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
-                    <input
-                      type="text"
-                      value={searchQuery}
-                      onChange={(e) => setSearchQuery(e.target.value)}
-                      placeholder={t.searchPlaceholder}
-                      className="w-full pl-9 pr-3 py-2 sm:py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-cyan-500/30 focus:border-cyan-600 text-xs font-medium text-slate-900 bg-slate-50/60 placeholder:text-slate-400 transition"
-                    />
-                  </div>
-
-                  {selectedSearchedZone && (
-                    <div className="p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-slate-50 border border-slate-200/90 space-y-2.5 sm:space-y-3">
-                      <div className="flex items-start justify-between gap-2">
-                        <div>
-                          <div className="text-xs font-bold text-slate-900 flex items-center gap-1.5">
-                            <MapPin className="w-3.5 h-3.5 text-cyan-600 shrink-0" />
-                            <span>{selectedSearchedZone.zone_name}</span>
-                          </div>
-                          <div className="text-[10px] text-slate-500 font-mono mt-0.5">
-                            DEM Elevation: {selectedSearchedZone.elevation_m}m MSL • Zone ID: {selectedSearchedZone.zone_id}
-                          </div>
-                        </div>
-                        <div className="text-right shrink-0">
-                          <span className={`text-[10px] font-mono font-bold px-2 py-0.5 rounded-md inline-block ${
-                            selectedSearchedZone.water_depth_cm > 50 ? 'bg-rose-600 text-white' :
-                            selectedSearchedZone.water_depth_cm > 25 ? 'bg-amber-500 text-white' :
-                            'bg-emerald-600 text-white'
-                          }`}>
-                            ~{selectedSearchedZone.water_depth_cm.toFixed(1)} cm
-                          </span>
-                        </div>
-                      </div>
-
-                      {/* Vehicle Passability Matrix with SVG Icons */}
-                      <div className="grid grid-cols-4 gap-1 sm:gap-1.5 pt-1">
-                        <div className={`p-1 sm:p-1.5 rounded-lg border text-center text-[9px] sm:text-[10px] ${
-                          selectedSearchedZone.water_depth_cm < 15 
-                            ? 'bg-emerald-50 border-emerald-200 text-emerald-800 font-semibold' 
-                            : 'bg-rose-50 border-rose-200 text-rose-700'
-                        }`}>
-                          <div className="flex items-center justify-center gap-1">
-                            <Footprints className="w-3 h-3" />
-                            <span className="hidden xs:inline">Walk</span>
-                          </div>
-                          <div className="text-[8px] sm:text-[9px] font-bold">{selectedSearchedZone.water_depth_cm < 15 ? 'Safe' : 'Unsafe'}</div>
-                        </div>
-
-                        <div className={`p-1 sm:p-1.5 rounded-lg border text-center text-[9px] sm:text-[10px] ${
-                          selectedSearchedZone.water_depth_cm < 20 
-                            ? 'bg-emerald-50 border-emerald-200 text-emerald-800 font-semibold' 
-                            : 'bg-rose-50 border-rose-200 text-rose-700'
-                        }`}>
-                          <div className="flex items-center justify-center gap-1">
-                            <Bike className="w-3 h-3" />
-                            <span className="hidden xs:inline">Bike</span>
-                          </div>
-                          <div className="text-[8px] sm:text-[9px] font-bold">{selectedSearchedZone.water_depth_cm < 20 ? 'Pass' : 'Stall'}</div>
-                        </div>
-
-                        <div className={`p-1 sm:p-1.5 rounded-lg border text-center text-[9px] sm:text-[10px] ${
-                          selectedSearchedZone.water_depth_cm < 30 
-                            ? 'bg-emerald-50 border-emerald-200 text-emerald-800 font-semibold' 
-                            : 'bg-rose-50 border-rose-200 text-rose-700'
-                        }`}>
-                          <div className="flex items-center justify-center gap-1">
-                            <Car className="w-3 h-3" />
-                            <span className="hidden xs:inline">Sedan</span>
-                          </div>
-                          <div className="text-[8px] sm:text-[9px] font-bold">{selectedSearchedZone.water_depth_cm < 30 ? 'Slow' : 'No'}</div>
-                        </div>
-
-                        <div className={`p-1 sm:p-1.5 rounded-lg border text-center text-[9px] sm:text-[10px] ${
-                          selectedSearchedZone.water_depth_cm < 60 
-                            ? 'bg-emerald-50 border-emerald-200 text-emerald-800 font-semibold' 
-                            : 'bg-rose-50 border-rose-200 text-rose-700'
-                        }`}>
-                          <div className="flex items-center justify-center gap-1">
-                            <Truck className="w-3 h-3" />
-                            <span>SUV</span>
-                          </div>
-                          <div className="text-[9px] font-bold">{selectedSearchedZone.water_depth_cm < 60 ? 'Clear' : 'Submerged'}</div>
-                        </div>
-                      </div>
-
-                      <p className="text-[11px] text-slate-700 font-medium bg-white p-2.5 rounded-xl border border-slate-200">
-                        {selectedSearchedZone.ai_advisory}
-                      </p>
-
-                      <div className="flex gap-2">
-                        <button
-                          onClick={() => {
-                            onSelectZone(selectedSearchedZone);
-                            onNavigatePage('gis-nowcast');
-                          }}
-                          className="flex-1 bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold py-2.5 rounded-xl transition flex items-center justify-center gap-1.5 shadow-xs"
-                        >
-                          <Eye className="w-3.5 h-3.5 text-cyan-400" />
-                          <span>Street GIS Scan</span>
-                        </button>
-                        <button
-                          onClick={() => onNavigatePage('safe-nav')}
-                          className="flex-1 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white text-xs font-bold py-2.5 rounded-xl transition flex items-center justify-center gap-1.5 shadow-xs"
-                        >
-                          <span>{t.viewSafeRoute}</span>
-                          <ArrowRight className="w-3.5 h-3.5" />
-                        </button>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              )}
-
-              {heroSearchTab === 'route' && (
-                <div className="space-y-4">
-                  <div className="p-4 rounded-2xl bg-blue-50/70 border border-blue-200/80 space-y-2">
-                    <div className="flex items-center gap-2 text-xs font-bold text-blue-950">
-                      <Bot className="w-4 h-4 text-blue-600" />
-                      <span>AI Inundation Avoidance Algorithm</span>
-                    </div>
-                    <p className="text-xs text-slate-600 leading-relaxed">
-                      Our physics-guided engine reroutes vehicles away from hydraulic depressions, underpasses, and drainage sumps onto elevated bridges and flyovers.
-                    </p>
-                  </div>
-                  <button
-                    onClick={() => onNavigatePage('safe-nav')}
-                    className="w-full bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white text-xs font-bold py-3 rounded-2xl transition flex items-center justify-center gap-2 shadow-md"
+              {/* Sleek Floating Street Search Bar */}
+              <div className="pt-2 space-y-2">
+                <div className="relative">
+                  <Search className="w-4 h-4 text-slate-400 absolute left-4 top-1/2 -translate-y-1/2" />
+                  <input
+                    type="text"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    placeholder={t.searchPlaceholder}
+                    className="w-full pl-10 pr-24 py-3 rounded-full border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-600 text-xs font-medium text-slate-900 bg-white shadow-2xs placeholder:text-slate-400 transition"
+                  />
+                  <button 
+                    onClick={() => onNavigatePage('gis-nowcast')}
+                    className="absolute right-1.5 top-1/2 -translate-y-1/2 px-3.5 py-1.5 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition flex items-center gap-1"
                   >
-                    <Navigation className="w-4 h-4" />
-                    <span>Launch Pan-India Safe Navigation Map</span>
-                    <ArrowRight className="w-4 h-4" />
+                    <span>Search</span>
+                    <ArrowRight className="w-3 h-3" />
                   </button>
                 </div>
-              )}
+
+                {/* Live Quick Preview Badge when user searches or hovers */}
+                {searchQuery && selectedSearchedZone && (
+                  <div className="p-3 rounded-2xl bg-blue-50/90 border border-blue-200 flex items-center justify-between gap-3 animate-in fade-in duration-150">
+                    <div className="min-w-0">
+                      <div className="text-xs font-bold text-slate-900 flex items-center gap-1.5 truncate">
+                        <MapPin className="w-3.5 h-3.5 text-blue-600 shrink-0" />
+                        <span>{selectedSearchedZone.zone_name}</span>
+                      </div>
+                      <div className="text-[11px] text-slate-500 font-mono">
+                        Water Depth: <strong className="text-slate-900">~{selectedSearchedZone.water_depth_cm.toFixed(1)} cm</strong> • Level: {selectedSearchedZone.citizen_water_level}
+                      </div>
+                    </div>
+                    <button
+                      onClick={() => {
+                        onSelectZone(selectedSearchedZone);
+                        onNavigatePage('safe-nav');
+                      }}
+                      className="px-3 py-1.5 rounded-full bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold shrink-0 transition flex items-center gap-1 shadow-2xs"
+                    >
+                      <span>Safe Route</span>
+                      <ArrowRight className="w-3 h-3" />
+                    </button>
+                  </div>
+                )}
+              </div>
+
+              {/* National Trust & Key Metric Tags */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-2 text-xs font-semibold text-slate-600">
+                <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-200/80 flex items-center gap-2">
+                  <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
+                  <div>
+                    <div className="text-[11px] text-slate-900 font-bold">128 Hotspots</div>
+                    <div className="text-[10px] text-slate-500">Live Monitored</div>
+                  </div>
+                </div>
+
+                <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-200/80 flex items-center gap-2">
+                  <Activity className="w-4 h-4 text-blue-600 shrink-0" />
+                  <div>
+                    <div className="text-[11px] text-slate-900 font-bold">94.2% Accuracy</div>
+                    <div className="text-[10px] text-slate-500">Physics Guided</div>
+                  </div>
+                </div>
+
+                <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-200/80 flex items-center gap-2">
+                  <Clock className="w-4 h-4 text-indigo-600 shrink-0" />
+                  <div>
+                    <div className="text-[11px] text-slate-900 font-bold">0–3h Horizon</div>
+                    <div className="text-[10px] text-slate-500">Early Nowcast</div>
+                  </div>
+                </div>
+
+                <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-200/80 flex items-center gap-2">
+                  <Radio className="w-4 h-4 text-cyan-600 shrink-0" />
+                  <div>
+                    <div className="text-[11px] text-slate-900 font-bold">Doppler Radar</div>
+                    <div className="text-[10px] text-slate-500">Live 3.2 GHz</div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
