@@ -116,15 +116,14 @@ export const NationalNavbar: React.FC<NationalNavbarProps> = ({
       <div className={`bg-white/95 backdrop-blur-xl border-b border-slate-200 select-none transition-all duration-200 ${isScrolled ? 'py-1.5 sm:py-2' : 'py-2 sm:py-2.5'}`}>
         <div className="w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-12 flex items-center justify-between gap-2 sm:gap-4">
           
-          {/* Left: Brand Logo & Shield */}
+          {/* Left: Brand Logo & Vector Water-Drop Skyline */}
           <div 
             onClick={() => onSelectPage('home')}
             className="cursor-pointer shrink-0"
           >
             <JalRakshakLogo 
               size="md"
-              badgeText={currentLang === 'bn' ? 'জলরক্ষক' : currentLang === 'hi' ? 'जल रक्षक' : 'Flood Shield'}
-              subtitle={t.appSub}
+              subtitle="Flood Intelligence for a Safer Tomorrow"
             />
           </div>
 

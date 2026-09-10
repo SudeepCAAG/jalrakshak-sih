@@ -14,144 +14,160 @@ export const JalRakshakLogo: React.FC<JalRakshakLogoProps> = ({
   size = 'md',
   className = '',
   showText = true,
-  subtitle,
+  subtitle = 'Flood Intelligence for a Safer Tomorrow',
   badgeText
 }) => {
   const sizeMap = {
-    sm: { box: 'w-8 h-8', icon: 'w-5 h-5', text: 'text-sm', sub: 'text-[9px]' },
-    md: { box: 'w-11 h-11', icon: 'w-7 h-7', text: 'text-[17px]', sub: 'text-[10px]' },
-    lg: { box: 'w-14 h-14', icon: 'w-9 h-9', text: 'text-xl', sub: 'text-xs' },
-    xl: { box: 'w-20 h-20', icon: 'w-13 h-13', text: 'text-3xl', sub: 'text-sm' },
+    sm: { icon: 'w-7 h-7', text: 'text-base', sub: 'text-[9px]' },
+    md: { icon: 'w-9 h-9', text: 'text-lg sm:text-[19px]', sub: 'text-[10px]' },
+    lg: { icon: 'w-12 h-12', text: 'text-2xl', sub: 'text-xs' },
+    xl: { icon: 'w-16 h-16', text: 'text-3xl sm:text-4xl', sub: 'text-sm' },
   };
 
   const currentSize = sizeMap[size] || sizeMap.md;
 
   return (
-    <div className={`flex items-center gap-3 select-none group ${className}`}>
-      {/* 3D Glass Shield Emblem */}
-      <div className="relative flex items-center justify-center shrink-0">
-        {/* Ambient Neon Pulse Glow */}
-        <div className="absolute -inset-1.5 bg-gradient-to-r from-amber-500/40 via-sky-500/30 to-amber-600/40 rounded-2xl blur-xs group-hover:blur-md transition-all duration-300"></div>
+    <div className={`flex items-center gap-2.5 sm:gap-3 select-none group ${className}`}>
+      {/* Precision Modern Vector Water-Drop & Skyline Emblem */}
+      <div className="relative shrink-0 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
+        <svg 
+          className={`${currentSize.icon} drop-shadow-xs`} 
+          viewBox="0 0 512 512" 
+          fill="none" 
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <defs>
+            {/* Water Droplet Gradient (Sky to Ocean Blue) */}
+            <linearGradient id="dropGrad" x1="20%" y1="0%" x2="80%" y2="100%">
+              <stop offset="0%" stopColor="#38BDF8" />
+              <stop offset="45%" stopColor="#0284C7" />
+              <stop offset="100%" stopColor="#0369A1" />
+            </linearGradient>
 
-        <div className={`${currentSize.box} relative rounded-2xl bg-gradient-to-b from-sky-900 via-sky-950 to-stone-950 p-1 shadow-[0_8px_24px_rgba(3,105,161,0.35)] ring-1.5 ring-amber-400/80 group-hover:scale-105 transition-transform duration-300 flex items-center justify-center overflow-hidden`}>
-          {/* Glass Gloss Sheen */}
-          <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-white/5 opacity-90 pointer-events-none"></div>
+            {/* Saffron Wave Swoosh Gradient */}
+            <linearGradient id="saffronWave" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#FF8A00" />
+              <stop offset="50%" stopColor="#FF6B00" />
+              <stop offset="100%" stopColor="#E65100" />
+            </linearGradient>
 
-          {/* Precision Vector Emblem */}
-          <svg className={`${currentSize.icon} drop-shadow-md`} viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="shieldRimGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#FBBF24" />
-                <stop offset="30%" stopColor="#FDE68A" />
-                <stop offset="70%" stopColor="#D97706" />
-                <stop offset="100%" stopColor="#92400E" />
-              </linearGradient>
+            {/* Navy Base Water Basin Gradient */}
+            <linearGradient id="navyWave" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#0284C7" />
+              <stop offset="50%" stopColor="#0B1E59" />
+              <stop offset="100%" stopColor="#07143D" />
+            </linearGradient>
 
-              <linearGradient id="shieldCoreGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#0284C7" />
-                <stop offset="40%" stopColor="#0369A1" />
-                <stop offset="100%" stopColor="#082F49" />
-              </linearGradient>
+            {/* Droplet Clip Path */}
+            <clipPath id="dropClip">
+              <path d="M256 36 C256 36 100 236 100 346 C100 432 170 476 256 476 C342 476 412 432 412 346 C412 236 256 36 256 36 Z" />
+            </clipPath>
+          </defs>
 
-              <linearGradient id="wave1Grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#38BDF8" />
-                <stop offset="100%" stopColor="#0284C7" />
-              </linearGradient>
+          {/* 1. Water Droplet Base Shell */}
+          <path 
+            d="M256 36 C256 36 100 236 100 346 C100 432 170 476 256 476 C342 476 412 432 412 346 C412 236 256 36 256 36 Z" 
+            fill="url(#dropGrad)" 
+          />
 
-              <linearGradient id="wave2Grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#FCD34D" />
-                <stop offset="50%" stopColor="#F59E0B" />
-                <stop offset="100%" stopColor="#D97706" />
-              </linearGradient>
+          {/* 2. Droplet Translucent Center Glow */}
+          <path 
+            d="M256 60 C256 60 125 240 125 340 C125 412 184 452 256 452 C328 452 387 412 387 340 C387 240 256 60 256 60 Z" 
+            fill="white" 
+            opacity="0.18" 
+          />
 
-              <linearGradient id="dropGradCore" x1="30%" y1="10%" x2="80%" y2="90%">
-                <stop offset="0%" stopColor="#FFFFFF" />
-                <stop offset="30%" stopColor="#FEF08A" />
-                <stop offset="70%" stopColor="#F59E0B" />
-                <stop offset="100%" stopColor="#B45309" />
-              </linearGradient>
-            </defs>
+          {/* 3. Urban City Skyline Silhouette (Clipped Inside Droplet) */}
+          <g clipPath="url(#dropClip)">
+            {/* Background Base Shadow */}
+            <path d="M100 320 L412 320 L412 480 L100 480 Z" fill="#0B1E59" opacity="0.4" />
 
-            {/* Outer Shield Rim */}
+            {/* City Architecture Silhouette in Deep Navy */}
             <path 
-              d="M256 36 L436 96 C436 290 350 412 256 476 C162 412 76 290 76 96 Z" 
-              fill="url(#shieldRimGrad)" 
-              stroke="#FEF3C7" 
-              strokeWidth="6" 
-              strokeLinejoin="round"
+              d="M 90 480 
+                 L 90 370 L 125 370 L 125 480
+                 L 132 480 L 132 340 L 165 340 L 165 480
+                 L 172 480 L 172 280 L 205 280 L 205 480
+                 L 212 480 L 212 315 L 238 315 L 238 480
+                 L 244 480 L 244 220 L 253 220 L 253 195 L 257 195 L 257 220 L 266 220 L 266 480
+                 L 272 480 L 272 260 L 302 260 L 302 480
+                 L 310 480 L 310 300 L 338 300 L 338 480
+                 L 345 480 L 345 350 L 375 350 L 375 480
+                 L 382 480 L 382 375 L 420 375 L 420 480 Z" 
+              fill="#0A1D4E"
             />
 
-            {/* Inner Hydrodynamic Core */}
-            <path 
-              d="M256 52 L418 106 C418 280 340 392 256 452 C172 392 94 280 94 106 Z" 
-              fill="url(#shieldCoreGrad)"
-            />
+            {/* Building Windows Lit Grid */}
+            <rect x="182" y="295" width="4" height="6" rx="1" fill="#7DD3FC" opacity="0.85" />
+            <rect x="192" y="295" width="4" height="6" rx="1" fill="#7DD3FC" opacity="0.85" />
+            <rect x="182" y="310" width="4" height="6" rx="1" fill="#7DD3FC" opacity="0.85" />
+            <rect x="192" y="310" width="4" height="6" rx="1" fill="#7DD3FC" opacity="0.85" />
+            
+            <rect x="249" y="235" width="4" height="6" rx="1" fill="#BAE6FD" opacity="0.95" />
+            <rect x="257" y="235" width="4" height="6" rx="1" fill="#BAE6FD" opacity="0.95" />
+            <rect x="249" y="250" width="4" height="6" rx="1" fill="#BAE6FD" opacity="0.95" />
+            <rect x="257" y="250" width="4" height="6" rx="1" fill="#BAE6FD" opacity="0.95" />
+            
+            <rect x="280" y="275" width="4" height="6" rx="1" fill="#7DD3FC" opacity="0.85" />
+            <rect x="290" y="275" width="4" height="6" rx="1" fill="#7DD3FC" opacity="0.85" />
+            <rect x="280" y="290" width="4" height="6" rx="1" fill="#7DD3FC" opacity="0.85" />
+            <rect x="290" y="290" width="4" height="6" rx="1" fill="#7DD3FC" opacity="0.85" />
+          </g>
 
-            {/* Subtle Reflection */}
-            <path 
-              d="M256 58 L410 110 C410 230 360 340 256 438 Z" 
-              fill="white" 
-              opacity="0.1"
-            />
+          {/* 4. Droplet Specular Reflection */}
+          <path 
+            d="M170 135 C210 75 250 52 256 46 C240 62 198 110 158 178 C144 202 136 235 136 265 C136 245 146 175 170 135 Z" 
+            fill="white" 
+            opacity="0.4" 
+          />
 
-            {/* Radar Telemetry Arcs */}
-            <g stroke="#38BDF8" strokeWidth="6" strokeLinecap="round" opacity="0.7">
-              <path d="M176 186 A105 105 0 0 1 336 186" strokeDasharray="14 14" />
-              <path d="M146 226 A145 145 0 0 1 366 226" strokeDasharray="18 16" />
-            </g>
+          {/* 5. Deep Navy Hydrodynamic Base Basin */}
+          <path 
+            d="M 96 376 C 110 440 175 486 256 486 C 337 486 402 440 416 376 C 365 418 290 435 220 420 C 160 405 120 388 96 376 Z" 
+            fill="url(#navyWave)" 
+          />
 
-            {/* Protective Wave Layers */}
-            <path 
-              d="M110 330 C150 280 210 270 256 310 C300 350 360 340 402 290 C406 330 380 380 256 442 C140 380 112 330 110 330 Z" 
-              fill="url(#wave1Grad)" 
-              opacity="0.95"
-            />
-            <path 
-              d="M125 350 C170 300 220 305 256 335 C295 365 345 355 385 315 C370 365 330 405 256 446 C180 405 140 365 125 350 Z" 
-              fill="url(#wave2Grad)"
-            />
-            <path 
-              d="M132 344 C175 300 220 306 256 335 C295 365 345 352 385 315" 
-              fill="none" 
-              stroke="#FFFBEB" 
-              strokeWidth="5" 
-              strokeLinecap="round"
-            />
+          {/* 6. Dynamic Saffron Wave Swoosh (Crossing Left to Right) */}
+          <path 
+            d="M 44 416 C 90 380 160 376 210 410 C 260 442 335 440 395 390 C 360 422 300 448 235 436 C 170 422 100 415 44 416 Z" 
+            fill="url(#saffronWave)" 
+          />
 
-            {/* Beacon Droplet */}
-            <path 
-              d="M256 120 C220 175 200 215 200 248 C200 278 225 304 256 304 C287 304 312 278 312 248 C312 215 292 175 256 120 Z" 
-              fill="url(#dropGradCore)"
-            />
-            <circle cx="244" cy="226" r="10" fill="white" />
-          </svg>
-        </div>
+          {/* 7. Crisp White Water Wave Crest */}
+          <path 
+            d="M 68 410 C 115 382 175 380 220 412 C 265 440 330 435 380 395" 
+            stroke="white" 
+            strokeWidth="8" 
+            strokeLinecap="round" 
+            fill="none" 
+            opacity="0.95"
+          />
+        </svg>
       </div>
 
-      {/* Brand Name & Typography */}
+      {/* Modern Brand Name & Typography */}
       {showText && (
-        <div className="flex flex-col">
+        <div className="flex flex-col justify-center leading-none">
           <div className="flex items-center gap-1.5 sm:gap-2">
             <span className={`${currentSize.text} font-black tracking-tight flex items-center`}>
-              <span className="bg-gradient-to-r from-sky-950 via-amber-900 to-amber-950 bg-clip-text text-transparent">
+              <span className="text-[#0B1E59] font-black">
                 Jal
               </span>
-              <span className="bg-gradient-to-r from-amber-600 via-yellow-600 to-amber-700 bg-clip-text text-transparent ml-0.5">
+              <span className="text-[#FF7A00] font-black ml-0.5">
                 Rakshak
               </span>
             </span>
 
             {badgeText && (
-              <span className="hidden sm:inline-flex text-[10px] px-2 py-0.5 rounded-full bg-gradient-to-r from-amber-100 to-amber-200 text-amber-950 border border-amber-300 font-black shadow-2xs">
+              <span className="hidden sm:inline-flex text-[10px] px-2 py-0.5 rounded-full bg-orange-50 text-[#FF7A00] border border-orange-200 font-bold shadow-2xs">
                 {badgeText}
               </span>
             )}
           </div>
 
           {subtitle && (
-            <p className={`hidden 2xl:flex ${currentSize.sub} text-stone-500 font-semibold tracking-wide items-center gap-1.5 leading-tight mt-0.5`}>
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-              <span>{subtitle}</span>
+            <p className={`hidden 2xl:flex ${currentSize.sub} text-slate-500 font-semibold tracking-tight mt-1`}>
+              {subtitle}
             </p>
           )}
         </div>
