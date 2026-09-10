@@ -39,7 +39,9 @@ import {
   Footprints,
   Bike,
   Car,
-  Truck
+  Truck,
+  Check,
+  X
 } from 'lucide-react';
 import { SystemOverview, Zone } from '@/types';
 import { CITIES_LIST } from './NationalNavbar';
@@ -415,12 +417,13 @@ export const HeroLandingPage: React.FC<HeroLandingPageProps> = ({
         </div>
       </section>
 
-      {/* 4. PHYSICS-GUIDED TECHNOLOGICAL PILLARS (CLEAN WHITE CARDS) */}
+      {/* 4. PHYSICS-GUIDED TECHNOLOGICAL PILLARS (HIGH-TECH GLASS CARDS) */}
       <section className="space-y-6">
         <div className="text-center max-w-3xl mx-auto space-y-2">
-          <span className="text-xs font-mono font-bold text-cyan-700 uppercase tracking-widest">
-            HYDRAULIC &amp; AI ARCHITECTURE
-          </span>
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-50 border border-cyan-200 text-cyan-800 text-[11px] font-mono font-extrabold uppercase tracking-wider shadow-xs">
+            <Sparkles className="w-3.5 h-3.5 text-cyan-600 animate-pulse" />
+            <span>HYDRAULIC &amp; AI ARCHITECTURE</span>
+          </div>
           <h2 className="text-2xl sm:text-3xl font-black text-slate-950 tracking-tight">
             {t.corePillarsTitle}
           </h2>
@@ -431,74 +434,126 @@ export const HeroLandingPage: React.FC<HeroLandingPageProps> = ({
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
           {/* Card 1: Doppler Radar */}
-          <div className="bg-white rounded-3xl p-6 border border-slate-200/90 shadow-sm hover:shadow-md hover:border-cyan-500/50 transition flex flex-col justify-between space-y-4 group">
+          <div className="relative overflow-hidden bg-white rounded-3xl p-6 border border-slate-200/90 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between space-y-4 group">
+            <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-cyan-500 to-blue-500" />
             <div className="space-y-3">
-              <div className="w-12 h-12 rounded-2xl bg-cyan-50 text-cyan-700 flex items-center justify-center border border-cyan-200">
-                <Radio className="w-6 h-6" />
+              <div className="flex items-center justify-between">
+                <div className="w-12 h-12 rounded-2xl bg-cyan-50 text-cyan-700 flex items-center justify-center border border-cyan-200/80 shadow-xs group-hover:scale-105 transition-transform duration-300">
+                  <Radio className="w-6 h-6" />
+                </div>
+                <span className="font-mono text-[10px] bg-cyan-50 text-cyan-800 font-extrabold px-2.5 py-1 rounded-full border border-cyan-200 uppercase tracking-wide">
+                  Layer 01
+                </span>
               </div>
-              <div className="font-mono text-[11px] text-cyan-700 font-bold uppercase">Layer 01</div>
-              <h3 className="font-bold text-base text-slate-900">Doppler Radar NWP</h3>
-              <p className="text-xs text-slate-600 leading-relaxed">
-                Captures high-resolution rainfall nowcasts at 15-minute intervals, predicting rain clouds before precipitation hits the ground.
-              </p>
+              <div>
+                <h3 className="font-black text-base text-slate-900 tracking-tight">Doppler Radar NWP</h3>
+                <p className="text-xs text-slate-600 leading-relaxed mt-1.5">
+                  Captures high-resolution rainfall nowcasts at 15-minute intervals, predicting rain clouds before precipitation hits the ground.
+                </p>
+              </div>
             </div>
-            <div className="pt-3 border-t border-slate-100 font-mono text-[10px] text-cyan-700 font-bold flex items-center justify-between">
-              <span>0–3h Forward Lookahead</span>
-              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition" />
+            <div className="pt-3 border-t border-slate-100/90 flex items-center justify-between">
+              <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-50 border border-slate-200 text-slate-700 font-mono text-[10px] font-bold">
+                <Zap className="w-3 h-3 text-cyan-600" />
+                <span>15-Min NWP Scan</span>
+              </div>
+              <span className="text-[11px] font-bold text-cyan-700 group-hover:text-cyan-800 flex items-center gap-1">
+                <span>0–3h Ahead</span>
+                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+              </span>
             </div>
           </div>
 
           {/* Card 2: 30m Micro-DEM */}
-          <div className="bg-white rounded-3xl p-6 border border-slate-200/90 shadow-sm hover:shadow-md hover:border-blue-500/50 transition flex flex-col justify-between space-y-4 group">
+          <div className="relative overflow-hidden bg-white rounded-3xl p-6 border border-slate-200/90 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between space-y-4 group">
+            <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-blue-500 to-indigo-500" />
             <div className="space-y-3">
-              <div className="w-12 h-12 rounded-2xl bg-blue-50 text-blue-700 flex items-center justify-center border border-blue-200">
-                <Compass className="w-6 h-6" />
+              <div className="flex items-center justify-between">
+                <div className="w-12 h-12 rounded-2xl bg-blue-50 text-blue-700 flex items-center justify-center border border-blue-200/80 shadow-xs group-hover:scale-105 transition-transform duration-300">
+                  <Compass className="w-6 h-6" />
+                </div>
+                <span className="font-mono text-[10px] bg-blue-50 text-blue-800 font-extrabold px-2.5 py-1 rounded-full border border-blue-200 uppercase tracking-wide">
+                  Layer 02
+                </span>
               </div>
-              <div className="font-mono text-[11px] text-blue-700 font-bold uppercase">Layer 02</div>
-              <h3 className="font-bold text-base text-slate-900">30m Micro-DEM Sump</h3>
-              <p className="text-xs text-slate-600 leading-relaxed">
-                Uses Digital Elevation Models to compute micro-watershed depressions where water naturally collects into high-risk bowl zones.
-              </p>
+              <div>
+                <h3 className="font-black text-base text-slate-900 tracking-tight">30m Micro-DEM Sump</h3>
+                <p className="text-xs text-slate-600 leading-relaxed mt-1.5">
+                  Uses Digital Elevation Models to compute micro-watershed depressions where water naturally collects into high-risk bowl zones.
+                </p>
+              </div>
             </div>
-            <div className="pt-3 border-t border-slate-100 font-mono text-[10px] text-blue-700 font-bold flex items-center justify-between">
-              <span>Centimeter Depth Gauge</span>
-              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition" />
+            <div className="pt-3 border-t border-slate-100/90 flex items-center justify-between">
+              <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-50 border border-slate-200 text-slate-700 font-mono text-[10px] font-bold">
+                <Layers className="w-3 h-3 text-blue-600" />
+                <span>30m Topo Grid</span>
+              </div>
+              <span className="text-[11px] font-bold text-blue-700 group-hover:text-blue-800 flex items-center gap-1">
+                <span>Depth Gauge</span>
+                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+              </span>
             </div>
           </div>
 
-          {/* Card 3: 1D/2D Underground Graph */}
-          <div className="bg-white rounded-3xl p-6 border border-slate-200/90 shadow-sm hover:shadow-md hover:border-amber-500/50 transition flex flex-col justify-between space-y-4 group">
+          {/* Card 3: 1D/2D Hydrodynamic Pipes */}
+          <div className="relative overflow-hidden bg-white rounded-3xl p-6 border border-slate-200/90 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between space-y-4 group">
+            <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-indigo-500 to-violet-500" />
             <div className="space-y-3">
-              <div className="w-12 h-12 rounded-2xl bg-amber-50 text-amber-700 flex items-center justify-center border border-amber-200">
-                <Layers className="w-6 h-6" />
+              <div className="flex items-center justify-between">
+                <div className="w-12 h-12 rounded-2xl bg-indigo-50 text-indigo-700 flex items-center justify-center border border-indigo-200/80 shadow-xs group-hover:scale-105 transition-transform duration-300">
+                  <Waves className="w-6 h-6" />
+                </div>
+                <span className="font-mono text-[10px] bg-indigo-50 text-indigo-800 font-extrabold px-2.5 py-1 rounded-full border border-indigo-200 uppercase tracking-wide">
+                  Layer 03
+                </span>
               </div>
-              <div className="font-mono text-[11px] text-amber-700 font-bold uppercase">Layer 03</div>
-              <h3 className="font-bold text-base text-slate-900">Hydrodynamic Pipes</h3>
-              <p className="text-xs text-slate-600 leading-relaxed">
-                Models underground stormwater pipes, culverts, and dewatering pump stations using Manning-Strickler hydrodynamic equations.
-              </p>
+              <div>
+                <h3 className="font-black text-base text-slate-900 tracking-tight">Hydrodynamic Pipes</h3>
+                <p className="text-xs text-slate-600 leading-relaxed mt-1.5">
+                  Models underground stormwater pipes, culverts, and dewatering pump stations using Manning-Strickler hydrodynamic equations.
+                </p>
+              </div>
             </div>
-            <div className="pt-3 border-t border-slate-100 font-mono text-[10px] text-amber-700 font-bold flex items-center justify-between">
-              <span>Pipe Surcharge Detection</span>
-              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition" />
+            <div className="pt-3 border-t border-slate-100/90 flex items-center justify-between">
+              <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-50 border border-slate-200 text-slate-700 font-mono text-[10px] font-bold">
+                <Activity className="w-3 h-3 text-indigo-600" />
+                <span>Manning 1D/2D</span>
+              </div>
+              <span className="text-[11px] font-bold text-indigo-700 group-hover:text-indigo-800 flex items-center gap-1">
+                <span>Pipe Telemetry</span>
+                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+              </span>
             </div>
           </div>
 
           {/* Card 4: AI Safe Navigator */}
-          <div className="bg-white rounded-3xl p-6 border border-slate-200/90 shadow-sm hover:shadow-md hover:border-emerald-500/50 transition flex flex-col justify-between space-y-4 group">
+          <div className="relative overflow-hidden bg-white rounded-3xl p-6 border border-slate-200/90 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between space-y-4 group">
+            <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-emerald-500 to-teal-500" />
             <div className="space-y-3">
-              <div className="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-700 flex items-center justify-center border border-emerald-200">
-                <Bot className="w-6 h-6" />
+              <div className="flex items-center justify-between">
+                <div className="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-700 flex items-center justify-center border border-emerald-200/80 shadow-xs group-hover:scale-105 transition-transform duration-300">
+                  <Bot className="w-6 h-6" />
+                </div>
+                <span className="font-mono text-[10px] bg-emerald-50 text-emerald-800 font-extrabold px-2.5 py-1 rounded-full border border-emerald-200 uppercase tracking-wide">
+                  Layer 04
+                </span>
               </div>
-              <div className="font-mono text-[11px] text-emerald-700 font-bold uppercase">Layer 04</div>
-              <h3 className="font-bold text-base text-slate-900">AI Safe Navigator</h3>
-              <p className="text-xs text-slate-600 leading-relaxed">
-                Calculates elevated alternate routes and answers citizen emergency questions using intelligent routing AI, avoiding stalled vehicles.
-              </p>
+              <div>
+                <h3 className="font-black text-base text-slate-900 tracking-tight">AI Safe Navigator</h3>
+                <p className="text-xs text-slate-600 leading-relaxed mt-1.5">
+                  Calculates elevated alternate routes and answers citizen emergency questions using intelligent routing AI, avoiding stalled vehicles.
+                </p>
+              </div>
             </div>
-            <div className="pt-3 border-t border-slate-100 font-mono text-[10px] text-emerald-700 font-bold flex items-center justify-between">
-              <span>Zero Stalled Vehicles</span>
-              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition" />
+            <div className="pt-3 border-t border-slate-100/90 flex items-center justify-between">
+              <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-50 border border-slate-200 text-slate-700 font-mono text-[10px] font-bold">
+                <ShieldCheck className="w-3 h-3 text-emerald-600" />
+                <span>Zero Stalling</span>
+              </div>
+              <span className="text-[11px] font-bold text-emerald-700 group-hover:text-emerald-800 flex items-center gap-1">
+                <span>Safe Reroute</span>
+                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+              </span>
             </div>
           </div>
         </div>
@@ -509,75 +564,148 @@ export const HeroLandingPage: React.FC<HeroLandingPageProps> = ({
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div>
             <div className="flex items-center gap-2">
-              <span className="text-xs font-mono font-bold text-slate-500 uppercase tracking-wider">
+              <span className="text-xs font-mono font-bold text-cyan-700 uppercase tracking-wider">
                 HYDROGRAPH TELEMETRY
               </span>
-              <span className="bg-amber-100 text-amber-900 text-[10px] font-bold px-2 py-0.5 rounded-full border border-amber-300">
+              <span className="bg-amber-100 text-amber-900 text-[10px] font-bold px-2.5 py-0.5 rounded-full border border-amber-300">
                 {currentCityMeta.name} Region
               </span>
             </div>
-            <h2 className="text-2xl font-black text-slate-900 tracking-tight mt-0.5">
+            <h2 className="text-2xl font-black text-slate-950 tracking-tight mt-0.5">
               Monitored Urban Underpasses &amp; Depressions
             </h2>
           </div>
           <button
             onClick={() => onNavigatePage('gis-nowcast')}
-            className="text-xs font-bold text-cyan-700 hover:text-cyan-800 flex items-center gap-1.5 group self-start sm:self-auto"
+            className="text-xs font-bold text-cyan-700 hover:text-cyan-800 flex items-center gap-1.5 group self-start sm:self-auto bg-cyan-50 hover:bg-cyan-100/80 px-3.5 py-2 rounded-xl border border-cyan-200/80 transition shadow-2xs"
           >
             <span>View All Zones on Full GIS Map</span>
             <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition" />
           </button>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          {zones.slice(0, 4).map((zone) => (
-            <div 
-              key={zone.zone_id}
-              className="bg-white rounded-3xl p-5 border border-slate-200/90 shadow-xs hover:shadow-md transition space-y-3.5"
-            >
-              <div className="flex items-center justify-between">
-                <span className="text-[10px] font-mono font-bold bg-slate-100 text-slate-700 px-2.5 py-1 rounded-lg">
-                  {zone.zone_id}
-                </span>
-                <span className={`text-[10px] font-mono font-bold px-2.5 py-0.5 rounded-full ${
-                  zone.water_depth_cm > 50 ? 'bg-rose-100 text-rose-800 border border-rose-300' :
-                  zone.water_depth_cm > 25 ? 'bg-amber-100 text-amber-800 border border-amber-300' :
-                  'bg-emerald-100 text-emerald-800 border border-emerald-300'
-                }`}>
-                  {zone.citizen_water_level}
-                </span>
-              </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+          {zones.slice(0, 4).map((zone) => {
+            const isSubmerged = zone.water_depth_cm > 50;
+            const isWaterlogged = zone.water_depth_cm > 25 && zone.water_depth_cm <= 50;
+            const depthPercent = Math.min(100, Math.round((zone.water_depth_cm / 120) * 100));
 
-              <div>
-                <h4 className="font-bold text-sm text-slate-900">{zone.zone_name}</h4>
-                <div className="flex items-center justify-between text-xs mt-1.5 text-slate-500 font-mono">
-                  <span>Water Depth:</span>
-                  <span className={`font-bold ${zone.water_depth_cm > 25 ? 'text-rose-600' : 'text-emerald-600'}`}>
-                    ~{zone.water_depth_cm.toFixed(1)} cm
-                  </span>
-                </div>
-                <div className="flex items-center justify-between text-xs text-slate-500 font-mono">
-                  <span>Elevation:</span>
-                  <span className="font-medium text-slate-800">{zone.elevation_m}m MSL</span>
-                </div>
-              </div>
-
-              <p className="text-[11px] text-slate-600 leading-snug bg-slate-50 p-2.5 rounded-xl border border-slate-100">
-                "{zone.ai_advisory}"
-              </p>
-
-              <button
-                onClick={() => {
-                  onSelectZone(zone);
-                  onNavigatePage('gis-nowcast');
-                }}
-                className="w-full bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold py-2 rounded-xl transition flex items-center justify-center gap-1.5"
+            return (
+              <div 
+                key={zone.zone_id}
+                className="bg-white rounded-3xl p-5 border border-slate-200/90 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between space-y-4 group"
               >
-                <span>Inspect on Live Map</span>
-                <ArrowRight className="w-3 h-3" />
-              </button>
-            </div>
-          ))}
+                {/* Zone Header */}
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[10px] font-mono font-bold bg-slate-100 text-slate-700 px-2.5 py-1 rounded-lg border border-slate-200">
+                      {zone.zone_id}
+                    </span>
+                    <span className={`inline-flex items-center gap-1.5 text-[10px] font-mono font-bold px-2.5 py-0.5 rounded-full ${
+                      isSubmerged ? 'bg-rose-100 text-rose-800 border border-rose-300' :
+                      isWaterlogged ? 'bg-amber-100 text-amber-800 border border-amber-300' :
+                      'bg-emerald-100 text-emerald-800 border border-emerald-300'
+                    }`}>
+                      <span className={`w-1.5 h-1.5 rounded-full ${
+                        isSubmerged ? 'bg-rose-500 animate-pulse' :
+                        isWaterlogged ? 'bg-amber-500' :
+                        'bg-emerald-500'
+                      }`} />
+                      {zone.citizen_water_level}
+                    </span>
+                  </div>
+
+                  <div>
+                    <h4 className="font-black text-sm text-slate-900 tracking-tight group-hover:text-cyan-700 transition">
+                      {zone.zone_name}
+                    </h4>
+                    <div className="flex items-center justify-between text-[11px] text-slate-500 font-mono mt-1">
+                      <span>Elevation: <strong className="text-slate-800">{zone.elevation_m}m MSL</strong></span>
+                      <span className={`font-bold ${isSubmerged ? 'text-rose-600' : isWaterlogged ? 'text-amber-600' : 'text-emerald-600'}`}>
+                        ~{zone.water_depth_cm.toFixed(1)} cm
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Water Depth Progress Meter */}
+                  <div className="space-y-1">
+                    <div className="w-full h-2 bg-slate-100 rounded-full overflow-hidden border border-slate-200/60">
+                      <div 
+                        className={`h-full rounded-full transition-all duration-700 ${
+                          isSubmerged ? 'bg-gradient-to-r from-amber-500 to-rose-600' :
+                          isWaterlogged ? 'bg-gradient-to-r from-cyan-500 to-amber-500' :
+                          'bg-emerald-500'
+                        }`}
+                        style={{ width: `${Math.max(6, depthPercent)}%` }}
+                      />
+                    </div>
+                    <div className="flex justify-between text-[9px] font-mono text-slate-500">
+                      <span>0cm (Dry)</span>
+                      <span>50cm (Critical)</span>
+                      <span>120cm+</span>
+                    </div>
+                  </div>
+
+                  {/* Vehicle Passability Micro-Grid */}
+                  <div className="bg-slate-50 rounded-2xl p-2.5 border border-slate-200/80 space-y-1.5">
+                    <div className="text-[10px] font-mono font-bold text-slate-500 uppercase tracking-wider">
+                      Passability Status
+                    </div>
+                    <div className="grid grid-cols-4 gap-1">
+                      {/* Walk */}
+                      <div className={`flex flex-col items-center justify-center p-1 rounded-lg border text-[9px] font-bold ${
+                        zone.water_depth_cm < 15 
+                          ? 'bg-emerald-50/80 border-emerald-200 text-emerald-700' 
+                          : 'bg-slate-100/70 border-slate-200 text-slate-500 line-through opacity-75'
+                      }`}>
+                        <Footprints className="w-3.5 h-3.5 mb-0.5" />
+                        <span>Walk</span>
+                      </div>
+                      {/* Bike */}
+                      <div className={`flex flex-col items-center justify-center p-1 rounded-lg border text-[9px] font-bold ${
+                        zone.water_depth_cm < 20 
+                          ? 'bg-emerald-50/80 border-emerald-200 text-emerald-700' 
+                          : 'bg-slate-100/70 border-slate-200 text-slate-500 line-through opacity-75'
+                      }`}>
+                        <Bike className="w-3.5 h-3.5 mb-0.5" />
+                        <span>2W</span>
+                      </div>
+                      {/* Car */}
+                      <div className={`flex flex-col items-center justify-center p-1 rounded-lg border text-[9px] font-bold ${
+                        zone.water_depth_cm < 30 
+                          ? 'bg-emerald-50/80 border-emerald-200 text-emerald-700' 
+                          : 'bg-slate-100/70 border-slate-200 text-slate-500 line-through opacity-75'
+                      }`}>
+                        <Car className="w-3.5 h-3.5 mb-0.5" />
+                        <span>Car</span>
+                      </div>
+                      {/* SUV */}
+                      <div className={`flex flex-col items-center justify-center p-1 rounded-lg border text-[9px] font-bold ${
+                        zone.water_depth_cm < 60 
+                          ? 'bg-emerald-50/80 border-emerald-200 text-emerald-700' 
+                          : 'bg-rose-50 border-rose-200 text-rose-700'
+                      }`}>
+                        <Truck className="w-3.5 h-3.5 mb-0.5" />
+                        <span>SUV</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Inspect Action Button */}
+                <button
+                  onClick={() => {
+                    onSelectZone(zone);
+                    onNavigatePage('gis-nowcast');
+                  }}
+                  className="w-full bg-slate-900 hover:bg-cyan-700 text-white text-xs font-bold py-2.5 rounded-xl shadow-xs hover:shadow-md transition-all duration-200 flex items-center justify-center gap-1.5 group/btn"
+                >
+                  <span>Inspect Live Hydrograph</span>
+                  <ArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-1 transition-transform" />
+                </button>
+              </div>
+            );
+          })}
         </div>
       </section>
 
