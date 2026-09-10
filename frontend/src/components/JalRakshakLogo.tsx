@@ -149,7 +149,7 @@ export const JalRakshakLogo: React.FC<JalRakshakLogoProps> = ({
           </div>
 
           {subtitle && (
-            <p className={`hidden sm:flex ${currentSize.sub} text-stone-500 font-semibold tracking-wide items-center gap-1.5 leading-tight mt-0.5`}>
+            <p className={`hidden 2xl:flex ${currentSize.sub} text-stone-500 font-semibold tracking-wide items-center gap-1.5 leading-tight mt-0.5`}>
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
               <span>{subtitle}</span>
             </p>
