@@ -8,6 +8,7 @@ interface JalRakshakLogoProps {
   showText?: boolean;
   subtitle?: string;
   badgeText?: string;
+  isDark?: boolean;
 }
 
 export const JalRakshakLogo: React.FC<JalRakshakLogoProps> = ({
@@ -15,7 +16,8 @@ export const JalRakshakLogo: React.FC<JalRakshakLogoProps> = ({
   className = '',
   showText = true,
   subtitle = 'Flood Intelligence for a Safer Tomorrow',
-  badgeText
+  badgeText,
+  isDark = false
 }) => {
   const sizeMap = {
     sm: { icon: 'w-7 h-7', text: 'text-base', sub: 'text-[9px]' },
@@ -150,7 +152,7 @@ export const JalRakshakLogo: React.FC<JalRakshakLogoProps> = ({
         <div className="flex flex-col justify-center leading-none">
           <div className="flex items-center gap-1.5 sm:gap-2">
             <span className={`${currentSize.text} font-black tracking-tight flex items-center`}>
-              <span className="text-[#0B1E59] font-black">
+              <span className={isDark ? "text-white font-black" : "text-[#0B1E59] font-black"}>
                 Jal
               </span>
               <span className="text-[#FF7A00] font-black ml-0.5">
@@ -159,14 +161,20 @@ export const JalRakshakLogo: React.FC<JalRakshakLogoProps> = ({
             </span>
 
             {badgeText && (
-              <span className="hidden sm:inline-flex text-[10px] px-2 py-0.5 rounded-full bg-orange-50 text-[#FF7A00] border border-orange-200 font-bold shadow-2xs">
+              <span className={`hidden sm:inline-flex text-[10px] px-2 py-0.5 rounded-full font-bold shadow-2xs ${
+                isDark 
+                  ? 'bg-white/10 text-orange-400 border border-orange-400/30' 
+                  : 'bg-orange-50 text-[#FF7A00] border border-orange-200'
+              }`}>
                 {badgeText}
               </span>
             )}
           </div>
 
           {subtitle && (
-            <p className={`hidden 2xl:flex ${currentSize.sub} text-slate-500 font-semibold tracking-tight mt-1`}>
+            <p className={`hidden 2xl:flex ${currentSize.sub} font-semibold tracking-tight mt-1 ${
+              isDark ? 'text-slate-400' : 'text-slate-500'
+            }`}>
               {subtitle}
             </p>
           )}

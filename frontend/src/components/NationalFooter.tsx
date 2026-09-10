@@ -58,6 +58,7 @@ export const NationalFooter: React.FC<NationalFooterProps> = ({
             <div className="cursor-pointer inline-block" onClick={() => onNavigatePage('home')}>
               <JalRakshakLogo 
                 size="lg"
+                isDark={true}
                 badgeText="NATIONAL DISASTER MANAGEMENT"
                 subtitle="Urban Inundation Nowcasting & Safe Navigation Platform"
               />

@@ -1,99 +1,108 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
   <defs>
-    <radialGradient id="bgGlow" cx="50%" cy="45%" r="50%">
-      <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.35"/>
-      <stop offset="100%" stop-color="#0369A1" stop-opacity="0"/>
-    </radialGradient>
-
-    <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0284C7"/>
-      <stop offset="40%" stop-color="#0369A1"/>
-      <stop offset="100%" stop-color="#075985"/>
+    <!-- Water Droplet Gradient (Sky to Ocean Blue) -->
+    <linearGradient id="dropGrad" x1="20%" y1="0%" x2="80%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8" />
+      <stop offset="45%" stop-color="#0284C7" />
+      <stop offset="100%" stop-color="#0369A1" />
     </linearGradient>
 
-    <linearGradient id="shieldRim" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#F59E0B"/>
-      <stop offset="30%" stop-color="#FDE68A"/>
-      <stop offset="70%" stop-color="#D97706"/>
-      <stop offset="100%" stop-color="#B45309"/>
+    <!-- Saffron Wave Swoosh Gradient -->
+    <linearGradient id="saffronWave" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF8A00" />
+      <stop offset="50%" stop-color="#FF6B00" />
+      <stop offset="100%" stop-color="#E65100" />
     </linearGradient>
 
-    <linearGradient id="waveGrad1" x1="0%" y1="30%" x2="100%" y2="70%">
-      <stop offset="0%" stop-color="#38BDF8"/>
-      <stop offset="50%" stop-color="#0EA5E9"/>
-      <stop offset="100%" stop-color="#0284C7"/>
+    <!-- Navy Base Water Basin Gradient -->
+    <linearGradient id="navyWave" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0284C7" />
+      <stop offset="50%" stop-color="#0B1E59" />
+      <stop offset="100%" stop-color="#07143D" />
     </linearGradient>
 
-    <linearGradient id="waveGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#FBBF24"/>
-      <stop offset="50%" stop-color="#F59E0B"/>
-      <stop offset="100%" stop-color="#D97706"/>
-    </linearGradient>
-
-    <linearGradient id="dropGrad" x1="30%" y1="10%" x2="80%" y2="90%">
-      <stop offset="0%" stop-color="#FFFBEB"/>
-      <stop offset="30%" stop-color="#FDE68A"/>
-      <stop offset="70%" stop-color="#F59E0B"/>
-      <stop offset="100%" stop-color="#D97706"/>
-    </linearGradient>
-
-    <filter id="dropShadow" x="-10%" y="-10%" width="130%" height="130%">
-      <feDropShadow dx="0" dy="14" stdDeviation="16" flood-color="#0369A1" flood-opacity="0.35"/>
-    </filter>
-
-    <filter id="glowFilter" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="5" result="blur"/>
-      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
-    </filter>
+    <!-- Droplet Clip Path -->
+    <clipPath id="dropClip">
+      <path d="M256 36 C256 36 100 236 100 346 C100 432 170 476 256 476 C342 476 412 432 412 346 C412 236 256 36 256 36 Z" />
+    </clipPath>
   </defs>
 
-  <!-- Ambient Glow -->
-  <circle cx="256" cy="256" r="240" fill="url(#bgGlow)"/>
+  <!-- 1. Water Droplet Base Shell -->
+  <path 
+    d="M256 36 C256 36 100 236 100 346 C100 432 170 476 256 476 C342 476 412 432 412 346 C412 236 256 36 256 36 Z" 
+    fill="url(#dropGrad)" 
+  />
 
-  <!-- Main Shield Body -->
-  <g filter="url(#dropShadow)">
-    <!-- Outer Golden Shield Rim -->
-    <path d="M256 36 L436 96 C436 290 350 412 256 476 C162 412 76 290 76 96 Z" 
-          fill="url(#shieldRim)" stroke="#FFFBEB" stroke-width="4" stroke-linejoin="round"/>
+  <!-- 2. Droplet Translucent Center Glow -->
+  <path 
+    d="M256 60 C256 60 125 240 125 340 C125 412 184 452 256 452 C328 452 387 412 387 340 C387 240 256 60 256 60 Z" 
+    fill="white" 
+    opacity="0.2" 
+  />
 
-    <!-- Inner Deep Ocean Shield -->
-    <path d="M256 52 L418 106 C418 280 340 392 256 452 C172 392 94 280 94 106 Z" 
-          fill="url(#shieldGrad)"/>
+  <!-- 3. Urban City Skyline Silhouette (Clipped Inside Droplet) -->
+  <g clip-path="url(#dropClip)">
+    <!-- Background Base Shadow -->
+    <path d="M100 320 L412 320 L412 480 L100 480 Z" fill="#0B1E59" opacity="0.4" />
 
-    <!-- Inner Shield Shimmer -->
-    <path d="M256 58 L410 110 C410 230 360 340 256 438 C256 438 256 58 256 58 Z" 
-          fill="white" opacity="0.08"/>
+    <!-- City Architecture Silhouette in Deep Navy -->
+    <path 
+      d="M 90 480 
+         L 90 370 L 125 370 L 125 480
+         L 132 480 L 132 340 L 165 340 L 165 480
+         L 172 480 L 172 280 L 205 280 L 205 480
+         L 212 480 L 212 315 L 238 315 L 238 480
+         L 244 480 L 244 220 L 253 220 L 253 195 L 257 195 L 257 220 L 266 220 L 266 480
+         L 272 480 L 272 260 L 302 260 L 302 480
+         L 310 480 L 310 300 L 338 300 L 338 480
+         L 345 480 L 345 350 L 375 350 L 375 480
+         L 382 480 L 382 375 L 420 375 L 420 480 Z" 
+      fill="#0A1D4E"
+    />
+
+    <!-- Building Windows Lit Grid -->
+    <rect x="182" y="295" width="5" height="7" rx="1" fill="#7DD3FC" opacity="0.9" />
+    <rect x="192" y="295" width="5" height="7" rx="1" fill="#7DD3FC" opacity="0.9" />
+    <rect x="182" y="310" width="5" height="7" rx="1" fill="#7DD3FC" opacity="0.9" />
+    <rect x="192" y="310" width="5" height="7" rx="1" fill="#7DD3FC" opacity="0.9" />
+    
+    <rect x="249" y="235" width="5" height="7" rx="1" fill="#BAE6FD" opacity="0.95" />
+    <rect x="257" y="235" width="5" height="7" rx="1" fill="#BAE6FD" opacity="0.95" />
+    <rect x="249" y="250" width="5" height="7" rx="1" fill="#BAE6FD" opacity="0.95" />
+    <rect x="257" y="250" width="5" height="7" rx="1" fill="#BAE6FD" opacity="0.95" />
+    
+    <rect x="280" y="275" width="5" height="7" rx="1" fill="#7DD3FC" opacity="0.9" />
+    <rect x="290" y="275" width="5" height="7" rx="1" fill="#7DD3FC" opacity="0.9" />
+    <rect x="280" y="290" width="5" height="7" rx="1" fill="#7DD3FC" opacity="0.9" />
+    <rect x="290" y="290" width="5" height="7" rx="1" fill="#7DD3FC" opacity="0.9" />
   </g>
 
-  <!-- High-Tech Radar Arcs -->
-  <g stroke="#38BDF8" stroke-width="4.5" stroke-linecap="round" opacity="0.65" filter="url(#glowFilter)">
-    <path d="M176 186 A105 105 0 0 1 336 186" stroke-dasharray="12 12"/>
-    <path d="M146 226 A145 145 0 0 1 366 226" stroke-dasharray="16 14"/>
-    <path d="M120 266 A185 185 0 0 1 392 266" stroke-dasharray="20 18"/>
-  </g>
+  <!-- 4. Droplet Specular Reflection -->
+  <path 
+    d="M170 135 C210 75 250 52 256 46 C240 62 198 110 158 178 C144 202 136 235 136 265 C136 245 146 175 170 135 Z" 
+    fill="white" 
+    opacity="0.4" 
+  />
 
-  <!-- Hydrodynamic Ocean Waves (The Flood Barrier) -->
-  <path d="M110 330 C150 280 210 270 256 310 C300 350 360 340 402 290 C406 330 380 380 256 442 C140 380 112 330 110 330 Z" 
-        fill="url(#waveGrad1)" opacity="0.95"/>
+  <!-- 5. Deep Navy Hydrodynamic Base Basin -->
+  <path 
+    d="M 96 376 C 110 440 175 486 256 486 C 337 486 402 440 416 376 C 365 418 290 435 220 420 C 160 405 120 388 96 376 Z" 
+    fill="url(#navyWave)" 
+  />
 
-  <path d="M125 350 C170 300 220 305 256 335 C295 365 345 355 385 315 C370 365 330 405 256 446 C180 405 140 365 125 350 Z" 
-        fill="url(#waveGrad2)"/>
+  <!-- 6. Dynamic Saffron Wave Swoosh (Crossing Left to Right) -->
+  <path 
+    d="M 44 416 C 90 380 160 376 210 410 C 260 442 335 440 395 390 C 360 422 300 448 235 436 C 170 422 100 415 44 416 Z" 
+    fill="url(#saffronWave)" 
+  />
 
-  <path d="M132 344 C175 300 220 306 256 335 C295 365 345 352 385 315" 
-        fill="none" stroke="#FFFBEB" stroke-width="4" stroke-linecap="round"/>
-
-  <!-- Central Water Droplet Beacon -->
-  <g filter="url(#glowFilter)">
-    <path d="M256 120 C220 175 200 215 200 248 C200 278 225 304 256 304 C287 304 312 278 312 248 C312 215 292 175 256 120 Z" 
-          fill="url(#dropGrad)"/>
-
-    <path d="M256 142 C234 184 220 214 220 238 C220 258 236 274 256 274 C276 274 292 258 292 238 C292 214 278 184 256 142 Z" 
-          fill="#FFFFFF" opacity="0.75"/>
-
-    <circle cx="244" cy="226" r="9" fill="white"/>
-    <circle cx="264" cy="248" r="4" fill="white" opacity="0.8"/>
-  </g>
-
-  <!-- Sentinel Sparkle -->
-  <path d="M256 94 L260 106 L272 110 L260 114 L256 126 L252 114 L240 110 L252 106 Z" fill="#FFFBEB"/>
+  <!-- 7. Crisp White Water Wave Crest -->
+  <path 
+    d="M 68 410 C 115 382 175 380 220 412 C 265 440 330 435 380 395" 
+    stroke="white" 
+    stroke-width="10" 
+    stroke-linecap="round" 
+    fill="none" 
+    opacity="0.95" 
+  />
 </svg>
