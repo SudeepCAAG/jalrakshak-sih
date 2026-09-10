@@ -43,7 +43,11 @@ export const NationalFooter: React.FC<NationalFooterProps> = ({
   return (
     <footer className="relative bg-slate-950 text-white border-t border-slate-800/80 z-10 overflow-hidden">
       {/* Top Accent Glowing Stripe */}
-      <div className="h-1 w-full bg-gradient-to-r from-cyan-500 via-blue-600 to-amber-500 shadow-sm" />
+      <div className="h-1 w-full flex">
+        <div className="flex-1 bg-[#FF9933]" />
+        <div className="flex-1 bg-white" />
+        <div className="flex-1 bg-[#138808]" />
+      </div>
 
       {/* Main Multi-Column Grid */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-12 pb-24">
@@ -76,7 +80,7 @@ export const NationalFooter: React.FC<NationalFooterProps> = ({
             {/* Institutional Framework Badges */}
             <div className="flex flex-wrap gap-2 text-[11px] text-slate-300 pt-1 font-mono">
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-slate-900 border border-slate-800 text-slate-300">
-                <Radio className="w-3 h-3 text-cyan-400" />
+                <Radio className="w-3 h-3 text-[#FF9933]" />
                 <span>MoES / IMD Radar Sync</span>
               </span>
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-slate-900 border border-slate-800 text-slate-300">
@@ -92,7 +96,7 @@ export const NationalFooter: React.FC<NationalFooterProps> = ({
 
           {/* Column 3: Citizen Services */}
           <div className="space-y-3">
-            <h4 className="text-xs font-mono font-bold text-cyan-400 uppercase tracking-widest flex items-center gap-1.5">
+            <h4 className="text-xs font-mono font-bold text-white uppercase tracking-widest flex items-center gap-1.5">
               <Globe className="w-3.5 h-3.5" />
               <span>Citizen Services</span>
             </h4>
@@ -100,27 +104,27 @@ export const NationalFooter: React.FC<NationalFooterProps> = ({
               <li>
                 <button 
                   onClick={() => onNavigatePage('home')}
-                  className="text-slate-300 hover:text-cyan-400 transition flex items-center gap-2 group w-full text-left"
+                  className="text-slate-300 hover:text-[#FF9933] transition flex items-center gap-2 group w-full text-left"
                 >
-                  <ChevronRight className="w-3.5 h-3.5 text-slate-600 group-hover:text-cyan-400 group-hover:translate-x-0.5 transition" />
+                  <ChevronRight className="w-3.5 h-3.5 text-slate-600 group-hover:text-[#FF9933] group-hover:translate-x-0.5 transition" />
                   <span>National Overview</span>
                 </button>
               </li>
               <li>
                 <button 
                   onClick={() => onNavigatePage('gis-nowcast')}
-                  className="text-slate-300 hover:text-cyan-400 transition flex items-center gap-2 group w-full text-left"
+                  className="text-slate-300 hover:text-[#FF9933] transition flex items-center gap-2 group w-full text-left"
                 >
-                  <ChevronRight className="w-3.5 h-3.5 text-slate-600 group-hover:text-cyan-400 group-hover:translate-x-0.5 transition" />
+                  <ChevronRight className="w-3.5 h-3.5 text-slate-600 group-hover:text-[#FF9933] group-hover:translate-x-0.5 transition" />
                   <span>0–3h Street GIS Nowcast</span>
                 </button>
               </li>
               <li>
                 <button 
                   onClick={() => onNavigatePage('safe-nav')}
-                  className="text-slate-300 hover:text-cyan-400 transition flex items-center gap-2 group w-full text-left"
+                  className="text-slate-300 hover:text-[#FF9933] transition flex items-center gap-2 group w-full text-left"
                 >
-                  <ChevronRight className="w-3.5 h-3.5 text-slate-600 group-hover:text-cyan-400 group-hover:translate-x-0.5 transition" />
+                  <ChevronRight className="w-3.5 h-3.5 text-slate-600 group-hover:text-[#FF9933] group-hover:translate-x-0.5 transition" />
                   <span>Inundation Safe Routing</span>
                 </button>
               </li>
@@ -136,18 +140,18 @@ export const NationalFooter: React.FC<NationalFooterProps> = ({
               <li>
                 <button 
                   onClick={() => onNavigatePage('bulletins')}
-                  className="text-slate-300 hover:text-cyan-400 transition flex items-center gap-2 group w-full text-left"
+                  className="text-slate-300 hover:text-[#FF9933] transition flex items-center gap-2 group w-full text-left"
                 >
-                  <ChevronRight className="w-3.5 h-3.5 text-slate-600 group-hover:text-cyan-400 group-hover:translate-x-0.5 transition" />
+                  <ChevronRight className="w-3.5 h-3.5 text-slate-600 group-hover:text-[#FF9933] group-hover:translate-x-0.5 transition" />
                   <span>Disaster Bulletins &amp; SitReps</span>
                 </button>
               </li>
               <li>
                 <button 
                   onClick={onOpenSimulation}
-                  className="text-slate-300 hover:text-cyan-400 transition flex items-center gap-2 group w-full text-left"
+                  className="text-slate-300 hover:text-[#FF9933] transition flex items-center gap-2 group w-full text-left"
                 >
-                  <ChevronRight className="w-3.5 h-3.5 text-slate-600 group-hover:text-cyan-400 group-hover:translate-x-0.5 transition" />
+                  <ChevronRight className="w-3.5 h-3.5 text-slate-600 group-hover:text-[#FF9933] group-hover:translate-x-0.5 transition" />
                   <span>Hydraulic Stress Simulator</span>
                 </button>
               </li>
@@ -156,7 +160,7 @@ export const NationalFooter: React.FC<NationalFooterProps> = ({
 
           {/* Column 4: Monitored Metros */}
           <div className="space-y-3">
-            <h4 className="text-xs font-mono font-bold text-cyan-400 uppercase tracking-widest flex items-center gap-1.5">
+            <h4 className="text-xs font-mono font-bold text-white uppercase tracking-widest flex items-center gap-1.5">
               <MapPin className="w-3.5 h-3.5" />
               <span>Monitored Metros</span>
             </h4>
@@ -172,12 +176,12 @@ export const NationalFooter: React.FC<NationalFooterProps> = ({
                     }}
                     className={`w-full text-left py-1.5 px-3 rounded-xl transition-all flex items-center justify-between border ${
                       isSelected 
-                        ? 'bg-cyan-950/60 text-cyan-200 font-bold border-cyan-500/40 shadow-xs' 
+                        ? 'bg-white/10 text-white font-bold border-white/30 shadow-xs' 
                         : 'bg-slate-900/50 text-slate-300 border-slate-800/80 hover:bg-slate-800/80 hover:text-white hover:border-slate-700'
                     }`}
                   >
                     <div className="flex items-center gap-2">
-                      <span className={`w-1.5 h-1.5 rounded-full ${isSelected ? 'bg-cyan-400 animate-pulse' : 'bg-emerald-500'}`} />
+                      <span className={`w-1.5 h-1.5 rounded-full ${isSelected ? 'bg-[#FF9933] animate-pulse' : 'bg-emerald-500'}`} />
                       <span className="font-semibold">{city.name}</span>
                     </div>
                     <span className="text-[10px] font-mono text-slate-400">{city.state}</span>
@@ -197,7 +201,7 @@ export const NationalFooter: React.FC<NationalFooterProps> = ({
               {/* 112 Dial */}
               <a 
                 href="tel:112"
-                className="p-3 rounded-2xl bg-gradient-to-r from-rose-600 to-red-600 hover:from-rose-500 hover:to-red-500 text-white flex items-center justify-between transition-all shadow-md shadow-rose-950/50 group"
+                className="p-3 rounded-2xl bg-red-600 hover:bg-red-700 text-white flex items-center justify-between transition-all shadow-md shadow-rose-950/50 group"
               >
                 <div>
                   <div className="text-[10px] font-mono text-rose-100 font-bold uppercase tracking-wider">National SOS Helpline</div>
@@ -217,9 +221,9 @@ export const NationalFooter: React.FC<NationalFooterProps> = ({
               >
                 <div>
                   <div className="text-[10px] font-mono text-slate-400 font-semibold">NDRF Flood Rescue</div>
-                  <div className="text-xs font-mono font-bold text-cyan-300 group-hover:text-cyan-200">+91-9711077372</div>
+                  <div className="text-xs font-mono font-bold text-[#FF9933] group-hover:text-[#FFB366]">+91-9711077372</div>
                 </div>
-                <LifeBuoy className="w-4 h-4 text-slate-500 group-hover:text-cyan-400 transition-colors" />
+                <LifeBuoy className="w-4 h-4 text-slate-500 group-hover:text-[#FF9933] transition-colors" />
               </a>
 
               {/* Dual State & District Helplines */}
@@ -249,7 +253,7 @@ export const NationalFooter: React.FC<NationalFooterProps> = ({
           <div className="flex items-center gap-3 flex-wrap justify-center md:justify-start">
             <span className="text-slate-300">&copy; {new Date().getFullYear()} JalRakshak National Disaster Resilience Initiative.</span>
             <span className="hidden sm:inline text-slate-700">&bull;</span>
-            <button onClick={onOpenAbout} className="text-slate-300 hover:text-cyan-400 underline underline-offset-2 transition">
+            <button onClick={onOpenAbout} className="text-slate-300 hover:text-[#FF9933] underline underline-offset-2 transition">
               Physics-Guided Hydrodynamic Architecture
             </button>
             <span className="hidden sm:inline text-slate-700">&bull;</span>
@@ -260,7 +264,7 @@ export const NationalFooter: React.FC<NationalFooterProps> = ({
               }}
               className="text-slate-300 hover:text-white font-medium flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 hover:border-slate-700 transition"
             >
-              <Lock className="w-3 h-3 text-cyan-400" />
+              <Lock className="w-3 h-3 text-[#FF9933]" />
               <span>{isAuthorized ? 'MoES Console (Active)' : 'Authority Official Login'}</span>
             </button>
           </div>
@@ -268,11 +272,11 @@ export const NationalFooter: React.FC<NationalFooterProps> = ({
           <div className="flex items-center gap-3">
             <button 
               onClick={scrollToTop}
-              className="px-3.5 py-1.5 rounded-xl bg-slate-900 hover:bg-cyan-950 text-slate-300 hover:text-cyan-300 border border-slate-800 hover:border-cyan-500/50 transition-all flex items-center gap-1.5 text-xs font-mono font-bold shadow-xs group"
+              className="px-3.5 py-1.5 rounded-xl bg-slate-900 hover:bg-white/10 text-slate-300 hover:text-[#FF9933] border border-slate-800 hover:border-[#FF9933]/50 transition-all flex items-center gap-1.5 text-xs font-mono font-bold shadow-xs group"
               title="Back to Top"
             >
               <span>Back to Top</span>
-              <ArrowUp className="w-3.5 h-3.5 text-cyan-400 group-hover:-translate-y-0.5 transition-transform" />
+              <ArrowUp className="w-3.5 h-3.5 text-[#FF9933] group-hover:-translate-y-0.5 transition-transform" />
             </button>
           </div>
         </div>

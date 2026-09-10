@@ -96,8 +96,14 @@ export const NationalNavbar: React.FC<NationalNavbarProps> = ({
 
   return (
     <header className="sticky top-0 z-40 w-full transition-all duration-300">
+      {/* Indian Tricolor Top Stripe */}
+      <div className="flex w-full h-1">
+        <div className="flex-1 bg-[#FF9933]" />
+        <div className="flex-1 bg-white" />
+        <div className="flex-1 bg-[#138808]" />
+      </div>
       {/* Modern Minimalist Glass Navbar Container */}
-      <div className="bg-white/90 backdrop-blur-xl backdrop-saturate-150 border-b border-slate-200/80 shadow-[0_2px_16px_rgba(0,0,0,0.04)] select-none">
+      <div className="bg-[#0B1E59] border-b border-[#0a1a4a] select-none">
         <div className="max-w-7xl mx-auto px-3 sm:px-6 py-2.5 flex items-center justify-between gap-2 sm:gap-4">
           
           {/* Left: Brand Logo & Shield */}
@@ -113,7 +119,7 @@ export const NationalNavbar: React.FC<NationalNavbarProps> = ({
           </div>
 
           {/* Center: Desktop Navigation Dock (Single-Line Crisp Pills) */}
-          <nav className="hidden lg:flex items-center gap-1 bg-slate-100/90 backdrop-blur-md p-1 rounded-full border border-slate-200/90 shadow-2xs">
+          <nav className="hidden lg:flex items-center gap-1 bg-white/10 backdrop-blur-md p-1 rounded-full border border-white/20">
             {navLinks.map((tab) => {
               const Icon = tab.icon;
               const isActive = activePage === tab.id;
@@ -125,10 +131,10 @@ export const NationalNavbar: React.FC<NationalNavbarProps> = ({
                     isActive
                       ? (tab.isEmergency 
                           ? 'bg-rose-600 text-white shadow-xs' 
-                          : 'bg-slate-900 text-white shadow-xs')
+                          : 'bg-white text-[#0B1E59] shadow-xs')
                       : (tab.isEmergency 
-                          ? 'text-rose-600 hover:bg-rose-50/80' 
-                          : 'text-slate-600 hover:text-slate-900 hover:bg-white/80')
+                          ? 'text-rose-300 hover:bg-rose-500/20' 
+                          : 'text-white/80 hover:text-white hover:bg-white/10')
                   }`}
                 >
                   {tab.isLive && (
@@ -137,7 +143,7 @@ export const NationalNavbar: React.FC<NationalNavbarProps> = ({
                       <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
                     </span>
                   )}
-                  <Icon className={`w-3.5 h-3.5 ${isActive ? 'text-white' : tab.isEmergency ? 'text-rose-600' : 'text-slate-500'}`} />
+                  <Icon className={`w-3.5 h-3.5 ${isActive ? 'text-white' : tab.isEmergency ? 'text-rose-600' : 'text-white/60'}`} />
                   <span>{tab.label}</span>
                 </button>
               );
@@ -165,12 +171,12 @@ export const NationalNavbar: React.FC<NationalNavbarProps> = ({
             <div className="hidden sm:block relative">
               <button
                 onClick={() => setIsLangDropdownOpen(!isLangDropdownOpen)}
-                className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-full bg-white/80 hover:bg-white backdrop-blur-md border border-slate-200/90 shadow-2xs text-slate-700 hover:text-slate-900 text-xs font-semibold transition duration-150"
+                className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 text-white/90 hover:text-white text-xs font-semibold transition duration-150"
                 title="Change Language / ভাষা / भाषा"
               >
-                <Languages className="w-3.5 h-3.5 text-slate-500" />
-                <span className="uppercase text-[11px] font-bold">{currentLang}</span>
-                <ChevronDown className={`w-3 h-3 text-slate-400 transition-transform duration-150 ${isLangDropdownOpen ? 'rotate-180' : ''}`} />
+                <Languages className="w-3.5 h-3.5 text-white/60" />
+                <span className="uppercase text-[11px] font-bold text-white">{currentLang}</span>
+                <ChevronDown className={`w-3 h-3 text-white/50 transition-transform duration-150 ${isLangDropdownOpen ? 'rotate-180' : ''}`} />
               </button>
 
               {isLangDropdownOpen && (
@@ -203,11 +209,11 @@ export const NationalNavbar: React.FC<NationalNavbarProps> = ({
             <div className="hidden sm:block relative">
               <button
                 onClick={() => setIsCityDropdownOpen(!isCityDropdownOpen)}
-                className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/80 hover:bg-white backdrop-blur-md border border-slate-200/90 shadow-2xs text-slate-700 hover:text-slate-900 text-xs font-semibold transition duration-150"
+                className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 text-white/90 hover:text-white text-xs font-semibold transition duration-150"
               >
-                <CityIcon className="w-3.5 h-3.5 text-blue-600" />
+                <CityIcon className="w-3.5 h-3.5 text-white" />
                 <span className="font-semibold">{currentCityObj.name}</span>
-                <ChevronDown className={`w-3 h-3 text-slate-400 transition-transform duration-150 ${isCityDropdownOpen ? 'rotate-180' : ''}`} />
+                <ChevronDown className={`w-3 h-3 text-white/50 transition-transform duration-150 ${isCityDropdownOpen ? 'rotate-180' : ''}`} />
               </button>
 
               {isCityDropdownOpen && (
@@ -251,7 +257,7 @@ export const NationalNavbar: React.FC<NationalNavbarProps> = ({
             {/* Modern AI Assistant Pill Button */}
             <button
               onClick={onOpenAIChat}
-              className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-blue-600 via-indigo-600 to-sky-600 hover:from-blue-700 hover:to-indigo-700 text-white text-xs font-semibold shadow-xs shadow-blue-500/20 active:scale-95 transition-all border border-white/20"
+              className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-red-600 hover:bg-red-700 text-white text-xs font-semibold shadow-xs active:scale-95 transition-all"
               title="Ask JalRakshak AI"
             >
               <Sparkles className="w-3.5 h-3.5 text-white" />
@@ -271,9 +277,9 @@ export const NationalNavbar: React.FC<NationalNavbarProps> = ({
             ) : (
               <button
                 onClick={onOpenAuthModal}
-                className="hidden lg:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/80 hover:bg-slate-50 text-slate-700 hover:text-slate-900 text-xs font-semibold transition border border-slate-200/90 shadow-2xs"
+                className="hidden lg:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/10 hover:bg-white/20 text-white/90 hover:text-white text-xs font-semibold transition border border-white/20"
               >
-                <Lock className="w-3.5 h-3.5 text-slate-500" />
+                <Lock className="w-3.5 h-3.5 text-white/60" />
                 <span>{t.loginBtn}</span>
               </button>
             )}
@@ -281,10 +287,10 @@ export const NationalNavbar: React.FC<NationalNavbarProps> = ({
             {/* Mobile Hamburger Menu Toggle Button (☰) */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden p-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 border border-slate-200 transition active:scale-95 shadow-xs"
+              className="lg:hidden p-2 rounded-xl bg-white/10 hover:bg-white/20 text-white border border-white/20 transition active:scale-95 shadow-xs"
               aria-label="Toggle Mobile Navigation"
             >
-              {isMobileMenuOpen ? <X className="w-5 h-5 text-slate-900" /> : <Menu className="w-5 h-5 text-slate-900" />}
+              {isMobileMenuOpen ? <X className="w-5 h-5 text-white" /> : <Menu className="w-5 h-5 text-white" />}
             </button>
           </div>
         </div>

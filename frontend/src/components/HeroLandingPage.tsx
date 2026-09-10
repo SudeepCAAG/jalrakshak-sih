@@ -88,12 +88,12 @@ export const HeroLandingPage: React.FC<HeroLandingPageProps> = ({
     <div className="space-y-12 pb-20">
       
       {/* 1. TOP SEAMLESS TELEMETRY WIRE (AUTHENTIC GOV-TECH TICKER) */}
-      <div className="overflow-hidden rounded-2xl bg-white border border-slate-200 text-slate-700 shadow-2xs py-2 px-4">
+      <div className="overflow-hidden rounded-lg bg-white border border-gray-200 text-slate-700 shadow-2xs py-2 px-4">
         <div className="flex items-center gap-3">
-          <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-900 text-cyan-400 text-[10px] font-mono font-bold tracking-wider shrink-0 uppercase border border-slate-800 shadow-2xs">
+          <div className="flex items-center gap-1.5 px-3 py-1 rounded bg-[#0B1E59] text-white text-[10px] font-mono font-bold tracking-wider shrink-0 uppercase border border-[#0a1a4a]">
             <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-400"></span>
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
             </span>
             LIVE RADAR FEED
           </div>
@@ -128,7 +128,7 @@ export const HeroLandingPage: React.FC<HeroLandingPageProps> = ({
           <div className="lg:col-span-6 flex flex-col justify-between space-y-6">
             <div className="space-y-4">
               {/* Mission Badge */}
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-100 text-slate-800 border border-slate-200/90 shadow-2xs text-xs font-semibold">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded bg-[#FFF3E0] text-[#0B1E59] border border-[#FF9933]/30 text-xs font-semibold">
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-600"></span>
@@ -141,7 +141,7 @@ export const HeroLandingPage: React.FC<HeroLandingPageProps> = ({
               {/* Master Headline (Solid Authoritative Color) */}
               <h1 className="text-3xl sm:text-4xl lg:text-[44px] font-black text-slate-950 tracking-tight leading-tight sm:leading-[1.12]">
                 {t.heroHeadline1}{' '}
-                <span className="text-blue-700">
+                <span className="text-red-600">
                   {t.heroHeadlineHighlight}
                 </span>
               </h1>
@@ -154,7 +154,7 @@ export const HeroLandingPage: React.FC<HeroLandingPageProps> = ({
               <div className="flex flex-col sm:flex-row items-stretch gap-3 pt-2">
                 <button
                   onClick={() => onNavigatePage('safe-nav')}
-                  className="flex-1 py-3.5 px-6 rounded-xl bg-blue-700 hover:bg-blue-800 text-white font-bold text-sm shadow-sm hover:shadow-md transition-all active:scale-98 flex items-center justify-center gap-2"
+                  className="flex-1 py-3.5 px-6 rounded-lg bg-red-600 hover:bg-red-700 text-white font-bold text-sm shadow-sm hover:shadow-md transition-all active:scale-98 flex items-center justify-center gap-2"
                 >
                   <Navigation className="w-4 h-4 text-white" />
                   <span className="uppercase tracking-wide font-extrabold">{t.planSafeRoute}</span>
@@ -162,9 +162,9 @@ export const HeroLandingPage: React.FC<HeroLandingPageProps> = ({
 
                 <button
                   onClick={() => onNavigatePage('gis-nowcast')}
-                  className="flex-1 py-3.5 px-6 rounded-xl bg-white hover:bg-slate-50 text-slate-900 font-bold text-sm shadow-2xs hover:shadow-xs transition-all active:scale-98 flex items-center justify-center gap-2 border border-slate-300"
+                  className="flex-1 py-3.5 px-6 rounded-lg bg-white hover:bg-gray-50 text-gray-900 font-bold text-sm shadow-sm transition-all active:scale-98 flex items-center justify-center gap-2 border-2 border-[#0B1E59]"
                 >
-                  <Layers className="w-4 h-4 text-blue-700" />
+                  <Layers className="w-4 h-4 text-[#0B1E59]" />
                   <span className="uppercase tracking-wide font-extrabold">{t.checkStreetStatus}</span>
                 </button>
               </div>
@@ -178,11 +178,11 @@ export const HeroLandingPage: React.FC<HeroLandingPageProps> = ({
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     placeholder={t.searchPlaceholder}
-                    className="w-full pl-10 pr-24 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-600/30 focus:border-blue-700 text-xs font-medium text-slate-900 bg-white shadow-2xs placeholder:text-slate-400 transition"
+                    className="w-full pl-10 pr-24 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-600/30 focus:border-red-600 text-xs font-medium text-slate-900 bg-white shadow-2xs placeholder:text-slate-400 transition"
                   />
                   <button 
                     onClick={() => onNavigatePage('gis-nowcast')}
-                    className="absolute right-1.5 top-1/2 -translate-y-1/2 px-3.5 py-1.5 rounded-lg bg-slate-900 hover:bg-blue-700 text-white text-xs font-bold transition flex items-center gap-1 shadow-2xs"
+                    className="absolute right-1.5 top-1/2 -translate-y-1/2 px-3.5 py-1.5 rounded-lg bg-red-600 hover:bg-red-700 text-white text-xs font-bold transition flex items-center gap-1 shadow-sm"
                   >
                     <span>Search</span>
                     <ArrowRight className="w-3 h-3" />
@@ -191,10 +191,10 @@ export const HeroLandingPage: React.FC<HeroLandingPageProps> = ({
 
                 {/* Live Quick Preview Badge when user searches or hovers */}
                 {searchQuery && selectedSearchedZone && (
-                  <div className="p-3 rounded-2xl bg-blue-50/90 border border-blue-200 flex items-center justify-between gap-3 animate-in fade-in duration-150">
+                  <div className="p-3 rounded-lg bg-orange-50/90 border border-orange-200 flex items-center justify-between gap-3 animate-in fade-in duration-150">
                     <div className="min-w-0">
                       <div className="text-xs font-bold text-slate-900 flex items-center gap-1.5 truncate">
-                        <MapPin className="w-3.5 h-3.5 text-blue-700 shrink-0" />
+                        <MapPin className="w-3.5 h-3.5 text-[#0B1E59] shrink-0" />
                         <span>{selectedSearchedZone.zone_name}</span>
                       </div>
                       <div className="text-[11px] text-slate-500 font-mono">
@@ -206,7 +206,7 @@ export const HeroLandingPage: React.FC<HeroLandingPageProps> = ({
                         onSelectZone(selectedSearchedZone);
                         onNavigatePage('safe-nav');
                       }}
-                      className="px-3 py-1.5 rounded-lg bg-blue-700 hover:bg-blue-800 text-white text-xs font-bold shrink-0 transition flex items-center gap-1 shadow-2xs"
+                      className="px-3 py-1.5 rounded-lg bg-red-600 hover:bg-red-700 text-white text-xs font-bold shrink-0 transition flex items-center gap-1 shadow-2xs"
                     >
                       <span>Safe Route</span>
                       <ArrowRight className="w-3 h-3" />
@@ -217,7 +217,7 @@ export const HeroLandingPage: React.FC<HeroLandingPageProps> = ({
 
               {/* National Trust & Key Metric Tags */}
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-2 text-xs font-semibold text-slate-600">
-                <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-200 flex items-center gap-2">
+                <div className="p-2.5 rounded-lg bg-gray-50 border border-gray-200 flex items-center gap-2">
                   <ShieldCheck className="w-4 h-4 text-slate-700 shrink-0" />
                   <div>
                     <div className="text-[11px] text-slate-900 font-bold">128 Hotspots</div>
@@ -225,15 +225,15 @@ export const HeroLandingPage: React.FC<HeroLandingPageProps> = ({
                   </div>
                 </div>
 
-                <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-200 flex items-center gap-2">
-                  <Activity className="w-4 h-4 text-blue-700 shrink-0" />
+                <div className="p-2.5 rounded-lg bg-gray-50 border border-gray-200 flex items-center gap-2">
+                  <Activity className="w-4 h-4 text-[#0B1E59] shrink-0" />
                   <div>
                     <div className="text-[11px] text-slate-900 font-bold">94.2% Accuracy</div>
                     <div className="text-[10px] text-slate-500">Physics Guided</div>
                   </div>
                 </div>
 
-                <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-200 flex items-center gap-2">
+                <div className="p-2.5 rounded-lg bg-gray-50 border border-gray-200 flex items-center gap-2">
                   <Clock className="w-4 h-4 text-slate-700 shrink-0" />
                   <div>
                     <div className="text-[11px] text-slate-900 font-bold">0–3h Horizon</div>
@@ -241,8 +241,8 @@ export const HeroLandingPage: React.FC<HeroLandingPageProps> = ({
                   </div>
                 </div>
 
-                <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-200 flex items-center gap-2">
-                  <Radio className="w-4 h-4 text-blue-700 shrink-0" />
+                <div className="p-2.5 rounded-lg bg-gray-50 border border-gray-200 flex items-center gap-2">
+                  <Radio className="w-4 h-4 text-[#0B1E59] shrink-0" />
                   <div>
                     <div className="text-[11px] text-slate-900 font-bold">Doppler Radar</div>
                     <div className="text-[10px] text-slate-500">Live 3.2 GHz</div>
@@ -254,7 +254,7 @@ export const HeroLandingPage: React.FC<HeroLandingPageProps> = ({
 
           {/* RIGHT COLUMN: Studio 3D Hydraulic City & Doppler Radar Frame */}
           <div className="lg:col-span-6 flex flex-col justify-between space-y-4">
-            <div className="rounded-3xl bg-white border border-slate-200 p-5 shadow-sm flex flex-col justify-between flex-1">
+            <div className="rounded-xl bg-white border border-gray-200 p-5 shadow-sm flex flex-col justify-between flex-1">
               
               {/* Top Status Bar */}
               <div className="flex items-center justify-between pb-3 border-b border-slate-100">
@@ -263,7 +263,7 @@ export const HeroLandingPage: React.FC<HeroLandingPageProps> = ({
                   <div>
                     <div className="text-xs font-mono font-bold text-slate-900 tracking-wider flex items-center gap-1.5">
                       <span>DOPPLER DWR TELEMETRY</span>
-                      <span className="text-[9px] bg-slate-900 text-cyan-400 px-1.5 py-0.5 rounded font-mono font-bold">LIVE 3.2GHz</span>
+                      <span className="text-[9px] bg-[#0B1E59] text-white px-1.5 py-0.5 rounded font-mono font-bold">LIVE 3.2GHz</span>
                     </div>
                     <div className="text-[10px] text-slate-500 font-mono">30m Micro-DEM • 0–3h Horizon</div>
                   </div>
@@ -276,7 +276,7 @@ export const HeroLandingPage: React.FC<HeroLandingPageProps> = ({
               </div>
 
               {/* 3D City Cutaway Frame with Radar Sweep & Hydro Nodes */}
-              <div className="relative my-4 h-64 sm:h-72 w-full rounded-2xl overflow-hidden border border-slate-200 shadow-inner group">
+              <div className="relative my-4 h-64 sm:h-72 w-full rounded-lg overflow-hidden border border-slate-200 shadow-inner group">
                 <Image
                   src="/hero-3d-city-cutaway.jpg"
                   alt="3D Drainage & Radar Coupling System"
@@ -344,19 +344,19 @@ export const HeroLandingPage: React.FC<HeroLandingPageProps> = ({
 
               {/* Bottom Telemetry Metrics */}
               <div className="grid grid-cols-3 gap-2.5 text-center text-xs pt-1 font-mono">
-                <div className="bg-slate-50 p-2.5 rounded-xl border border-slate-200">
+                <div className="bg-slate-50 p-2.5 rounded-lg border border-slate-200">
                   <div className="text-[10px] text-slate-500 uppercase tracking-wider font-sans font-semibold">Doppler Rain</div>
                   <div className="font-bold text-slate-900 text-sm mt-0.5">
                     {overview?.current_weather?.rainfall_rate_mm_hr || overview?.avg_rainfall_now || 38.5} mm/h
                   </div>
                 </div>
-                <div className="bg-slate-50 p-2.5 rounded-xl border border-slate-200">
+                <div className="bg-slate-50 p-2.5 rounded-lg border border-slate-200">
                   <div className="text-[10px] text-slate-500 uppercase tracking-wider font-sans font-semibold">Drain Discharge</div>
-                  <div className="font-bold text-emerald-700 text-sm mt-0.5">142 m³/s</div>
+                  <div className="font-bold text-[#138808] text-sm mt-0.5">142 m³/s</div>
                 </div>
-                <div className="bg-slate-50 p-2.5 rounded-xl border border-slate-200">
+                <div className="bg-slate-50 p-2.5 rounded-lg border border-slate-200">
                   <div className="text-[10px] text-slate-500 uppercase tracking-wider font-sans font-semibold">Nowcast Lead</div>
-                  <div className="font-bold text-blue-700 text-sm mt-0.5">0–3 Hours</div>
+                  <div className="font-bold text-[#0B1E59] text-sm mt-0.5">0–3 Hours</div>
                 </div>
               </div>
 
@@ -367,11 +367,11 @@ export const HeroLandingPage: React.FC<HeroLandingPageProps> = ({
       </section>
 
       {/* 3. NATIONAL IMPACT SENSOR MESH (CLEAN LIGHT STUDIO DESIGN) */}
-      <section className="bg-white rounded-3xl p-6 sm:p-8 shadow-xs border border-slate-200">
+      <section className="bg-white rounded-xl p-6 sm:p-8 shadow-xs border border-slate-200">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-6">
           <div>
             <div className="flex items-center gap-2">
-              <span className="text-[11px] font-mono font-bold text-blue-700 uppercase tracking-widest">
+              <span className="text-[11px] font-mono font-bold text-[#0B1E59] uppercase tracking-widest">
                 NATIONAL SENSOR MESH
               </span>
               <span className="bg-slate-100 text-slate-800 border border-slate-300 text-[9px] font-mono px-2 py-0.5 rounded-full font-bold">
@@ -384,7 +384,7 @@ export const HeroLandingPage: React.FC<HeroLandingPageProps> = ({
           </div>
           <button 
             onClick={() => onNavigatePage('gis-nowcast')}
-            className="bg-slate-900 hover:bg-blue-700 text-white text-xs font-bold px-4 py-2.5 rounded-xl transition shadow-xs flex items-center gap-1.5 shrink-0"
+            className="bg-red-600 hover:bg-red-700 text-white text-xs font-bold px-4 py-2.5 rounded-xl transition shadow-xs flex items-center gap-1.5 shrink-0"
           >
             <span>Launch Street GIS</span>
             <ArrowRight className="w-3.5 h-3.5" />
@@ -392,25 +392,25 @@ export const HeroLandingPage: React.FC<HeroLandingPageProps> = ({
         </div>
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-          <div className="bg-slate-50 border border-slate-200 p-4 rounded-2xl space-y-1">
+          <div className="bg-slate-50 border border-slate-200 p-4 rounded-lg space-y-1">
             <div className="text-slate-950 font-mono font-black text-2xl sm:text-3xl">6 DWR</div>
             <div className="text-xs text-slate-900 font-bold">{t.liveStatsActiveRadars}</div>
             <p className="text-[10px] text-slate-500">Continuous 15-min volume scans</p>
           </div>
 
-          <div className="bg-slate-50 border border-slate-200 p-4 rounded-2xl space-y-1">
+          <div className="bg-slate-50 border border-slate-200 p-4 rounded-lg space-y-1">
             <div className="text-slate-950 font-mono font-black text-2xl sm:text-3xl">128+</div>
             <div className="text-xs text-slate-900 font-bold">{t.liveStatsZonesMonitored}</div>
             <p className="text-[10px] text-slate-500">Railway subways & bowl areas</p>
           </div>
 
-          <div className="bg-slate-50 border border-slate-200 p-4 rounded-2xl space-y-1">
+          <div className="bg-slate-50 border border-slate-200 p-4 rounded-lg space-y-1">
             <div className="text-slate-950 font-mono font-black text-2xl sm:text-3xl">94.2%</div>
             <div className="text-xs text-slate-900 font-bold">{t.liveStatsAccuracy}</div>
             <p className="text-[10px] text-slate-500">Hydraulic DEM ground validated</p>
           </div>
 
-          <div className="bg-slate-50 border border-slate-200 p-4 rounded-2xl space-y-1">
+          <div className="bg-slate-50 border border-slate-200 p-4 rounded-lg space-y-1">
             <div className="text-slate-950 font-mono font-black text-2xl sm:text-3xl">1.8M+</div>
             <div className="text-xs text-slate-900 font-bold">{t.liveStatsCitizensProtected}</div>
             <p className="text-[10px] text-slate-500">Across 6 major Indian metros</p>
@@ -421,8 +421,8 @@ export const HeroLandingPage: React.FC<HeroLandingPageProps> = ({
       {/* 4. PHYSICS-GUIDED TECHNOLOGICAL PILLARS (CLEAN ENTERPRISE CARDS) */}
       <section className="space-y-6">
         <div className="text-center max-w-3xl mx-auto space-y-2">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 border border-slate-300 text-slate-800 text-[11px] font-mono font-extrabold uppercase tracking-wider shadow-2xs">
-            <ShieldCheck className="w-3.5 h-3.5 text-blue-700" />
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-[#FFF3E0] border border-[#FF9933]/30 text-[#0B1E59] text-[11px] font-mono font-extrabold uppercase tracking-wider shadow-2xs">
+            <ShieldCheck className="w-3.5 h-3.5 text-[#0B1E59]" />
             <span>HYDRAULIC &amp; AI ARCHITECTURE</span>
           </div>
           <h2 className="text-2xl sm:text-3xl font-black text-slate-950 tracking-tight">
@@ -435,11 +435,11 @@ export const HeroLandingPage: React.FC<HeroLandingPageProps> = ({
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
           {/* Card 1: Doppler Radar */}
-          <div className="relative overflow-hidden bg-white rounded-3xl p-6 border border-slate-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between space-y-4 group">
-            <div className="absolute top-0 left-0 right-0 h-1 bg-blue-600" />
+          <div className="relative overflow-hidden bg-white rounded-xl p-6 border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between space-y-4 group">
+            <div className="absolute top-0 left-0 right-0 h-1 bg-[#0B1E59]" />
             <div className="space-y-3">
               <div className="flex items-center justify-between">
-                <div className="w-12 h-12 rounded-2xl bg-slate-100 text-blue-700 flex items-center justify-center border border-slate-200 shadow-2xs group-hover:scale-105 transition-transform duration-300">
+                <div className="w-12 h-12 rounded-xl bg-gray-100 text-[#0B1E59] flex items-center justify-center border border-slate-200 shadow-2xs group-hover:scale-105 transition-transform duration-300">
                   <Radio className="w-6 h-6" />
                 </div>
                 <span className="font-mono text-[10px] bg-slate-100 text-slate-800 font-extrabold px-2.5 py-1 rounded-full border border-slate-200 uppercase tracking-wide">
@@ -455,10 +455,10 @@ export const HeroLandingPage: React.FC<HeroLandingPageProps> = ({
             </div>
             <div className="pt-3 border-t border-slate-100 flex items-center justify-between">
               <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-50 border border-slate-200 text-slate-700 font-mono text-[10px] font-bold">
-                <Zap className="w-3 h-3 text-blue-700" />
+                <Zap className="w-3 h-3 text-[#0B1E59]" />
                 <span>15-Min NWP Scan</span>
               </div>
-              <span className="text-[11px] font-bold text-blue-700 group-hover:text-blue-800 flex items-center gap-1">
+              <span className="text-[11px] font-bold text-[#0B1E59] group-hover:text-[#091845] flex items-center gap-1">
                 <span>0–3h Ahead</span>
                 <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
               </span>
@@ -466,11 +466,11 @@ export const HeroLandingPage: React.FC<HeroLandingPageProps> = ({
           </div>
 
           {/* Card 2: 30m Micro-DEM */}
-          <div className="relative overflow-hidden bg-white rounded-3xl p-6 border border-slate-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between space-y-4 group">
-            <div className="absolute top-0 left-0 right-0 h-1 bg-slate-800" />
+          <div className="relative overflow-hidden bg-white rounded-xl p-6 border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between space-y-4 group">
+            <div className="absolute top-0 left-0 right-0 h-1 bg-[#0B1E59]" />
             <div className="space-y-3">
               <div className="flex items-center justify-between">
-                <div className="w-12 h-12 rounded-2xl bg-slate-100 text-slate-800 flex items-center justify-center border border-slate-200 shadow-2xs group-hover:scale-105 transition-transform duration-300">
+                <div className="w-12 h-12 rounded-xl bg-gray-100 text-slate-800 flex items-center justify-center border border-slate-200 shadow-2xs group-hover:scale-105 transition-transform duration-300">
                   <Compass className="w-6 h-6" />
                 </div>
                 <span className="font-mono text-[10px] bg-slate-100 text-slate-800 font-extrabold px-2.5 py-1 rounded-full border border-slate-200 uppercase tracking-wide">
@@ -489,7 +489,7 @@ export const HeroLandingPage: React.FC<HeroLandingPageProps> = ({
                 <Layers className="w-3 h-3 text-slate-700" />
                 <span>30m Topo Grid</span>
               </div>
-              <span className="text-[11px] font-bold text-slate-800 group-hover:text-blue-700 flex items-center gap-1">
+              <span className="text-[11px] font-bold text-slate-800 group-hover:text-[#0B1E59] flex items-center gap-1">
                 <span>Depth Gauge</span>
                 <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
               </span>
@@ -497,11 +497,11 @@ export const HeroLandingPage: React.FC<HeroLandingPageProps> = ({
           </div>
 
           {/* Card 3: 1D/2D Hydrodynamic Pipes */}
-          <div className="relative overflow-hidden bg-white rounded-3xl p-6 border border-slate-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between space-y-4 group">
-            <div className="absolute top-0 left-0 right-0 h-1 bg-blue-700" />
+          <div className="relative overflow-hidden bg-white rounded-xl p-6 border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between space-y-4 group">
+            <div className="absolute top-0 left-0 right-0 h-1 bg-[#0B1E59]" />
             <div className="space-y-3">
               <div className="flex items-center justify-between">
-                <div className="w-12 h-12 rounded-2xl bg-slate-100 text-blue-700 flex items-center justify-center border border-slate-200 shadow-2xs group-hover:scale-105 transition-transform duration-300">
+                <div className="w-12 h-12 rounded-xl bg-gray-100 text-[#0B1E59] flex items-center justify-center border border-slate-200 shadow-2xs group-hover:scale-105 transition-transform duration-300">
                   <Waves className="w-6 h-6" />
                 </div>
                 <span className="font-mono text-[10px] bg-slate-100 text-slate-800 font-extrabold px-2.5 py-1 rounded-full border border-slate-200 uppercase tracking-wide">
@@ -517,10 +517,10 @@ export const HeroLandingPage: React.FC<HeroLandingPageProps> = ({
             </div>
             <div className="pt-3 border-t border-slate-100 flex items-center justify-between">
               <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-50 border border-slate-200 text-slate-700 font-mono text-[10px] font-bold">
-                <Activity className="w-3 h-3 text-blue-700" />
+                <Activity className="w-3 h-3 text-[#0B1E59]" />
                 <span>Manning 1D/2D</span>
               </div>
-              <span className="text-[11px] font-bold text-blue-700 group-hover:text-blue-800 flex items-center gap-1">
+              <span className="text-[11px] font-bold text-[#0B1E59] group-hover:text-[#091845] flex items-center gap-1">
                 <span>Pipe Telemetry</span>
                 <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
               </span>
@@ -528,11 +528,11 @@ export const HeroLandingPage: React.FC<HeroLandingPageProps> = ({
           </div>
 
           {/* Card 4: AI Safe Navigator */}
-          <div className="relative overflow-hidden bg-white rounded-3xl p-6 border border-slate-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between space-y-4 group">
-            <div className="absolute top-0 left-0 right-0 h-1 bg-emerald-600" />
+          <div className="relative overflow-hidden bg-white rounded-xl p-6 border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between space-y-4 group">
+            <div className="absolute top-0 left-0 right-0 h-1 bg-[#138808]" />
             <div className="space-y-3">
               <div className="flex items-center justify-between">
-                <div className="w-12 h-12 rounded-2xl bg-slate-100 text-emerald-700 flex items-center justify-center border border-slate-200 shadow-2xs group-hover:scale-105 transition-transform duration-300">
+                <div className="w-12 h-12 rounded-xl bg-gray-100 text-[#138808] flex items-center justify-center border border-slate-200 shadow-2xs group-hover:scale-105 transition-transform duration-300">
                   <Bot className="w-6 h-6" />
                 </div>
                 <span className="font-mono text-[10px] bg-slate-100 text-slate-800 font-extrabold px-2.5 py-1 rounded-full border border-slate-200 uppercase tracking-wide">
@@ -551,7 +551,7 @@ export const HeroLandingPage: React.FC<HeroLandingPageProps> = ({
                 <ShieldCheck className="w-3 h-3 text-emerald-600" />
                 <span>Zero Stalling</span>
               </div>
-              <span className="text-[11px] font-bold text-emerald-700 group-hover:text-emerald-800 flex items-center gap-1">
+              <span className="text-[11px] font-bold text-[#138808] group-hover:text-[#0f6b06] flex items-center gap-1">
                 <span>Safe Reroute</span>
                 <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
               </span>
@@ -565,7 +565,7 @@ export const HeroLandingPage: React.FC<HeroLandingPageProps> = ({
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div>
             <div className="flex items-center gap-2">
-              <span className="text-xs font-mono font-bold text-cyan-700 uppercase tracking-wider">
+              <span className="text-xs font-mono font-bold text-[#0B1E59] uppercase tracking-wider">
                 HYDROGRAPH TELEMETRY
               </span>
               <span className="bg-amber-100 text-amber-900 text-[10px] font-bold px-2.5 py-0.5 rounded-full border border-amber-300">
@@ -578,7 +578,7 @@ export const HeroLandingPage: React.FC<HeroLandingPageProps> = ({
           </div>
           <button
             onClick={() => onNavigatePage('gis-nowcast')}
-            className="text-xs font-bold text-cyan-700 hover:text-cyan-800 flex items-center gap-1.5 group self-start sm:self-auto bg-cyan-50 hover:bg-cyan-100/80 px-3.5 py-2 rounded-xl border border-cyan-200/80 transition shadow-2xs"
+            className="text-xs font-bold text-[#0B1E59] hover:text-[#091845] flex items-center gap-1.5 group self-start sm:self-auto bg-blue-50 hover:bg-blue-100/80 px-3.5 py-2 rounded-xl border border-blue-200/80 transition shadow-2xs"
           >
             <span>View All Zones on Full GIS Map</span>
             <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition" />
@@ -594,7 +594,7 @@ export const HeroLandingPage: React.FC<HeroLandingPageProps> = ({
             return (
               <div 
                 key={zone.zone_id}
-                className="bg-white rounded-3xl p-5 border border-slate-200/90 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between space-y-4 group"
+                className="bg-white rounded-xl p-5 border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between space-y-4 group"
               >
                 {/* Zone Header */}
                 <div className="space-y-3">
@@ -617,7 +617,7 @@ export const HeroLandingPage: React.FC<HeroLandingPageProps> = ({
                   </div>
 
                   <div>
-                    <h4 className="font-black text-sm text-slate-900 tracking-tight group-hover:text-cyan-700 transition">
+                    <h4 className="font-black text-sm text-slate-900 tracking-tight group-hover:text-[#0B1E59] transition">
                       {zone.zone_name}
                     </h4>
                     <div className="flex items-center justify-between text-[11px] text-slate-500 font-mono mt-1">
@@ -648,7 +648,7 @@ export const HeroLandingPage: React.FC<HeroLandingPageProps> = ({
                   </div>
 
                   {/* Vehicle Passability Micro-Grid */}
-                  <div className="bg-slate-50 rounded-2xl p-2.5 border border-slate-200/80 space-y-1.5">
+                  <div className="bg-slate-50 rounded-lg p-2.5 border border-slate-200/80 space-y-1.5">
                     <div className="text-[10px] font-mono font-bold text-slate-500 uppercase tracking-wider">
                       Passability Status
                     </div>
@@ -699,7 +699,7 @@ export const HeroLandingPage: React.FC<HeroLandingPageProps> = ({
                     onSelectZone(zone);
                     onNavigatePage('gis-nowcast');
                   }}
-                  className="w-full bg-slate-900 hover:bg-cyan-700 text-white text-xs font-bold py-2.5 rounded-xl shadow-xs hover:shadow-md transition-all duration-200 flex items-center justify-center gap-1.5 group/btn"
+                  className="w-full bg-[#0B1E59] hover:bg-[#091845] text-white text-xs font-bold py-2.5 rounded-lg shadow-xs hover:shadow-md transition-all duration-200 flex items-center justify-center gap-1.5 group/btn"
                 >
                   <span>Inspect Live Hydrograph</span>
                   <ArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-1 transition-transform" />
@@ -711,14 +711,14 @@ export const HeroLandingPage: React.FC<HeroLandingPageProps> = ({
       </section>
 
       {/* 6. CROWDSOURCED CITIZEN GROUND-TRUTH FLOOD FEED (CLEAN LIGHT CARD) */}
-      <section className="bg-white border border-slate-200/90 rounded-3xl p-6 sm:p-8 space-y-6 shadow-sm">
+      <section className="bg-white border border-slate-200/90 rounded-xl p-6 sm:p-8 space-y-6 shadow-sm">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div>
             <div className="flex items-center gap-2">
-              <span className="text-xs font-mono font-bold text-cyan-700 uppercase tracking-wider">
+              <span className="text-xs font-mono font-bold text-[#0B1E59] uppercase tracking-wider">
                 GROUND-TRUTH FEED
               </span>
-              <span className="bg-cyan-100 text-cyan-900 text-[10px] font-bold px-2.5 py-0.5 rounded-full border border-cyan-300">
+              <span className="bg-[#FFF3E0] text-[#0B1E59] text-[10px] font-bold px-2.5 py-0.5 rounded-full border border-[#FF9933]/30">
                 CITIZEN TELEMETRY
               </span>
             </div>
@@ -729,9 +729,9 @@ export const HeroLandingPage: React.FC<HeroLandingPageProps> = ({
 
           <button
             onClick={onOpenReportModal}
-            className="bg-slate-900 hover:bg-cyan-700 text-white text-xs font-bold px-4 py-2.5 rounded-xl transition shadow-xs hover:shadow-md flex items-center gap-2 self-start sm:self-auto group"
+            className="bg-red-600 hover:bg-red-700 text-white text-xs font-bold px-4 py-2.5 rounded-xl transition shadow-xs hover:shadow-md flex items-center gap-2 self-start sm:self-auto group"
           >
-            <Camera className="w-3.5 h-3.5 text-cyan-400 group-hover:scale-110 transition-transform" />
+            <Camera className="w-3.5 h-3.5 text-white group-hover:scale-110 transition-transform" />
             <span>+ Submit Live Flood Photo</span>
           </button>
         </div>
@@ -741,7 +741,7 @@ export const HeroLandingPage: React.FC<HeroLandingPageProps> = ({
             {citizenReports.slice(0, 3).map((rep, idx) => (
               <div 
                 key={rep.report_id || idx} 
-                className="bg-white rounded-3xl overflow-hidden border border-slate-200/90 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group"
+                className="bg-white rounded-xl overflow-hidden border border-slate-200/90 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between group"
               >
                 {/* Photo with Overlay Badges */}
                 <div className="relative h-44 w-full overflow-hidden bg-slate-900">
@@ -754,8 +754,8 @@ export const HeroLandingPage: React.FC<HeroLandingPageProps> = ({
                   
                   {/* Top Badges */}
                   <div className="absolute top-2.5 left-2.5 flex items-center gap-1.5">
-                    <div className="bg-slate-950/80 backdrop-blur-md text-cyan-400 text-[10px] font-mono font-bold px-2.5 py-1 rounded-lg border border-cyan-500/30 flex items-center gap-1.5 shadow-xs">
-                      <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span>
+                    <div className="bg-slate-950/80 backdrop-blur-md text-white text-[10px] font-mono font-bold px-2.5 py-1 rounded-lg border border-white/30 flex items-center gap-1.5 shadow-xs">
+                      <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
                       <span>~{rep.water_depth_cm} cm</span>
                     </div>
                   </div>
@@ -778,7 +778,7 @@ export const HeroLandingPage: React.FC<HeroLandingPageProps> = ({
                 <div className="p-4 space-y-3 flex-1 flex flex-col justify-between">
                   <div className="space-y-1.5">
                     <div className="font-bold text-xs sm:text-sm text-slate-900 flex items-start gap-1.5">
-                      <MapPin className="w-3.5 h-3.5 text-cyan-600 shrink-0 mt-0.5" />
+                      <MapPin className="w-3.5 h-3.5 text-[#0B1E59] shrink-0 mt-0.5" />
                       <span className="line-clamp-1">{rep.location_name}</span>
                     </div>
                     <p className="text-[11px] text-slate-600 leading-relaxed line-clamp-2">
@@ -797,14 +797,14 @@ export const HeroLandingPage: React.FC<HeroLandingPageProps> = ({
                         {rep.passability === 'BLOCKED' ? '⛔ Blocked' : rep.passability === 'SUVS_ONLY' ? '🚙 SUVs Only' : '✅ Passable'}
                       </span>
                       <span className="text-slate-500 flex items-center gap-1 bg-slate-50 px-2 py-0.5 rounded-md border border-slate-200">
-                        <ThumbsUp className="w-2.5 h-2.5 text-cyan-600" />
+                        <ThumbsUp className="w-2.5 h-2.5 text-[#0B1E59]" />
                         <span>{rep.upvotes || 28}</span>
                       </span>
                     </div>
 
                     <button
                       onClick={() => onNavigatePage('gis-nowcast')}
-                      className="text-[11px] font-bold text-cyan-700 hover:text-cyan-800 flex items-center gap-1 group/link"
+                      className="text-[11px] font-bold text-[#0B1E59] hover:text-[#091845] flex items-center gap-1 group/link"
                     >
                       <span>Map</span>
                       <ArrowRight className="w-3 h-3 group-hover/link:translate-x-0.5 transition-transform" />
@@ -822,7 +822,7 @@ export const HeroLandingPage: React.FC<HeroLandingPageProps> = ({
       </section>
 
       {/* 7. CITIZEN EMERGENCY & SOS DIRECT ACCESS STRIP (HIGH-VISIBILITY RESCUE BANNER) */}
-      <section className="relative overflow-hidden bg-gradient-to-r from-red-950 via-slate-900 to-slate-950 border border-red-900/60 text-white rounded-3xl p-6 sm:p-8 shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">
+      <section className="relative overflow-hidden bg-gradient-to-r from-red-950 via-slate-900 to-slate-950 border border-red-900/60 text-white rounded-xl p-6 sm:p-8 shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">
         <div className="space-y-2 text-center md:text-left z-10">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-rose-500/20 text-rose-300 border border-rose-500/40 text-[11px] font-mono font-bold shadow-xs">
             <span className="w-2 h-2 rounded-full bg-rose-500 animate-ping" />
@@ -839,7 +839,7 @@ export const HeroLandingPage: React.FC<HeroLandingPageProps> = ({
         <div className="flex items-center gap-3 shrink-0 z-10">
           <button
             onClick={() => onNavigatePage('emergency')}
-            className="bg-rose-600 hover:bg-rose-500 text-white font-black px-6 py-3.5 rounded-2xl text-xs sm:text-sm shadow-lg shadow-rose-600/30 hover:scale-105 active:scale-95 transition-all flex items-center gap-2.5"
+            className="bg-rose-600 hover:bg-rose-500 text-white font-black px-6 py-3.5 rounded-lg text-xs sm:text-sm shadow-lg shadow-rose-600/30 hover:scale-105 active:scale-95 transition-all flex items-center gap-2.5"
           >
             <PhoneCall className="w-4 h-4 text-white animate-bounce" />
             <span>Open Emergency Center (112 SOS)</span>
